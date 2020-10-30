@@ -430,7 +430,7 @@ backend::CompareFunction Renderer::getDepthCompareFunction() const
     return _depthStencilDescriptor.depthCompareFunction;
 }
 
-bool Renderer::Renderer::getDepthTest() const
+bool Renderer::getDepthTest() const
 {
     return _depthStencilDescriptor.depthTestEnabled;
 }
@@ -457,10 +457,7 @@ void Renderer::setStencilCompareFunction(backend::CompareFunction func, unsigned
     _stencilRef = ref;
 }
 
-void Renderer::setStencilOperation(backend::StencilOperation stencilFailureOp,
-                             backend::StencilOperation depthFailureOp,
-                             backend::StencilOperation stencilDepthPassOp)
-{
+void Renderer::setStencilOperation(backend::StencilOperation stencilFailureOp, backend::StencilOperation depthFailureOp, backend::StencilOperation stencilDepthPassOp){
     _depthStencilDescriptor.frontFaceStencil.stencilFailureOperation = stencilFailureOp;
     _depthStencilDescriptor.backFaceStencil.stencilFailureOperation = stencilFailureOp;
 
