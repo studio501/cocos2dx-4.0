@@ -301,10 +301,7 @@ public:
      * @param depthFailureOp Specifies the stencil action when the stencil test passes, but the depth test fails. 
      * @param stencilDepthPassOp Specifies the stencil action when both the stencil test and the depth test pass, or when the stencil test passes and either there is no depth buffer or depth testing is not enabled. 
      */
-    void setStencilOperation(backend::StencilOperation stencilFailureOp,
-                             backend::StencilOperation depthFailureOp,
-                             backend::StencilOperation stencilDepthPassOp);
-
+    void setStencilOperation(backend::StencilOperation stencilFailureOp, backend::StencilOperation depthFailureOp, backend::StencilOperation stencilDepthPassOp);
     /**
      * Control the front and back writing of individual bits in the stencil planes.
      * @param mask Specifies a bit mask to enable and disable writing of individual bits in the stencil planes.

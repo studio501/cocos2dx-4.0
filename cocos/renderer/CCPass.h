@@ -67,10 +67,7 @@ public:
     /** Returns the ProgramState */
     backend::ProgramState* getProgramState() const;
 
-    void draw(MeshCommand *meshCommand, float globalZOrder, backend::Buffer* vertexBuffer, backend::Buffer* indexBuffer,
-              MeshCommand::PrimitiveType primitive, MeshCommand::IndexFormat indexFormat,
-              unsigned int indexCount, const Mat4& modelView);
-
+    void draw(MeshCommand *meshCommand, float globalZOrder, backend::Buffer* vertexBuffer, backend::Buffer* indexBuffer, MeshCommand::PrimitiveType primitive, MeshCommand::IndexFormat indexFormat, unsigned int indexCount, const Mat4& modelView);
     /**
      * Sets a vertex attribute binding for this pass.
      *

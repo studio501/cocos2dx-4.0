@@ -178,10 +178,7 @@ void Pass::initUniformLocations()
     _locAmbientLigthColor = ps->getUniformLocation(s_ambientLightUniformColorName);
 }
 
-void Pass::draw(MeshCommand *meshCommand, float globalZOrder, backend::Buffer* vertexBuffer, backend::Buffer* indexBuffer,
-                MeshCommand::PrimitiveType primitive, MeshCommand::IndexFormat indexFormat,
-                unsigned int indexCount, const Mat4& modelView)
-{
+void Pass::draw(MeshCommand *meshCommand, float globalZOrder, backend::Buffer* vertexBuffer, backend::Buffer* indexBuffer, MeshCommand::PrimitiveType primitive, MeshCommand::IndexFormat indexFormat, unsigned int indexCount, const Mat4& modelView){
 
     meshCommand->setBeforeCallback(CC_CALLBACK_0(Pass::onBeforeVisitCmd, this, meshCommand));
     meshCommand->setAfterCallback(CC_CALLBACK_0(Pass::onAfterVisitCmd, this, meshCommand));
