@@ -54,6 +54,7 @@ namespace backend
 
 class EventListenerCustom;
 class TrianglesCommand;
+class CustomCommand;
 class MeshCommand;
 class GroupCommand;
 class CallbackCommand;
@@ -446,6 +447,7 @@ protected:
     inline GroupCommandManager * getGroupCommandManager() const { return _groupCommandManager; }
     void drawBatchedTriangles();
     void drawCustomCommand(RenderCommand* command);
+    void drawBatchedCustomCommands();
     void drawMeshCommand(RenderCommand* command);
     void captureScreen(RenderCommand* command);
 
@@ -467,6 +469,7 @@ protected:
     void doVisitRenderQueue(const std::vector<RenderCommand*>&);
 
     void fillVerticesAndIndices(const TrianglesCommand* cmd, unsigned int vertexBufferOffset);
+    void fillVerticesAndIndices(const CustomCommand* cmd, unsigned int vertexBufferOffset);
     void beginRenderPass(RenderCommand*); /// Begin a render pass.
     
     /**
@@ -492,6 +495,7 @@ protected:
     std::vector<RenderQueue> _renderGroups;
 
     std::vector<TrianglesCommand*> _queuedTriangleCommands;
+    std::vector<CustomCommand*> _queuedCustomCommands;
 
     //for TrianglesCommand
     V3F_C4B_T2F _verts[VBO_SIZE];
@@ -515,6 +519,18 @@ protected:
     int _triBatchesToDrawCapacity = 500;
     // the TriBatches
     TriBatchToDraw* _triBatchesToDraw = nullptr;
+    
+    struct CustomCommandBatchToDraw
+    {
+        CustomCommand* cmd = nullptr;  // needed for the Material
+        unsigned int indicesToDraw = 0;
+        unsigned int offset = 0;
+    };
+    // capacity of the array of TriBatches
+    int _cusCmdToDrawCapacity = 500;
+    // the TriBatches
+    CustomCommandBatchToDraw* _cusCmdBatchesToDraw = nullptr;
+    
 
     unsigned int _queuedTotalVertexCount = 0;
     unsigned int _queuedTotalIndexCount = 0;
@@ -556,6 +572,8 @@ protected:
     };
 
     std::deque<StateBlock> _stateBlockStack;
+    
+    bool _lastIsCanBatchedCustomCommand = false;
 };
 
 NS_CC_END

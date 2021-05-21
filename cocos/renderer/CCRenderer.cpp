@@ -165,9 +165,12 @@ Renderer::Renderer()
     RenderQueue defaultRenderQueue;
     _renderGroups.push_back(defaultRenderQueue);
     _queuedTriangleCommands.reserve(BATCH_TRIAGCOMMAND_RESERVED_SIZE);
+    _queuedCustomCommands.reserve(BATCH_TRIAGCOMMAND_RESERVED_SIZE);
 
     // for the batched TriangleCommand
     _triBatchesToDraw = (TriBatchToDraw*) malloc(sizeof(_triBatchesToDraw[0]) * _triBatchesToDrawCapacity);
+    
+    _cusCmdBatchesToDraw = (CustomCommandBatchToDraw*) malloc(sizeof(_cusCmdBatchesToDraw[0]) * _cusCmdToDrawCapacity);
 }
 
 Renderer::~Renderer()
@@ -176,6 +179,7 @@ Renderer::~Renderer()
     _groupCommandManager->release();
     
     free(_triBatchesToDraw);
+    free(_cusCmdBatchesToDraw);
     
     CC_SAFE_RELEASE(_commandBuffer);
     CC_SAFE_RELEASE(_renderPipeline);
@@ -290,8 +294,51 @@ void Renderer::processRenderCommand(RenderCommand* command)
             processGroupCommand(static_cast<GroupCommand*>(command));
             break;
         case RenderCommand::Type::CUSTOM_COMMAND:
-            flush();
-            drawCustomCommand(command);
+        {
+            auto cmd = static_cast<CustomCommand*>(command);
+            
+            if(!_lastIsCanBatchedCustomCommand || !cmd->getCanBatch()){
+                flush();
+            }
+            
+            
+            if(!cmd->getCanBatch()){
+                _lastIsCanBatchedCustomCommand = false;
+                drawCustomCommand(command);
+            }else{
+                if(cmd->getVertexCount() == 0 || cmd->getIndexCount() == 0){
+                    _lastIsCanBatchedCustomCommand = false;
+                    drawCustomCommand(command);
+                }else{
+                    // flush own queue when buffer is full
+                    if(_queuedTotalVertexCount + cmd->getVertexCount() > VBO_SIZE || _queuedTotalIndexCount + cmd->getIndexCount() > INDEX_VBO_SIZE)
+                    {
+                        CCASSERT(cmd->getVertexCount()>= 0 && cmd->getVertexCount() < VBO_SIZE, "VBO for vertex is not big enough, please break the data down or use customized render command");
+                        CCASSERT(cmd->getIndexCount()>= 0 && cmd->getIndexCount() < INDEX_VBO_SIZE, "VBO for index is not big enough, please break the data down or use customized render command");
+                        drawBatchedCustomCommands();
+
+                        _queuedTotalIndexCount = _queuedTotalVertexCount = 0;
+        #ifdef CC_USE_METAL
+                        _queuedIndexCount = _queuedVertexCount = 0;
+                        _triangleCommandBufferManager.prepareNextBuffer();
+                        _vertexBuffer = _triangleCommandBufferManager.getVertexBuffer();
+                        _indexBuffer = _triangleCommandBufferManager.getIndexBuffer();
+        #endif
+                    }
+                    
+                    // queue it
+                    _queuedCustomCommands.push_back(cmd);
+        #ifdef CC_USE_METAL
+                    _queuedIndexCount += cmd->getIndexCount();
+                    _queuedVertexCount += cmd->getVertexCount();
+        #endif
+                    _queuedTotalVertexCount += cmd->getVertexCount();
+                    _queuedTotalIndexCount += cmd->getIndexCount();
+                    
+                    _lastIsCanBatchedCustomCommand = true;
+                }
+            }
+        }
             break;
         case RenderCommand::Type::CALLBACK_COMMAND:
             flush();
@@ -360,6 +407,7 @@ void Renderer::render()
 {
     //TODO: setup camera or MVP
     _isRendering = true;
+    _lastIsCanBatchedCustomCommand = false;
 //    if (_glViewAssigned)
     {
         //Process render commands
@@ -407,6 +455,7 @@ void Renderer::clean()
 
     // Clear batch commands
     _queuedTriangleCommands.clear();
+    _queuedCustomCommands.clear();
 }
 
 void Renderer::setDepthTest(bool value)
@@ -544,6 +593,139 @@ void Renderer::fillVerticesAndIndices(const TrianglesCommand* cmd, unsigned int 
     
     _filledVertex += vertexCount;
     _filledIndex += indexCount;
+}
+
+void Renderer::fillVerticesAndIndices(const CustomCommand* cmd, unsigned int vertexBufferOffset)
+{
+    size_t vertexCount = cmd->getVertexCount();
+    memcpy(&_verts[_filledVertex], cmd->getVertices(), sizeof(V3F_C4B_T2F) * vertexCount);
+    
+    // fill vertex, and convert them to world coordinates
+    const Mat4& modelView = cmd->getModelView();
+    for (size_t i=0; i < vertexCount; ++i)
+    {
+        modelView.transformPoint(&(_verts[i + _filledVertex].vertices));
+    }
+    
+    // fill index
+    const unsigned short* indices = cmd->getIndices();
+    size_t indexCount = cmd->getIndexCount();
+    for (size_t i = 0; i < indexCount; ++i)
+    {
+        _indices[_filledIndex + i] = vertexBufferOffset + _filledVertex + indices[i];
+    }
+    
+    _filledVertex += vertexCount;
+    _filledIndex += indexCount;
+}
+
+void Renderer::drawBatchedCustomCommands()
+{
+    if(_queuedCustomCommands.empty())
+        return;
+    
+    /************** 1: Setup up vertices/indices *************/
+#ifdef CC_USE_METAL
+    unsigned int vertexBufferFillOffset = _queuedTotalVertexCount - _queuedVertexCount;
+    unsigned int indexBufferFillOffset = _queuedTotalIndexCount - _queuedIndexCount;
+#else
+    unsigned int vertexBufferFillOffset = 0;
+    unsigned int indexBufferFillOffset = 0;
+#endif
+
+    _cusCmdBatchesToDraw[0].offset = indexBufferFillOffset;
+    _cusCmdBatchesToDraw[0].indicesToDraw = 0;
+    _cusCmdBatchesToDraw[0].cmd = nullptr;
+    
+    int batchesTotal = 0;
+    int prevMaterialID = -1;
+    bool firstCommand = true;
+
+    _filledVertex = 0;
+    _filledIndex = 0;
+
+    for(const auto& cmd : _queuedCustomCommands)
+    {
+        auto currentMaterialID = prevMaterialID;//cmd->getMaterialID();
+        const bool batchable = !cmd->isSkipBatching();
+        
+        fillVerticesAndIndices(cmd, vertexBufferFillOffset);
+        
+        // in the same batch ?
+        if (batchable && (prevMaterialID == currentMaterialID || firstCommand))
+        {
+            _cusCmdBatchesToDraw[batchesTotal].indicesToDraw += cmd->getIndexCount();
+            _cusCmdBatchesToDraw[batchesTotal].cmd = cmd;
+        }
+        else
+        {
+            // is this the first one?
+            if (!firstCommand)
+            {
+                batchesTotal++;
+                _cusCmdBatchesToDraw[batchesTotal].offset =
+                _cusCmdBatchesToDraw[batchesTotal-1].offset + _cusCmdBatchesToDraw[batchesTotal-1].indicesToDraw;
+            }
+            
+            _cusCmdBatchesToDraw[batchesTotal].cmd = cmd;
+            _cusCmdBatchesToDraw[batchesTotal].indicesToDraw = (int) cmd->getIndexCount();
+            
+            // is this a single batch ? Prevent creating a batch group then
+            if (!batchable)
+                currentMaterialID = -1;
+        }
+        
+        // capacity full ?
+        if (batchesTotal + 1 >= _cusCmdToDrawCapacity)
+        {
+            _cusCmdToDrawCapacity *= 1.4;
+            _cusCmdBatchesToDraw = (CustomCommandBatchToDraw*) realloc(_cusCmdBatchesToDraw, sizeof(_cusCmdBatchesToDraw[0]) * _cusCmdToDrawCapacity);
+        }
+        
+        prevMaterialID = currentMaterialID;
+        firstCommand = false;
+    }
+    batchesTotal++;
+#ifdef CC_USE_METAL
+    _vertexBuffer->updateSubData(_verts, vertexBufferFillOffset * sizeof(_verts[0]), _filledVertex * sizeof(_verts[0]));
+    _indexBuffer->updateSubData(_indices, indexBufferFillOffset * sizeof(_indices[0]), _filledIndex * sizeof(_indices[0]));
+#else
+    _vertexBuffer->updateData(_verts, _filledVertex * sizeof(_verts[0]));
+    _indexBuffer->updateData(_indices,  _filledIndex * sizeof(_indices[0]));
+#endif
+    
+
+    /************** 2: Draw *************/
+    for (int i = 0; i < batchesTotal; ++i)
+    {
+        beginRenderPass(_cusCmdBatchesToDraw[i].cmd);
+        _commandBuffer->setVertexBuffer(_vertexBuffer);
+        _commandBuffer->setIndexBuffer(_indexBuffer);
+        auto& pipelineDescriptor = _cusCmdBatchesToDraw[i].cmd->getPipelineDescriptor();
+        
+        backend::UniformLocation uf = pipelineDescriptor.programState->getUniformLocation(backend::Uniform::MVP_MATRIX);
+        
+        auto p_matrix = _cusCmdBatchesToDraw[i].cmd->getProjectionMatrix();
+        pipelineDescriptor.programState->setUniform(uf, p_matrix.m, sizeof(p_matrix.m));
+        
+        _commandBuffer->setProgramState(pipelineDescriptor.programState);
+        _commandBuffer->drawElements(backend::PrimitiveType::TRIANGLE,
+                                     backend::IndexFormat::U_SHORT,
+                                     _cusCmdBatchesToDraw[i].indicesToDraw,
+                                     _cusCmdBatchesToDraw[i].offset * sizeof(_indices[0]));
+        _commandBuffer->endRenderPass();
+
+        _drawnBatches++;
+        _drawnVertices += _cusCmdBatchesToDraw[i].indicesToDraw;
+    }
+
+    /************** 3: Cleanup *************/
+    _queuedCustomCommands.clear();
+
+#ifdef CC_USE_METAL
+    _queuedIndexCount = 0;
+    _queuedVertexCount = 0;
+#endif
 }
 
 void Renderer::drawBatchedTriangles()
@@ -699,6 +881,8 @@ void Renderer::flush()
 void Renderer::flush2D()
 {
     flushTriangles();
+    
+    drawBatchedCustomCommands();
 }
 
 void Renderer::flush3D()

@@ -121,12 +121,16 @@ void CustomCommand::setIndexBuffer(backend::Buffer *indexBuffer, IndexFormat for
 void CustomCommand::updateVertexBuffer(void* data, std::size_t length)
 {
     assert(_vertexBuffer);
+    _vertCount = length;
+    _vertexStart = (V3F_C4B_T2F*)data;
     _vertexBuffer->updateData(data, length);
 }
 
 void CustomCommand::updateIndexBuffer(void* data, std::size_t length)
 {
     assert(_indexBuffer);
+    _indexCount = length;
+    _indexStart = (unsigned short *)data;
     _indexBuffer->updateData(data, length);
 }
 

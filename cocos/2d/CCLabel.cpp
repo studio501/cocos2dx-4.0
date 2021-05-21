@@ -1672,6 +1672,8 @@ void Label::updateEffectUniforms(BatchCommand &batch, TextureAtlas* textureAtlas
                     programStateShadow->setUniform(_textColorLocation, &shadowColor, sizeof(Vec4));
                     batch.shadowCommand.init(_globalZOrder);
                     renderer->addCommand(&batch.shadowCommand);
+                }else{
+                    batch.textCommand.setCanBatch(true);
                 }
             }
                 break;
@@ -1801,6 +1803,8 @@ void Label::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
                         programState->setTexture(_alphaTextureLocation, 1, alphaTexture->getBackendTexture());
                     }
                 }
+                batch.textCommand._mv = transform;
+                batch.textCommand._p = matrixProjection;
                 batch.textCommand.getPipelineDescriptor().programState->setUniform(_mvpMatrixLocation, matrixMVP.m, sizeof(matrixMVP.m));
                 batch.outLineCommand.getPipelineDescriptor().programState->setUniform(_mvpMatrixLocation, matrixMVP.m, sizeof(matrixMVP.m));
                 updateEffectUniforms(batch, textureAtlas, renderer, transform);
