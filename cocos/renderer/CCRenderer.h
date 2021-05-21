@@ -185,7 +185,7 @@ public:
      @stencilAttachment The value to replace stencil attachment. Depth attachment and stencil attachment
                         can be the same value.
      */
-    void setRenderTarget(RenderTargetFlag flags, Texture2D* colorAttachment, Texture2D* depthAttachment, Texture2D* stencilAttachment);
+    void setRenderTarget(RenderTargetFlag flags, Texture2D* colorAttachment, Texture2D* depthAttachment, Texture2D* stencilAttachment, bool androidEs2DS = false);
     /**
     Set clear values for each attachment.
     @flags Flags to indicate which attachment clear value to be modified.
@@ -193,7 +193,7 @@ public:
     @depth The clear depth value.
     @stencil The clear stencil value.
     */
-    void clear(ClearFlag flags, const Color4F& color, float depth, unsigned int stencil, float globalOrder);
+    void clear(ClearFlag flags, const Color4F& color, float depth, unsigned int stencil, float globalOrder, bool clearOn3d = false);
 
     /**
      * Get color attachment.

@@ -167,13 +167,13 @@ FontNoReplacementTest::~FontNoReplacementTest()
 {
 	// need to clear the caches since we change the lookup dictionary after the application init.
 	FontAtlasCache::unloadFontAtlasTTF("fonts/A Damn Mess.ttf");
-	FontFreeType::releaseFont("fonts/A Damn Mess.ttf");
+//	FontFreeType::releaseFont("fonts/A Damn Mess.ttf");
 	FontAtlasCache::unloadFontAtlasTTF("fonts/Abberancy.ttf");
-	FontFreeType::releaseFont("fonts/Abberancy.ttf");
+//	FontFreeType::releaseFont("fonts/Abberancy.ttf");
 	FontAtlasCache::unloadFontAtlasTTF("fonts/Abduction.ttf");
-	FontFreeType::releaseFont("fonts/Abduction.ttf");
+//	FontFreeType::releaseFont("fonts/Abduction.ttf");
 	FontAtlasCache::unloadFontAtlasTTF("fonts/Schwarzwald.ttf");
-	FontFreeType::releaseFont("fonts/Schwarzwald.ttf");
+//	FontFreeType::releaseFont("fonts/Schwarzwald.ttf");
 	FileUtils::getInstance()->setFilenameLookupDictionary(ValueMap());
 }
 

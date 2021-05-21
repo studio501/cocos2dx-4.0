@@ -40,7 +40,6 @@ THE SOFTWARE.
 #include "2d/CCFontAtlasCache.h"
 #include "2d/CCAnimationCache.h"
 #include "2d/CCTransition.h"
-#include "2d/CCFontFreeType.h"
 #include "2d/CCLabelAtlas.h"
 #include "renderer/CCTextureCache.h"
 #include "renderer/CCRenderer.h"
@@ -1013,7 +1012,7 @@ void Director::reset()
     FontFNT::purgeCachedData();
     FontAtlasCache::purgeCachedData();
     
-    FontFreeType::shutdownFreeType();
+    //FontFreeType::shutdownFreeType();
     
     // purge all managed caches
     AnimationCache::destroyInstance();

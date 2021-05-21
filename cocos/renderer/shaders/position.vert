@@ -28,8 +28,10 @@ attribute vec4 a_position;
 
 #ifdef GL_ES
 varying lowp vec4 v_position;
+varying lowp vec4 v_fragmentColor;
 #else
 varying vec4 v_position;
+varying vec4 v_fragmentColor;
 #endif
 
 uniform mat4 u_MVPMatrix;
@@ -38,5 +40,6 @@ void main()
 {
     gl_Position = u_MVPMatrix * a_position;
     v_position = a_position;
+    v_fragmentColor = vec4(0.0);
 }
 )";

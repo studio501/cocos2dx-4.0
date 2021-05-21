@@ -772,9 +772,10 @@ void Renderer::beginRenderPass(RenderCommand* cmd)
     _commandBuffer->setStencilReferenceValue(_stencilRef);
 }
 
-void Renderer::setRenderTarget(RenderTargetFlag flags, Texture2D* colorAttachment, Texture2D* depthAttachment, Texture2D* stencilAttachment)
+void Renderer::setRenderTarget(RenderTargetFlag flags, Texture2D* colorAttachment, Texture2D* depthAttachment, Texture2D* stencilAttachment, bool androidEs2D)
 {
     _renderTargetFlag = flags;
+    _renderPassDescriptor.androidEs2DepthStencil = androidEs2D;
     if (flags & RenderTargetFlag::COLOR)
     {
         _renderPassDescriptor.needColorAttachment = true;
@@ -826,12 +827,17 @@ void Renderer::setRenderTarget(RenderTargetFlag flags, Texture2D* colorAttachmen
     }
 }
 
-void Renderer::clear(ClearFlag flags, const Color4F& color, float depth, unsigned int stencil, float globalOrder)
+void Renderer::clear(ClearFlag flags, const Color4F& color, float depth, unsigned int stencil, float globalOrder, bool clearOn3d)
 {
     _clearFlag = flags;
 
     CallbackCommand* command = new CallbackCommand();
     command->init(globalOrder);
+    if(clearOn3d){
+            // 当clearOn3d为true时尽可能提前让清理渲染命令执行到, 所以让它处理opache 3d 的队列
+            command->set3D(true);
+            command->setTransparent(false);
+        }
     command->func = [=]() -> void {
         backend::RenderPassDescriptor descriptor;
 
@@ -858,6 +864,12 @@ void Renderer::clear(ClearFlag flags, const Color4F& color, float depth, unsigne
             descriptor.stencilAttachmentTexture = _renderPassDescriptor.stencilAttachmentTexture;
         }
 
+        //
+        if(_renderPassDescriptor.androidEs2DepthStencil){
+            descriptor.androidEs2DepthStencil = true;
+            descriptor.clearDepthValue = depth;
+            _renderPassDescriptor.androidEs2DepthStencil = false;
+        }
         _commandBuffer->beginRenderPass(descriptor);
         _commandBuffer->endRenderPass();
 

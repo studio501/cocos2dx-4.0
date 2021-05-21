@@ -33,6 +33,7 @@ THE SOFTWARE.
 
 #include <stdlib.h>
 #include <sys/stat.h>
+#include "dirent.h"
 
 #define  LOG_TAG    "CCFileUtils-android.cpp"
 #define  LOGD(...)  __android_log_print(ANDROID_LOG_DEBUG,LOG_TAG,__VA_ARGS__)
@@ -409,6 +410,26 @@ string FileUtilsAndroid::getWritablePath() const
     {
         return "";
     }
+}
+
+int FileUtilsAndroid::countFileInDirectory(const std::string& path) const
+{
+    int file_count = 0;
+    DIR * dirp;
+    struct dirent * entry;
+
+    dirp = opendir(path.c_str()); /* There should be error handling after this */
+
+    if(!dirp){
+        return file_count;
+    }
+    while ((entry = readdir(dirp)) != NULL) {
+        if (entry->d_type == DT_REG) { /* If the entry is a regular file */
+            file_count++;
+        }
+    }
+    closedir(dirp);
+    return file_count;
 }
 
 NS_CC_END

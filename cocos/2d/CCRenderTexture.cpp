@@ -44,7 +44,7 @@ NS_CC_BEGIN
 // implementation RenderTexture
 RenderTexture::RenderTexture()
 {
-#if CC_ENABLE_CACHE_TEXTURE_DATA
+#if 0
     // Listen this event to save render texture before come to background.
     // Then it can be restored after coming to foreground on Android.
     auto toBackgroundListener = EventListenerCustom::create(EVENT_COME_TO_BACKGROUND, CC_CALLBACK_1(RenderTexture::listenToBackground, this));
@@ -67,6 +67,7 @@ void RenderTexture::listenToBackground(EventCustom* /*event*/)
 {
     // We have not found a way to dispatch the enter background message before the texture data are destroyed.
     // So we disable this pair of message handler at present.
+    CCLOGERROR("RenderTexture::listenToBackground,,,,");
 #if CC_ENABLE_CACHE_TEXTURE_DATA
     // to get the rendered texture data
     auto func = [&](Image* uiTextureImage){
@@ -209,21 +210,25 @@ bool RenderTexture::initWithWidthAndHeight(int w, int h, backend::PixelFormat fo
 
         if (PixelFormat::D24S8 == depthStencilFormat)
         {
-            _renderTargetFlags = RenderTargetFlag::ALL;
-            descriptor.textureFormat = depthStencilFormat;
-            texture = backend::Device::getInstance()->newTexture(descriptor);
-            if (! texture)
-                break;
+            if (Configuration::getInstance()->isSupportsOESDepth24ES2()){
+                _renderTargetFlags = RenderTargetFlag::ALL;
+                descriptor.textureFormat = depthStencilFormat;
+                texture = backend::Device::getInstance()->newTexture(descriptor);
+                if (! texture)
+                    break;
 
-            _depthStencilTexture = new (std::nothrow) Texture2D;
-            if (!_depthStencilTexture)
-            {
+                _depthStencilTexture = new (std::nothrow) Texture2D;
+                if (!_depthStencilTexture)
+                {
+                    texture->release();
+                    break;
+                }
+
+                _depthStencilTexture->initWithBackendTexture(texture);
                 texture->release();
-                break;
+            }else{
+                _androidEsDS = true;
             }
-
-            _depthStencilTexture->initWithBackendTexture(texture);
-            texture->release();
         }
 
         _texture2D->setAntiAliasTexParameters();
@@ -310,7 +315,7 @@ void RenderTexture::beginWithClear(float r, float g, float b, float a, float dep
     setClearStencil(stencilValue);
     setClearFlags(flags);
     begin();
-    Director::getInstance()->getRenderer()->clear(_clearFlags, _clearColor, _clearDepth, _clearStencil, _globalZOrder);
+    Director::getInstance()->getRenderer()->clear(_clearFlags, _clearColor, _clearDepth, _clearStencil, _globalZOrder, _makeClearOn3dQueue);
 }
 
 void RenderTexture::clear(float r, float g, float b, float a)
@@ -568,7 +573,7 @@ void RenderTexture::onBegin()
     _oldStencilAttachment = renderer->getStencilAttachment();
     _oldRenderTargetFlag = renderer->getRenderTargetFlag();
 
-    renderer->setRenderTarget(_renderTargetFlags, _texture2D, _depthStencilTexture, _depthStencilTexture);
+    renderer->setRenderTarget(_renderTargetFlags, _texture2D, _depthStencilTexture, _depthStencilTexture, _androidEsDS);
 }
 
 void RenderTexture::onEnd()

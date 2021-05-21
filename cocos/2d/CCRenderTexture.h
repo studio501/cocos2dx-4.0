@@ -370,6 +370,7 @@ protected:
     float _clearDepth = 1.f;
     int _clearStencil = 0;
     bool _autoDraw = false;
+    bool _androidEsDS = false;
     ClearFlag _clearFlags = ClearFlag::NONE;
 
     /** The Sprite being used.
@@ -394,6 +395,7 @@ protected:
     
     Mat4 _oldTransMatrix, _oldProjMatrix;
     Mat4 _transformMatrix, _projectionMatrix;
+    bool _makeClearOn3dQueue = false;
 
 private:
     CC_DISALLOW_COPY_AND_ASSIGN(RenderTexture);

@@ -52,6 +52,8 @@ public:
      * @return An autorelease ClippingNode.
      */
     static ClippingNode* create();
+    static ClippingNode* create(int width, int height);
+    virtual bool init(int width, int height);
     
     /** Creates and initializes a clipping node with an other node as its stencil.
      * The stencil node will be retained.

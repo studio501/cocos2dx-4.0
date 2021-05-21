@@ -809,6 +809,9 @@ Texture2D* Texture2D::getAlphaTexture() const
 void Texture2D::setTexParameters(const Texture2D::TexParams &desc)
 {
     _texture->updateSamplerDescriptor(desc);
+    if(_alphaTexture){
+        _alphaTexture->getBackendTexture()->updateSamplerDescriptor(desc);
+    }
 }
 
 void Texture2D::generateMipmap()

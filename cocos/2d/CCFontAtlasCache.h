@@ -39,9 +39,11 @@ class Texture2D;
 struct _ttfConfig;
 
 class CC_DLL FontAtlasCache
-{  
+{
 public:
     static FontAtlas* getFontAtlasTTF(const _ttfConfig* config);
+    static FontAtlas * getFontAtlasTTFByText(const std::string& text);
+    
     static FontAtlas* getFontAtlasFNT(const std::string& fontFileName, const Vec2& imageOffset = Vec2::ZERO);
 
     static FontAtlas* getFontAtlasCharMap(const std::string& charMapFile, int itemWidth, int itemHeight, int startCharMap);
@@ -54,21 +56,13 @@ public:
      It will purge the textures atlas and if multiple texture exist in one FontAtlas.
      */
     static void purgeCachedData();
-
-    /** Release current FNT texture and reload it.
-     CAUTION : All component use this font texture should be reset font name, though the file name is same!
-               otherwise, it will cause program crash!
-    */
-    static void reloadFontAtlasFNT(const std::string& fontFileName, const Vec2& imageOffset = Vec2::ZERO);
-
-    /** Unload all texture atlas texture create by special file name.
-     CAUTION : All component use this font texture should be reset font name, though the file name is same!
-               otherwise, it will cause program crash!
-    */
-    static void unloadFontAtlasTTF(const std::string& fontFileName);
-
-private:
+    
+private: 
+    static std::string generateFontName(const std::string& fontFileName, int size, GlyphCollection theGlyphs, bool useDistanceField);
     static std::unordered_map<std::string, FontAtlas *> _atlasMap;
+public:
+    static void reloadFontAtlasFNT(const std::string& fontFileName, const Vec2& imageOffset = Vec2::ZERO);
+    static void unloadFontAtlasTTF(const std::string& fontFileName);
 };
 
 NS_CC_END

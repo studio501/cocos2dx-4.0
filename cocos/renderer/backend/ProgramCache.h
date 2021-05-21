@@ -69,6 +69,8 @@ public:
      */
     void removeAllPrograms();
     
+    backend::Program* getProgram(ProgramType type);
+    
 protected:
     ProgramCache() = default;
     virtual ~ProgramCache();

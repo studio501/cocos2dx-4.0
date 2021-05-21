@@ -240,6 +240,14 @@ void Sprite1ETC1Alpha::addNewSpriteWithCoords(Vec2 p)
     sprite->setTexture(etcTexture);
     
     _background->addChild(sprite);
+    
+    auto ts = Sprite::create();
+    Texture2D *etcTexture1 = _director->getTextureCache()->addImage("/Users/mac/Documents/my_projects/cok/innerDyRes/dresource 2/_alpha_NewYearDay2020_face.pkm");
+    ts->setTexture(etcTexture1);
+    ts->setPosition(Vec2(p.x, p.y) + Vec2(0,-40));
+    
+    _background->addChild(ts);
+    
 
     sprite->setPosition(Vec2(p.x, p.y));
 

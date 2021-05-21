@@ -40,12 +40,14 @@
 NS_CC_BEGIN
 
 class Font;
+class Texture2D;
 class EventCustom;
 class EventListenerCustom;
 class FontFreeType;
 
 struct FontLetterDefinition
 {
+    unsigned short  letteCharUTF16;
     float U;
     float V;
     float width;
@@ -55,6 +57,8 @@ struct FontLetterDefinition
     int textureID;
     bool validDefinition;
     int xAdvance;
+
+    int clipBottom;
 };
 
 class CC_DLL FontAtlas : public Ref
@@ -74,18 +78,17 @@ public:
      */
     virtual ~FontAtlas();
     
-    void addLetterDefinition(char32_t utf32Char, const FontLetterDefinition &letterDefinition);
+    void addLetterDefinition(const FontLetterDefinition &letterDefinition);
     bool getLetterDefinitionForChar(char32_t utf32Char, FontLetterDefinition &letterDefinition);
     
     bool prepareLetterDefinitions(const std::u32string& utf16String);
 
     const std::unordered_map<ssize_t, Texture2D*>& getTextures() const { return _atlasTextures; }
     void  addTexture(Texture2D *texture, int slot);
-    float getLineHeight() const { return _lineHeight; }
-    void  setLineHeight(float newHeight);
-    
-    std::string getFontName() const;
 
+    float getCommonLineHeight() const { return _commonLineHeight; }
+    void  setCommonLineHeight(float newHeight);
+    
     Texture2D* getTexture(int slot);
     const Font* getFont() const { return _font; }
 
@@ -110,53 +113,59 @@ public:
      - GL_TEXTURE_MAG_FILTER = GL_NEAREST
      */
      void setAliasTexParameters();
+    
+    //判断是否支持这个字符串
+    bool supportString(const std::u16string& utf16String);
 
 protected:
-    void reset();
-    
-    void reinit();
-    
-    void releaseTextures();
+    void relaseTextures();
 
     void findNewCharacters(const std::u32string& u32Text, std::unordered_map<unsigned int, unsigned int>& charCodeMap);
 
-    void conversionU32TOGB2312(const std::u32string& u32Text, std::unordered_map<unsigned int, unsigned int>& charCodeMap);
-
-    void initTextureWithZeros(Texture2D *texture);
-
-    /**
-     * Scale each font letter by scaleFactor.
-     *
-     * @param scaleFactor A float scale factor for scaling font letter info.
-     */
-    void scaleFontLetterDefinition(float scaleFactor);
-    
-    void updateTextureContent(backend::PixelFormat format, int startY);
+    void conversionU16TOGB2312(const std::u16string& newChars, std::unordered_map<unsigned short, unsigned short>& newCharsMap);
 
     std::unordered_map<ssize_t, Texture2D*> _atlasTextures;
-    std::unordered_map<char32_t, FontLetterDefinition> _letterDefinitions;
-    float _lineHeight = 0.f;
-    Font* _font = nullptr;
-    FontFreeType* _fontFreeType = nullptr;
-    void* _iconv = nullptr;
+    std::unordered_map<unsigned short, FontLetterDefinition> _fontLetterDefinitions;
+    float _commonLineHeight;
+    Font * _font;
+    #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    FontFreeType* _fontFreeType;
+    #endif
 
     // Dynamic GlyphCollection related stuff
-    int _currentPage = 0;
-    unsigned char *_currentPageData = nullptr;
-    unsigned char *_currentPageDataRGBA = nullptr;
-    int _currentPageDataSize = 0;
-    int _currentPageDataSizeRGBA = 0;
-    float _currentPageOrigX = 0;
-    float _currentPageOrigY = 0;
+    int _currentPage;
+    unsigned char *_currentPageData;
+    int _currentPageDataSize;
+    float _currentPageOrigX;
+    float _currentPageOrigY;
     int _letterPadding = 0;
+
+    int _fontAscender;
+    EventListenerCustom* _rendererRecreatedListener;
+    bool _antialiasEnabled;
+
+    void* _iconv;
+protected:
+    std::unordered_map<char32_t, FontLetterDefinition> _letterDefinitions;
+    float _lineHeight = 0.f;
+    unsigned char *_currentPageDataRGBA = nullptr;
+    int _currentPageDataSizeRGBA = 0;
     int _letterEdgeExtend = 0;
-
-    int _fontAscender = 0;
-    EventListenerCustom* _rendererRecreatedListener = nullptr;
-    bool _antialiasEnabled = true;
     int _currLineHeight = 0;
-
     friend class Label;
+public:
+    void addLetterDefinition(char32_t utf32Char, const FontLetterDefinition &letterDefinition);
+    float getLineHeight() const { return _lineHeight; }
+    void  setLineHeight(float newHeight);
+    std::string getFontName() const;
+protected:
+    void reset();
+    void reinit();
+    void releaseTextures();
+    void conversionU32TOGB2312(const std::u32string& u32Text, std::unordered_map<unsigned int, unsigned int>& charCodeMap);
+    void initTextureWithZeros(Texture2D *texture);
+    void scaleFontLetterDefinition(float scaleFactor);
+    void updateTextureContent(backend::PixelFormat format, int startY);
 };
 
 NS_CC_END

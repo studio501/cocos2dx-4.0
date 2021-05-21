@@ -21,9 +21,81 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
- 
+
 #include "DeviceInfoGL.h"
 #include "platform/CCGL.h"
+
+#include "base/CCConsole.h"
+#include <iostream>
+#include <iomanip>
+#include <unwind.h>
+#include <dlfcn.h>
+#include <stdio.h>
+#include <pthread.h>
+
+namespace test_debug{
+
+    struct BacktraceState
+    {
+        void** current;
+        void** end;
+    };
+
+    static _Unwind_Reason_Code unwindCallback(struct _Unwind_Context* context, void* arg)
+    {
+        BacktraceState* state = static_cast<BacktraceState*>(arg);
+        uintptr_t pc = _Unwind_GetIP(context);
+        if (pc) {
+            if (state->current == state->end) {
+                return _URC_END_OF_STACK;
+            } else {
+                *state->current++ = reinterpret_cast<void*>(pc);
+            }
+        }
+        return _URC_NO_REASON;
+    }
+
+}
+
+size_t captureBacktrace(void** buffer, size_t max)
+{
+    test_debug::BacktraceState state = {buffer, buffer + max};
+    _Unwind_Backtrace(test_debug::unwindCallback, &state);
+
+    return state.current - buffer;
+}
+
+void dumpBacktrace(void** buffer, size_t count)
+{
+    std::string filecontent;
+    for (size_t idx = 0; idx < count; ++idx) {
+        const void* addr = buffer[idx];
+        const char* symbol = "";
+
+        Dl_info info;
+        if (dladdr(addr, &info) && info.dli_sname) {
+            symbol = info.dli_sname;
+        }
+
+        char buff[200] = {0};
+        snprintf(buff, sizeof(buff), "backtrace #%zu 0x%llu %s", idx, (uint64_t)addr, symbol);
+
+        filecontent += buff;
+        filecontent += "\n";
+        cocos2d::log("%s",buff);
+    }
+//    filecontent += "=============================\n";
+//    CCLOG(filecontent.c_str());
+//    FILE* file = fopen("/sdcard/backtrace.log","a+");
+//
+//    if (file != NULL)
+//    {
+//        fputs(filecontent.c_str(), file);
+//        fflush(file);
+//        fclose(file);
+//    }
+
+}
 
 CC_BACKEND_BEGIN
 
@@ -101,6 +173,15 @@ bool DeviceInfoGL::checkForFeatureSupported(FeatureType feature)
     default:
         break;
     }
+
+//    cocos2d::log("ksadfskaf ");
+    if(feature == FeatureType::DEPTH24){
+        const size_t max = 30;
+        void* buffer[max];
+        dumpBacktrace( buffer, captureBacktrace(buffer, max));
+
+    }
+    CCLOG("checkForFeatureSupported %d,%d",feature,featureSupported);
     return featureSupported;
 }
 

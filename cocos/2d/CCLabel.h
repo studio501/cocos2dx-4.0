@@ -157,10 +157,7 @@ public:
      *
      * @return An automatically released Label object.
      */
-    static Label* createWithSystemFont(const std::string& text, const std::string& font, float fontSize,
-        const Size& dimensions = Size::ZERO, TextHAlignment hAlignment = TextHAlignment::LEFT,
-        TextVAlignment vAlignment = TextVAlignment::TOP);
-
+    static Label* createWithSystemFont(const std::string& text, const std::string& font, float fontSize, const Size& dimensions = Size::ZERO, TextHAlignment hAlignment = TextHAlignment::LEFT, TextVAlignment vAlignment = TextVAlignment::TOP);
     /**
     * Allocates and initializes a Label, base on FreeType2.
     *
@@ -173,10 +170,7 @@ public:
     *
     * @return An automatically released Label object.
     */
-    static Label * createWithTTF(const std::string& text, const std::string& fontFilePath, float fontSize,
-        const Size& dimensions = Size::ZERO, TextHAlignment hAlignment = TextHAlignment::LEFT,
-        TextVAlignment vAlignment = TextVAlignment::TOP);
-
+    static Label * createWithTTF(const std::string& text, const std::string& fontFilePath, float fontSize, const Size& dimensions = Size::ZERO, TextHAlignment hAlignment = TextHAlignment::LEFT, TextVAlignment vAlignment = TextVAlignment::TOP);
     /**
     * Allocates and initializes a Label, base on FreeType2.
     *
@@ -188,9 +182,7 @@ public:
     * @return An automatically released Label object.
     * @see TTFConfig setTTFConfig setMaxLineWidth
     */
-    static Label* createWithTTF(const TTFConfig& ttfConfig, const std::string& text, 
-        TextHAlignment hAlignment = TextHAlignment::LEFT, int maxLineWidth = 0);
-
+    static Label* createWithTTF(const TTFConfig& ttfConfig, const std::string& text, TextHAlignment hAlignment = TextHAlignment::LEFT, int maxLineWidth = 0);
     /**
     * Allocates and initializes a Label, with a bitmap font file.
     *
@@ -203,10 +195,7 @@ public:
     * @return An automatically released Label object.
     * @see setBMFontFilePath setMaxLineWidth
     */
-    static Label* createWithBMFont(const std::string& bmfontPath, const std::string& text,
-        const TextHAlignment& hAlignment = TextHAlignment::LEFT, int maxLineWidth = 0,
-        const Vec2& imageOffset = Vec2::ZERO);
-
+    static Label* createWithBMFont(const std::string& bmfontPath, const std::string& text, const TextHAlignment& hAlignment = TextHAlignment::LEFT, int maxLineWidth = 0, const Vec2& imageOffset = Vec2::ZERO);
     /**
     * Allocates and initializes a Label, with char map configuration.
     *
@@ -629,13 +618,8 @@ CC_CONSTRUCTOR_ACCESS:
      */
     virtual ~Label();
 
-    bool initWithTTF(const std::string& text, const std::string& fontFilePath, float fontSize,
-                     const Size& dimensions = Size::ZERO, TextHAlignment hAlignment = TextHAlignment::LEFT,
-                     TextVAlignment vAlignment = TextVAlignment::TOP);
-
-    bool initWithTTF(const TTFConfig& ttfConfig, const std::string& text,
-                     TextHAlignment hAlignment = TextHAlignment::LEFT, int maxLineWidth = 0);
-
+    bool initWithTTF(const std::string& text, const std::string& fontFilePath, float fontSize, const Size& dimensions = Size::ZERO, TextHAlignment hAlignment = TextHAlignment::LEFT, TextVAlignment vAlignment = TextVAlignment::TOP);
+    bool initWithTTF(const TTFConfig& ttfConfig, const std::string& text, TextHAlignment hAlignment = TextHAlignment::LEFT, int maxLineWidth = 0);
 protected:
     struct LetterInfo
     {

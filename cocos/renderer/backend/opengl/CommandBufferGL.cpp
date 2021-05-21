@@ -111,6 +111,7 @@ void CommandBufferGL::applyRenderPassDescriptor(const RenderPassDescriptor& desc
     bool useDepthAttachmentExternal = descirptor.depthTestEnabled && descirptor.depthAttachmentTexture;
     bool useStencilAttachmentExternal = descirptor.stencilTestEnabled && descirptor.stencilAttachmentTexture;
     bool useGeneratedFBO = false;
+    bool useAndroidEs2DepthStencil = descirptor.androidEs2DepthStencil;
     if (useColorAttachmentExternal || useDepthAttachmentExternal || useStencilAttachmentExternal)
     {
         if(_generatedFBO == 0)
@@ -125,6 +126,103 @@ void CommandBufferGL::applyRenderPassDescriptor(const RenderPassDescriptor& desc
         _currentFBO = _defaultFBO;
     }
     glBindFramebuffer(GL_FRAMEBUFFER, _currentFBO);
+
+    uint32_t t_width = 0;
+    uint32_t t_height = 0;
+    if (descirptor.needColorAttachment)
+    {
+        int i = 0;
+        for (const auto& texture : descirptor.colorAttachmentsTexture)
+        {
+            if (texture)
+            {
+                // TODO: support texture cube
+                glFramebufferTexture2D(GL_FRAMEBUFFER,
+                                       GL_COLOR_ATTACHMENT0 + i,
+                                       GL_TEXTURE_2D,
+                                       getHandler(texture),
+                                       0);
+
+                if(useAndroidEs2DepthStencil &&i == 0){
+                    auto tex2d = dynamic_cast<Texture2DBackend*>(texture);
+                    if(tex2d){
+                        t_width = tex2d->getWidth();
+                        t_height = tex2d->getHeight();
+                    }
+                }
+            }
+            CHECK_GL_ERROR_DEBUG();
+            ++i;
+        }
+
+        if (useGeneratedFBO)
+            _generatedFBOBindColor = true;
+    }
+    else
+    {
+        if (_generatedFBOBindColor && useGeneratedFBO)
+        {
+            // FIXME: Now only support attaching to attachment 0.
+            glFramebufferTexture2D(GL_FRAMEBUFFER,
+                                   GL_COLOR_ATTACHMENT0,
+                                   GL_TEXTURE_2D,
+                                   0,
+                                   0);
+
+            _generatedFBOBindColor = false;
+        }
+
+        // If not draw buffer is needed, should invoke this line explicitly, or it will cause
+        // GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER and GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER error.
+        // https://stackoverflow.com/questions/28313782/porting-opengl-es-framebuffer-to-opengl
+#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
+        glDrawBuffer(GL_NONE);
+        glReadBuffer(GL_NONE);
+#endif
+    }
+
+    if(useAndroidEs2DepthStencil){
+        GLint oldRBO;
+        glGetIntegerv(GL_RENDERBUFFER_BINDING, &oldRBO);
+
+        auto _depthAndStencilFormat = GL_DEPTH24_STENCIL8;
+        //create and attach depth buffer
+        glGenRenderbuffers(1, &_depthRenderBuffer);
+        glBindRenderbuffer(GL_RENDERBUFFER, _depthRenderBuffer);
+        glRenderbufferStorage(GL_RENDERBUFFER, _depthAndStencilFormat, (GLsizei)t_width, (GLsizei)t_height);
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthRenderBuffer);
+
+        // if depth format is the one with stencil part, bind same render buffer as stencil attachment
+        if (_depthAndStencilFormat == GL_DEPTH24_STENCIL8)
+        {
+            glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_RENDERBUFFER, _depthRenderBuffer);
+        }
+        glBindRenderbuffer(GL_RENDERBUFFER, oldRBO);
+
+        GLfloat oldDepthClearValue = 0.0f;
+        GLint oldStencilClearValue = 0;
+        GLboolean oldDepthWrite = GL_FALSE;
+
+        auto t_clearDepth = descirptor.clearDepthValue;
+        glGetFloatv(GL_DEPTH_CLEAR_VALUE, &oldDepthClearValue);
+        glClearDepth(t_clearDepth);
+
+        glGetBooleanv(GL_DEPTH_WRITEMASK, &oldDepthWrite);
+        glDepthMask(GL_TRUE);
+
+        auto t_clearStencil = 0;
+        glGetIntegerv(GL_STENCIL_CLEAR_VALUE, &oldStencilClearValue);
+        glClearStencil(t_clearStencil);
+
+        GLbitfield mask = 0;
+        mask = mask | GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT;
+        glClear(mask);
+
+        glClearDepth(oldDepthClearValue);
+        glDepthMask(oldDepthWrite);
+
+        glClearStencil(oldStencilClearValue);
+    }
     
     if (useDepthAttachmentExternal)
     {
@@ -177,50 +275,7 @@ void CommandBufferGL::applyRenderPassDescriptor(const RenderPassDescriptor& desc
             _generatedFBOBindStencil = false;
         }
     }
-    
-    if (descirptor.needColorAttachment)
-    {
-        int i = 0;
-        for (const auto& texture : descirptor.colorAttachmentsTexture)
-        {
-            if (texture)
-            {
-                // TODO: support texture cube
-                glFramebufferTexture2D(GL_FRAMEBUFFER,
-                                       GL_COLOR_ATTACHMENT0 + i,
-                                       GL_TEXTURE_2D,
-                                       getHandler(texture),
-                                       0);
-            }
-            CHECK_GL_ERROR_DEBUG();
-            ++i;
-        }
 
-        if (useGeneratedFBO)
-            _generatedFBOBindColor = true;
-    }
-    else
-    {
-        if (_generatedFBOBindColor && useGeneratedFBO)
-        {
-           // FIXME: Now only support attaching to attachment 0.
-           glFramebufferTexture2D(GL_FRAMEBUFFER,
-                                  GL_COLOR_ATTACHMENT0,
-                                  GL_TEXTURE_2D,
-                                  0,
-                                  0);
-
-            _generatedFBOBindColor = false;
-        }
-
-        // If not draw buffer is needed, should invoke this line explicitly, or it will cause
-        // GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER and GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER error.
-        // https://stackoverflow.com/questions/28313782/porting-opengl-es-framebuffer-to-opengl
-#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
-        glDrawBuffer(GL_NONE);
-        glReadBuffer(GL_NONE);
-#endif
-    }
     CHECK_GL_ERROR_DEBUG();
     
     // set clear color, depth and stencil

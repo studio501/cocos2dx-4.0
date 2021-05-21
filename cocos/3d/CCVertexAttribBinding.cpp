@@ -133,6 +133,7 @@ void VertexAttribBinding::parseAttributes()
 
     auto program = _programState->getProgram();
     auto& attributes = program->getActiveAttributes();
+    CCLOG("attributes address, attributes: %p, program: %p, _programState: %p",&attributes,&program,&_programState);
     _attributes =  attributes;
 }
 
@@ -154,13 +155,13 @@ void VertexAttribBinding::setVertexAttribPointer(const std::string &name, backen
 {
     auto v = getVertexAttribValue(name);
     if(v) {
-        // CCLOG("cocos2d: set attribute '%s' location: %d, offset: %d", name.c_str(), v->location, offset);
+         CCLOG("cocos2d: set attribute '%s' location: %d, offset: %d", name.c_str(), v->location, offset);
         _vertexLayout->setAttribute(name, v->location, type, offset, normalized);
         _vertexAttribsFlags |= flag;
     }
     else
     {
-        // CCLOG("cocos2d: warning: Attribute not found: %s", name.c_str());
+         CCLOG("cocos2d: warning: Attribute not found: %s", name.c_str());
     }
 }
 

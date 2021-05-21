@@ -51,42 +51,7 @@ void FontAtlasCache::purgeCachedData()
     _atlasMap.clear();
 }
 
-FontAtlas* FontAtlasCache::getFontAtlasTTF(const _ttfConfig* config)
-{
-    auto realFontFilename = FileUtils::getInstance()->getNewFilename(config->fontFilePath);  // resolves real file path, to prevent storing multiple atlases for the same file.
-    bool useDistanceField = config->distanceFieldEnabled;
-    if(config->outlineSize > 0)
-    {
-        useDistanceField = false;
-    }
 
-    std::string key;
-    char keyPrefix[ATLAS_MAP_KEY_PREFIX_BUFFER_SIZE];
-    snprintf(keyPrefix, ATLAS_MAP_KEY_PREFIX_BUFFER_SIZE, useDistanceField ? "df %.2f %d " : "%.2f %d ", config->fontSize, config->outlineSize);
-    std::string atlasName(keyPrefix);
-    atlasName += realFontFilename;
-
-    auto it = _atlasMap.find(atlasName);
-
-    if ( it == _atlasMap.end() )
-    {
-        auto font = FontFreeType::create(realFontFilename, config->fontSize, config->glyphs,
-            config->customGlyphs, useDistanceField, (float)config->outlineSize);
-        if (font)
-        {
-            auto tempAtlas = font->createFontAtlas();
-            if (tempAtlas)
-            {
-                _atlasMap[atlasName] = tempAtlas;
-                return _atlasMap[atlasName];
-            }
-        }
-    }
-    else
-        return it->second;
-
-    return nullptr;
-}
 
 FontAtlas* FontAtlasCache::getFontAtlasFNT(const std::string& fontFileName, const Vec2& imageOffset /* = Vec2::ZERO */)
 {
@@ -197,6 +162,39 @@ FontAtlas* FontAtlasCache::getFontAtlasCharMap(const std::string& charMapFile, i
     return nullptr;
 }
 
+std::string FontAtlasCache::generateFontName(const std::string& fontFileName, int size, GlyphCollection theGlyphs, bool useDistanceField)
+{
+    std::string tempName(fontFileName);
+    
+    switch (theGlyphs)
+    {
+        case GlyphCollection::DYNAMIC:
+            tempName.append("_DYNAMIC_");
+        break;
+            
+        case GlyphCollection::NEHE:
+            tempName.append("_NEHE_");
+            break;
+            
+        case GlyphCollection::ASCII:
+            tempName.append("_ASCII_");
+            break;
+            
+        case GlyphCollection::CUSTOM:
+            tempName.append("_CUSTOM_");
+            break;
+            
+        default:
+            break;
+    }
+    if(useDistanceField)
+        tempName.append("df");
+    // std::to_string is not supported on android, using std::stringstream instead.
+    std::stringstream ss;
+    ss << size;
+    return  tempName.append(ss.str());
+}
+
 bool FontAtlasCache::releaseFontAtlas(FontAtlas *atlas)
 {
     if (nullptr != atlas)
@@ -218,6 +216,48 @@ bool FontAtlasCache::releaseFontAtlas(FontAtlas *atlas)
     }
     
     return false;
+}
+
+FontAtlas* FontAtlasCache::getFontAtlasTTF(const _ttfConfig* config)
+{
+    auto realFontFilename = FileUtils::getInstance()->getNewFilename(config->fontFilePath);  // resolves real file path, to prevent storing multiple atlases for the same file.
+    bool useDistanceField = config->distanceFieldEnabled;
+    if(config->outlineSize > 0)
+    {
+        useDistanceField = false;
+    }
+
+    std::string key;
+    char keyPrefix[ATLAS_MAP_KEY_PREFIX_BUFFER_SIZE];
+    snprintf(keyPrefix, ATLAS_MAP_KEY_PREFIX_BUFFER_SIZE, useDistanceField ? "df %.2f %d " : "%.2f %d ", config->fontSize, config->outlineSize);
+    std::string atlasName(keyPrefix);
+    atlasName += realFontFilename;
+
+    auto it = _atlasMap.find(atlasName);
+
+    if ( it == _atlasMap.end() )
+    {
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        auto font = FontFreeType::create(realFontFilename, config->fontSize, config->glyphs,
+            config->customGlyphs, useDistanceField, (float)config->outlineSize);
+        if (font)
+        {
+            auto tempAtlas = font->createFontAtlas();
+            if (tempAtlas)
+            {
+                _atlasMap[atlasName] = tempAtlas;
+                return _atlasMap[atlasName];
+            }
+        }
+#else
+        //assert(0);
+        return nullptr;
+#endif
+    }
+    else
+        return it->second;
+
+    return nullptr;
 }
 
 void FontAtlasCache::reloadFontAtlasFNT(const std::string& fontFileName, const Vec2& imageOffset/* = Vec2::ZERO*/)

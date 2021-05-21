@@ -47,6 +47,23 @@ bool HelloWorld::init()
     {
         return false;
     }
+    
+    {
+        
+        Director::getInstance()->setDisplayStats(false);
+        auto visibleSize = Director::getInstance()->getVisibleSize();
+        Vec2 origin = Director::getInstance()->getVisibleOrigin();
+        
+        for(int i=0;i<10;++i){
+            auto label = Label::createWithTTF(std::string("A").append(std::to_string(i)) , "fonts/Marker Felt.ttf", 24);
+            label->setPosition(Vec2(origin.x + visibleSize.width/2,
+                                    origin.y + visibleSize.height - label->getContentSize().height));
+            addChild(label,1);
+        }
+        
+        
+        return true;
+    }
 
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();

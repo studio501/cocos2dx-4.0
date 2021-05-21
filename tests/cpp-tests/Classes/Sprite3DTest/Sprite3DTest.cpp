@@ -110,6 +110,10 @@ Sprite3DForceDepthTest::Sprite3DForceDepthTest()
     ship->setPositionNormalized(Vec2(.5f, .5f));
     ship->setRotation3D(Vec3(90.0f, 0.0f, 0.0f));
     ship->setForceDepthWrite(true);
+    
+    std::map<std::string,int> a;
+    a["hahah"] = 100;
+    auto ab = a.at("good");
 
     addChild(ship);
 }
@@ -163,6 +167,10 @@ Sprite3DBasicTest::Sprite3DBasicTest()
 
     auto s = Director::getInstance()->getWinSize();
     addNewSpriteWithCoords(Vec2(s.width / 2, s.height / 2));
+    
+    std::map<std::string,int> a;
+    a["hahah"] = 100;
+    auto ab = a.at("good");
 }
 
 void Sprite3DBasicTest::addNewSpriteWithCoords(Vec2 p)

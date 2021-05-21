@@ -146,6 +146,8 @@ public:
      * @since v2.0.0
      */
     bool supportsOESDepth24() const;
+
+	bool isSupportsOESDepth24ES2() const;
     
     /** Whether or not OES_Packed_depth_stencil is supported.
      *

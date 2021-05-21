@@ -28,6 +28,7 @@
 #include "base/CCEventDispatcher.h"
 #include "base/CCEventType.h"
 #include "base/CCDirector.h"
+#include "base/CCConfiguration.h"
 #include "platform/CCPlatformConfig.h"
 #include "renderer/backend/opengl/UtilsGL.h"
 
@@ -94,6 +95,7 @@ Texture2DGL::Texture2DGL(const TextureDescriptor& descriptor) : Texture2DBackend
 void Texture2DGL::initWithZeros()
 {
     auto size = _width * _height * _bitsPerElement / 8;
+    CCLOG("Texture2DGL::initWithZeros %d,%d,%d",_width,_height,_bitsPerElement);
     uint8_t* data = (uint8_t*)malloc(size);
     memset(data, 0, size);
     updateData(data, _width, _height, 0);
@@ -103,6 +105,7 @@ void Texture2DGL::initWithZeros()
 void Texture2DGL::updateTextureDescriptor(const cocos2d::backend::TextureDescriptor &descriptor)
 {
     TextureBackend::updateTextureDescriptor(descriptor);
+    CCLOG("Texture2DGL::updateTextureDescriptor %0d",descriptor.textureFormat);
     UtilsGL::toGLTypes(descriptor.textureFormat, _textureInfo.internalFormat, _textureInfo.format, _textureInfo.type, _isCompressed);
 
     bool isPow2 = ISPOW2(_width) && ISPOW2(_height);
@@ -161,6 +164,7 @@ void Texture2DGL::updateData(uint8_t* data, std::size_t width , std::size_t heig
 {
     //Set the row align only when mipmapsNum == 1 and the data is uncompressed
     auto mipmapEnalbed = isMipmapEnabled(_textureInfo.minFilterGL) || isMipmapEnabled(_textureInfo.magFilterGL);
+    CCLOG("Texture2DGL::updateData %d",mipmapEnalbed);
     if(!mipmapEnalbed)
     {
         unsigned int bytesPerRow = width * _bitsPerElement / 8;
@@ -194,8 +198,22 @@ void Texture2DGL::updateData(uint8_t* data, std::size_t width , std::size_t heig
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, _textureInfo.sAddressModeGL);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, _textureInfo.tAddressModeGL);
 
-
-    glTexImage2D(GL_TEXTURE_2D,
+    CCLOG("internalFormat %04x,%04x,%04x",_textureInfo.internalFormat,_textureInfo.format,_textureInfo.type);
+    if(_textureInfo.internalFormat == GL_DEPTH_STENCIL_OES && false){
+        if(Configuration::getInstance()->supportsOESPackedDepthStencil()){
+            CCLOG("her1,,,");
+            auto _depthAndStencilFormat = GL_DEPTH24_STENCIL8;
+            glGenRenderbuffers(1,&_depthRenderBuffer);
+            glBindRenderbuffer(GL_RENDERBUFFER,_depthRenderBuffer);
+            glRenderbufferStorage(GL_RENDERBUFFER,_depthAndStencilFormat,(GLsizei)width, (GLsizei)height);
+            CCLOG("_depthRenderBuffer is %d",_depthRenderBuffer);
+            glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthRenderBuffer);
+//            glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_RENDERBUFFER, _depthRenderBuffer);
+        }else{
+            CCLOG("her2,,,");
+        }
+    }else{
+        glTexImage2D(GL_TEXTURE_2D,
                 level,
                 _textureInfo.internalFormat,
                 width,
@@ -204,8 +222,14 @@ void Texture2DGL::updateData(uint8_t* data, std::size_t width , std::size_t heig
                 _textureInfo.format,
                 _textureInfo.type,
                 data);
-    CHECK_GL_ERROR_DEBUG();
-
+    }
+    //CHECK_GL_ERROR_DEBUG();
+    GLenum __error = glGetError();
+    if(!__error){
+        CCLOG("OpenGL nooooo error");
+    }else{
+        CCLOG("OpenGL error 0x%04X in %s %s %d\n", __error, __FILE__, __FUNCTION__, __LINE__);
+    }
     if(!_hasMipmaps && level > 0)
         _hasMipmaps = true;
 }

@@ -27,6 +27,15 @@
 
 #include "cocos2d.h"
 
+class RenderTextureFor3D : public cocos2d::RenderTexture
+{
+public:
+    static RenderTextureFor3D* create(int nWidth, int nHeight);
+
+private:
+    bool InitWithWidthAndHeight(int nWidth, int nHeight);
+};
+
 class HelloWorld : public cocos2d::Scene
 {
 public:
@@ -39,6 +48,13 @@ public:
 
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+
+    void update(float ftime);
+
+    RenderTextureFor3D * m_pRT = nullptr;
+    cocos2d::Sprite3D * m_pModel = nullptr;
+    cocos2d::RenderTexture* rt = nullptr;
+    cocos2d::Sprite * tsp = nullptr;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

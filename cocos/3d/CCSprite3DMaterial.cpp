@@ -203,13 +203,16 @@ Sprite3DMaterial* Sprite3DMaterial::createBuiltInMaterial(MaterialType type, boo
         createBuiltInMaterial();
     
     Sprite3DMaterial* material = nullptr;
+    backend::ProgramType tType;
     switch (type) {
         case Sprite3DMaterial::MaterialType::UNLIT:
             material = skinned ? _unLitMaterialSkin : _unLitMaterial;
+            tType = skinned ? backend::ProgramType::SKINPOSITION_TEXTURE_3D : backend::ProgramType::POSITION_TEXTURE_3D;
             break;
             
         case Sprite3DMaterial::MaterialType::UNLIT_NOTEX:
             material = _unLitNoTexMaterial;
+            tType = backend::ProgramType::POSITION_3D;
             break;
             
         case Sprite3DMaterial::MaterialType::VERTEX_LIT:
@@ -218,21 +221,34 @@ Sprite3DMaterial* Sprite3DMaterial::createBuiltInMaterial(MaterialType type, boo
             
         case Sprite3DMaterial::MaterialType::DIFFUSE:
             material = skinned ? _diffuseMaterialSkin : _diffuseMaterial;
+            tType = skinned ? backend::ProgramType::SKINPOSITION_NORMAL_TEXTURE_3D : backend::ProgramType::POSITION_NORMAL_TEXTURE_3D;
             break;
             
         case Sprite3DMaterial::MaterialType::DIFFUSE_NOTEX:
             material = _diffuseNoTexMaterial;
+            tType = skinned ? backend::ProgramType::SKINPOSITION_TEXTURE_3D : backend::ProgramType::POSITION_TEXTURE_3D;
             break;
             
         case Sprite3DMaterial::MaterialType::BUMPED_DIFFUSE:
             material = skinned ? _bumpedDiffuseMaterialSkin : _bumpedDiffuseMaterial;
+            tType = skinned ? backend::ProgramType::POSITION_NORMAL_3D : backend::ProgramType::POSITION_BUMPEDNORMAL_TEXTURE_3D;
             break;
             
         default:
             break;
     }
-    if (material)
-        return (Sprite3DMaterial*)material->clone();
+    if (material){
+        auto* program = backend::Program::getBuiltinProgram(tType);
+        auto ps = new (std::nothrow) backend::ProgramState(program);
+        auto tm = new (std::nothrow) Sprite3DMaterial();
+        if (tm && tm->initWithProgramState(ps))
+        {
+            tm->_type = material->_type;
+        }
+        
+        return tm;
+//        return (Sprite3DMaterial*)material->clone();
+    }
 
     return nullptr;
 }

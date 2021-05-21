@@ -240,6 +240,7 @@ bool Sprite3D::loadFromFile(const std::string& path, NodeDatas* nodedatas, MeshD
     {
         //load from .c3b or .c3t
         auto bundle = Bundle3D::createBundle();
+        CCLOG("bunele addres %p",bundle);
         if (!bundle->load(fullPath))
         {
             Bundle3D::destroyBundle(bundle);
@@ -274,8 +275,10 @@ Sprite3D::~Sprite3D()
     removeAllAttachNode();
 }
 
+static bool only_onemesh = false;
 bool Sprite3D::init()
 {
+    only_onemesh = false;
     if(Node::init())
     {
         return true;
@@ -285,6 +288,7 @@ bool Sprite3D::init()
 
 bool Sprite3D::initWithFile(const std::string& path)
 {
+    _path = path;
     _aabbDirty = true;
     _meshes.clear();
     _meshVertexDatas.clear();
@@ -309,7 +313,7 @@ bool Sprite3D::initWithFile(const std::string& path)
             for (const auto mesh : _meshes) {
                 data->programStates.pushBack(mesh->getProgramState());
             }
-            
+
             Sprite3DCache::getInstance()->addSprite3DData(path, data);
             CC_SAFE_DELETE(meshdatas);
             _contentSize = getBoundingBox().size;
@@ -382,7 +386,7 @@ Sprite3D* Sprite3D::createSprite3DNode(NodeData* nodedata,ModelData* modeldata,c
             const NMaterialData* materialData = materialdatas.getMaterialData(modeldata->materialId);
             if(materialData)
             {
-                const NTextureData* textureData = materialData->getTextureData(NTextureData::Usage::Diffuse);
+                /*const NTextureData* textureData = materialData->getTextureData(NTextureData::Usage::Diffuse);
                 if(textureData)
                 {
                     mesh->setTexture(textureData->filename);
@@ -412,12 +416,12 @@ Sprite3D* Sprite3D::createSprite3DNode(NodeData* nodedata,ModelData* modeldata,c
                         tex->setTexParameters(texParams);
                     }
                     mesh->setTexture(tex, NTextureData::Usage::Normal);
-                }
+                }*/
             }
         }
 
         // set locale transform
-        Vec3 pos;
+        /*Vec3 pos;
         Quaternion qua;
         Vec3 scale;
         nodedata->transform.decompose(&scale, &qua, &pos);
@@ -425,7 +429,7 @@ Sprite3D* Sprite3D::createSprite3DNode(NodeData* nodedata,ModelData* modeldata,c
         sprite->setRotationQuat(qua);
         sprite->setScaleX(scale.x);
         sprite->setScaleY(scale.y);
-        sprite->setScaleZ(scale.z);
+        sprite->setScaleZ(scale.z);*/
         
         sprite->addMesh(mesh);
         sprite->autorelease();
@@ -508,7 +512,7 @@ void Sprite3D::genMaterial(bool useLight)
             material->setStateBlock(oldmaterial->getStateBlock());
         }
 
-        if (material->getReferenceCount() == 1)
+        if (material->getReferenceCount() == 10)
             mesh->setMaterial(material);
         else
             mesh->setMaterial(material->clone());
@@ -544,7 +548,7 @@ void Sprite3D::createNode(NodeData* nodedata, Node* root, const MaterialDatas& m
                     }
                     else
                     {
-                        const NMaterialData* materialData = materialdatas.getMaterialData(it->materialId);
+                        /*const NMaterialData* materialData = materialdatas.getMaterialData(it->materialId);
                         if(materialData)
                         {
                             const NTextureData* textureData = materialData->getTextureData(NTextureData::Usage::Diffuse);
@@ -578,9 +582,9 @@ void Sprite3D::createNode(NodeData* nodedata, Node* root, const MaterialDatas& m
                                 }
                                 mesh->setTexture(tex, NTextureData::Usage::Normal);
                             }
-                        }
+                        }*/
                     }
-                    
+                    /*
                     Vec3 pos;
                     Quaternion qua;
                     Vec3 scale;
@@ -591,7 +595,7 @@ void Sprite3D::createNode(NodeData* nodedata, Node* root, const MaterialDatas& m
                     setScaleY(scale.y);
                     setScaleZ(scale.z);
                     
-                    node = this;
+                    node = this;*/
                 }
             }
             else
@@ -758,6 +762,10 @@ void Sprite3D::visit(cocos2d::Renderer *renderer, const cocos2d::Mat4 &parentTra
 
 void Sprite3D::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
 {
+    if(_path.find("orc.c3b") != std::string::npos)
+    {
+        int a = 100;
+    }
 #if CC_USE_CULLING
     //TODO new-renderer: interface isVisibleInFrustum removal
     // camera clipping
@@ -1020,7 +1028,12 @@ static Sprite3DMaterial* getSprite3DMaterialForAttribs(MeshVertexData* meshVerte
     {
         type = hasNormal && usesLight ? Sprite3DMaterial::MaterialType::DIFFUSE_NOTEX : Sprite3DMaterial::MaterialType::UNLIT_NOTEX;
     }
+    bool a = false;
+    if(a){
+        type = Sprite3DMaterial::MaterialType::DIFFUSE;
+    }
     
+//    Sprite3DMaterial::releaseBuiltInMaterial();
     return Sprite3DMaterial::createBuiltInMaterial(type, hasSkin);
 }
 

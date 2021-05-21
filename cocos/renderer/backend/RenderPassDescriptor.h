@@ -56,6 +56,7 @@ struct RenderPassDescriptor
     bool needClearColor = false;
     bool needClearDepth = false;
     bool needClearStencil = false;
+    bool androidEs2DepthStencil = false;
     TextureBackend* depthAttachmentTexture = nullptr;
     TextureBackend* stencilAttachmentTexture = nullptr;
     TextureBackend* colorAttachmentsTexture[MAX_COLOR_ATTCHMENT] = { nullptr };

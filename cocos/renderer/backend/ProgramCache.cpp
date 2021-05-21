@@ -129,7 +129,7 @@ bool ProgramCache::init()
     return true;
 }
 
-void ProgramCache::addProgram(ProgramType type)
+Program* ProgramCache::getProgram(ProgramType type)
 {
     Program* program = nullptr;
     switch (type) {
@@ -222,6 +222,7 @@ void ProgramCache::addProgram(ProgramType type)
                 std::string def = getShaderMacrosForLight();
                 std::string normalMapDef = "\n#define USE_NORMAL_MAPPING 1 \n";
                 program = backend::Device::getInstance()->newProgram(def + normalMapDef + CC3D_positionNormalTexture_vert, def + normalMapDef + CC3D_colorNormalTexture_frag);
+//                program = backend::Device::getInstance()->newProgram(def + CC3D_positionNormalTexture_vert, def + CC3D_colorNormal_frag);
             }
             break;
         case ProgramType::SKINPOSITION_BUMPEDNORMAL_TEXTURE_3D:
@@ -244,8 +245,18 @@ void ProgramCache::addProgram(ProgramType type)
             CCASSERT(false, "Not built-in program type.");
             break;
     }
-    program->setProgramType(type);
-    ProgramCache::_cachedPrograms.emplace(type, program);
+    if(program)
+        program->setProgramType(type);
+    return program;
+}
+
+void ProgramCache::addProgram(ProgramType type)
+{
+    Program* program = getProgram(type);
+    if(program)
+    {
+        ProgramCache::_cachedPrograms.emplace(type, program);
+    }
 }
 
 backend::Program* ProgramCache::getBuiltinProgram(ProgramType type) const

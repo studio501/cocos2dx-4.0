@@ -152,6 +152,9 @@ private:
 
     TextureInfoGL _textureInfo;
     EventListener* _backToForegroundListener = nullptr;
+
+    GLuint       _depthRenderBuffer;
+    GLuint       _stencilRenderBuffer;
 };
 
 /**

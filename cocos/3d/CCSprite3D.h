@@ -273,6 +273,7 @@ protected:
         NodeDatas*   nodeDatas;
     };
     AsyncLoadParam             _asyncLoadParam;
+    std::string _path = "";
 };
 
 ///////////////////////////////////////////////////////

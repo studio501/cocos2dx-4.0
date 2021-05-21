@@ -99,11 +99,6 @@ FontCharMap::~FontCharMap()
 
 }
 
-int* FontCharMap::getHorizontalKerningForTextUTF32(const std::u32string& /*text*/, int & /*outNumLetters*/) const
-{
-    return nullptr;
-}
-
 FontAtlas * FontCharMap::createFontAtlas()
 {
     FontAtlas *tempAtlas = new (std::nothrow) FontAtlas(*this);
@@ -143,6 +138,11 @@ FontAtlas * FontCharMap::createFontAtlas()
     tempAtlas->addTexture(_texture,0);
 
     return tempAtlas;
+}
+
+int* FontCharMap::getHorizontalKerningForTextUTF32(const std::u32string& /*text*/, int & /*outNumLetters*/) const
+{
+    return nullptr;
 }
 
 NS_CC_END

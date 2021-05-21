@@ -127,10 +127,27 @@ void ProgramGL::compileProgram()
     glGetProgramiv(_program, GL_LINK_STATUS, &status);
     if (GL_FALSE == status)
     {
+        GLint maxLength = 0;
+        glGetProgramiv(_program, GL_INFO_LOG_LENGTH, &maxLength);
+
+        // The maxLength includes the NULL character
+        std::vector<GLchar> infoLog(maxLength);
+        glGetProgramInfoLog(_program, maxLength, &maxLength, &infoLog[0]);
+
+        std::string res = "";
+        for(int i = 0;i<infoLog.size();++i){
+            res += infoLog[i];
+        }
+
+        GLint numOfActiveAttributes = 0;
+        glGetProgramiv(_program, GL_ACTIVE_ATTRIBUTES, &numOfActiveAttributes);
+
         printf("cocos2d: ERROR: %s: failed to link program ", __FUNCTION__);
         glDeleteProgram(_program);
         _program = 0;
     }
+
+    CHECK_GL_ERROR_DEBUG();
 }
 
 void ProgramGL::computeLocations()
@@ -149,33 +166,39 @@ void ProgramGL::computeLocations()
     ///a_texCoord
     location = glGetAttribLocation(_program, ATTRIBUTE_NAME_TEXCOORD);
     _builtinAttributeLocation[Attribute::TEXCOORD] = location;
-
+    CHECK_GL_ERROR_DEBUG();
     ///u_MVPMatrix
     location = glGetUniformLocation(_program, UNIFORM_NAME_MVP_MATRIX);
+    CHECK_GL_ERROR_DEBUG();
     _builtinUniformLocation[Uniform::MVP_MATRIX].location[0] = location;
     _builtinUniformLocation[Uniform::MVP_MATRIX].location[1] = _activeUniformInfos[UNIFORM_NAME_MVP_MATRIX].bufferOffset;
 
     ///u_textColor
     location = glGetUniformLocation(_program, UNIFORM_NAME_TEXT_COLOR);
+    CHECK_GL_ERROR_DEBUG();
     _builtinUniformLocation[Uniform::TEXT_COLOR].location[0] = location;
     _builtinUniformLocation[Uniform::TEXT_COLOR].location[1] = _activeUniformInfos[UNIFORM_NAME_TEXT_COLOR].bufferOffset;
 
     ///u_effectColor
     location = glGetUniformLocation(_program, UNIFORM_NAME_EFFECT_COLOR);
+    CHECK_GL_ERROR_DEBUG();
     _builtinUniformLocation[Uniform::EFFECT_COLOR].location[0] = location;
     _builtinUniformLocation[Uniform::EFFECT_COLOR].location[1] = _activeUniformInfos[UNIFORM_NAME_EFFECT_COLOR].bufferOffset;
 
     ///u_effectType
     location = glGetUniformLocation(_program, UNIFORM_NAME_EFFECT_TYPE);
+    CHECK_GL_ERROR_DEBUG();
     _builtinUniformLocation[Uniform::EFFECT_TYPE].location[0] = location;
     _builtinUniformLocation[Uniform::EFFECT_TYPE].location[1] = _activeUniformInfos[UNIFORM_NAME_EFFECT_TYPE].bufferOffset;
 
     ///u_texture
     location = glGetUniformLocation(_program, UNIFORM_NAME_TEXTURE);
+    CHECK_GL_ERROR_DEBUG();
     _builtinUniformLocation[Uniform::TEXTURE].location[0] = location;
 
     ///u_texture1
     location = glGetUniformLocation(_program, UNIFORM_NAME_TEXTURE1);
+    CHECK_GL_ERROR_DEBUG();
     _builtinUniformLocation[Uniform::TEXTURE1].location[0] = location;
 }
 

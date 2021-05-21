@@ -38,7 +38,7 @@ using namespace std;
 
 AppDelegate::AppDelegate()
 {
-
+    int a = 100;
 }
 
 AppDelegate::~AppDelegate() 
@@ -47,9 +47,9 @@ AppDelegate::~AppDelegate()
 
 void AppDelegate::initGLContextAttrs()
 {
-    GLContextAttrs glContextAttrs = {8, 8, 8, 8, 24, 8, 0};
-
-    GLView::setGLContextAttrs(glContextAttrs);
+//    GLContextAttrs glContextAttrs = {8, 8, 8, 8, 24, 8, 0};
+//
+//    GLView::setGLContextAttrs(glContextAttrs);
 }
 
 bool AppDelegate::applicationDidFinishLaunching()
@@ -78,8 +78,8 @@ bool AppDelegate::applicationDidFinishLaunching()
     director->setOpenGLView(glview);
 
     // Set the design resolution
-    glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::NO_BORDER);
-
+    glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::FIXED_WIDTH);
+//    glview->setDesignResolutionSize(2048,1536, ResolutionPolicy::FIXED_WIDTH);
     Size frameSize = glview->getFrameSize();
     
     vector<string> searchPath;
@@ -135,7 +135,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 //    glview->setVR(vrImpl);
 
     // Turn on display FPS
-    director->setDisplayStats(true);
+    director->setDisplayStats(false);
 
     // Set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0f / 60);
@@ -143,6 +143,14 @@ bool AppDelegate::applicationDidFinishLaunching()
     // Create a scene. it's an autorelease object
     auto scene = HelloWorld::scene();
 
+    auto fileIns = FileUtils::getInstance();
+    bool flag = fileIns->isDirectoryExist("assets/icons");
+    auto s = fileIns->fullPathForFilename("assets/icons");
+    auto sp = fileIns->getSearchPaths();
+    auto wp = fileIns->getWritablePath();
+    auto wp1 = wp + "abcd";
+    auto file_counts = fileIns->countFileInDirectory(wp1);
+    CCLOGERROR("file_count is %d",file_counts);
     // Run
     director->runWithScene(scene);
 

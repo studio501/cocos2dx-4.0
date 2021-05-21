@@ -838,6 +838,8 @@ public:
      *          If the original filename wasn't in the dictionary, it will return the original filename.
      */
     virtual std::string getNewFilename(const std::string &filename) const;
+    
+    virtual int countFileInDirectory(const std::string& path) const { return 0; }
 
 protected:
     /**

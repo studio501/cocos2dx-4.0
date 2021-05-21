@@ -175,6 +175,8 @@ void Configuration::destroyInstance()
 
 bool Configuration::checkForGLExtension(const std::string &searchName) const
 {
+    bool flag = _glExtensions.find(searchName) != std::string::npos;
+    CCLOG("Configuration::checkForGLExtension %s,%d",searchName.c_str(),flag);
     return _glExtensions.find(searchName) != std::string::npos;
 }
 
@@ -265,6 +267,18 @@ bool Configuration::supportsOESDepth24() const
     return _supportsOESDepth24;
     
 }
+
+bool Configuration::isSupportsOESDepth24ES2() const
+{
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    bool flag = supportsOESDepth24();
+//    auto t = getValue("version",Value("2.0"));
+    return flag;
+#else
+    return true;
+#endif
+}
+
 bool Configuration::supportsOESPackedDepthStencil() const
 {
     return _supportsOESPackedDepthStencil;

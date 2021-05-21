@@ -31,6 +31,7 @@
 #include "renderer/backend/ProgramState.h"
 #include "base/CCDirector.h"
 #include "base/CCStencilStateManager.h"
+#include "2d/CCDrawNode.h"
 
 NS_CC_BEGIN
 
@@ -78,6 +79,38 @@ ClippingNode* ClippingNode::create(Node *pStencil)
     }
     
     return ret;
+}
+
+ClippingNode* ClippingNode::create(int width, int height)
+{
+    ClippingNode *ret = new (std::nothrow) ClippingNode();
+    if (ret && ret->init(width,height))
+    {
+        ret->autorelease();
+    }
+    else
+    {
+        CC_SAFE_DELETE(ret);
+    }
+    
+    return ret;
+}
+
+bool ClippingNode::init(int width, int height)
+{
+    setContentSize( Size(width, height) );
+    
+    auto stencil = DrawNode::create();
+    Vec2 rectangle[4];
+    rectangle[0] = Vec2(0.0f, 0.0f);
+    rectangle[1] = Vec2(this->getContentSize().width, 0.0f);
+    rectangle[2] = Vec2(this->getContentSize().width, this->getContentSize().height);
+    rectangle[3] = Vec2(0.0f, this->getContentSize().height);
+    
+    Color4F white(1, 1, 1, 1);
+    stencil->drawPolygon(rectangle, 4, white, 1, white);
+    this->setStencil(stencil);
+    return true;
 }
 
 bool ClippingNode::init()
@@ -194,6 +227,7 @@ void ClippingNode::visit(Renderer *renderer, const Mat4 &parentTransform, uint32
     // _beforeVisitCmd.func = CC_CALLBACK_0(StencilStateManager::onBeforeVisit, _stencilStateManager);
     // renderer->addCommand(&_beforeVisitCmd);
     _stencilStateManager->onBeforeVisit(_globalZOrder);
+
     
     auto alphaThreshold = this->getAlphaThreshold();
     if (alphaThreshold < 1)
