@@ -114,6 +114,7 @@ public:
                  every frame, otherwise use DYNAMIC.
     */
     void createIndexBuffer(IndexFormat format, std::size_t capacity, BufferUsage usage);
+    void createVIBuffer(std::size_t vertexSize, std::size_t capacity, std::size_t indexSize, backend::IndexFormat format, backend::BufferUsage usage);
 
     /**
     Update vertex buffer contents.
@@ -228,6 +229,9 @@ public:
     Mat4 _p;
 
 protected:
+
+    std::string _viKey;
+
     std::size_t computeIndexSize() const;
 
     backend::Buffer* _vertexBuffer = nullptr;

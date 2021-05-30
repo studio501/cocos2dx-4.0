@@ -59,11 +59,14 @@ StencilStateManager::StencilStateManager()
         Vec2(1.0f, 1.0f),
         Vec2(-1.0f, 1.0f)
     };
-    _customCommand.createVertexBuffer(sizeof(Vec2), 4, CustomCommand::BufferUsage::STATIC);
+    unsigned short indices[6] = {0, 1, 2, 0, 2, 3};
+    _customCommand.createVIBuffer(sizeof(Vec2), 4, 6, backend::IndexFormat::U_SHORT, CustomCommand::BufferUsage::STATIC);
+
+//    _customCommand.createVertexBuffer(sizeof(Vec2), 4, CustomCommand::BufferUsage::STATIC);
     _customCommand.updateVertexBuffer(vertices, sizeof(vertices));
 
-    unsigned short indices[6] = {0, 1, 2, 0, 2, 3};
-    _customCommand.createIndexBuffer(CustomCommand::IndexFormat::U_SHORT, 6, CustomCommand::BufferUsage::STATIC);
+
+//    _customCommand.createIndexBuffer(CustomCommand::IndexFormat::U_SHORT, 6, CustomCommand::BufferUsage::STATIC);
     _customCommand.updateIndexBuffer(indices, sizeof(indices));
 
     Color4F color(1, 1, 1, 1);

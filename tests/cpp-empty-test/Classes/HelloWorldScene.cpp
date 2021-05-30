@@ -527,6 +527,22 @@ bool HelloWorld::init() {
 //    }
 
     {
+        auto clipNode = ClippingNode::create(100, 100);
+
+        auto sprite = Sprite::create("CloseNormal.png");
+
+        clipNode->setPosition(100,100);
+        clipNode->addChild(sprite);
+
+        addChild(clipNode);
+
+
+        runAction(Sequence::create(DelayTime::create(5),CallFunc::create([clipNode](){
+            clipNode->removeFromParentAndCleanup(true);
+        }),NULL));
+        return true;
+    }
+    {
         auto fileIns = FileUtils::getInstance();
         auto l1 = fileIns->getFileSize("bang.png");
         auto f = fileIns->isDirectoryExist("fonts");
