@@ -46,6 +46,18 @@ public:
 protected:
 };
 
+class BillBoardTest2 : public TestCase
+{
+public:
+    CREATE_FUNC(BillBoardTest2);
+    BillBoardTest2();
+    virtual ~BillBoardTest2();
+    virtual std::string title() const override;
+    virtual std::string subtitle() const override;
+    
+protected:
+};
+
 class BillBoardTest : public TestCase
 {
 public:

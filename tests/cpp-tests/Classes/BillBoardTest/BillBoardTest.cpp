@@ -37,8 +37,10 @@ using namespace cocos2d::ui;
 
 BillBoardTests::BillBoardTests()
 {
+    ADD_TEST_CASE(BillBoardTest2);
     ADD_TEST_CASE(BillBoardRotationTest);
     ADD_TEST_CASE(BillBoardTest);
+    
 }
 
 //------------------------------------------------------------------
@@ -105,6 +107,65 @@ std::string BillBoardRotationTest::subtitle() const
     return "All the sprites should still facing camera";
 }
 
+
+//------------------------------------------------------------------
+//
+// Billboard Test2
+//
+//------------------------------------------------------------------
+BillBoardTest2::BillBoardTest2()
+{
+    
+    auto s = Director::getInstance()->getWinSize();
+    
+    {
+        auto layer1 = LayerColor::create(Color4B(255,255,255,255), s.width, s.height);
+        addChild(layer1,2);
+        
+        
+    }
+    
+    {
+        auto layer2 = Layer::create();
+        addChild(layer2,3);
+        
+
+        auto _camera=Camera::createPerspective(60, (float)s.width/s.height, 1, 500);
+        _camera->setCameraFlag(CameraFlag::USER1);
+        _camera->setPosition3D(Vec3(0.0f, 100.0f, 230.0f));
+        _camera->lookAt(Vec3(0,0,0), Vec3(0.0f,1.0f,0.0f));
+        layer2->addChild(_camera);
+        
+        
+        layer2->setCameraMask(2);
+        auto root = Node::create();
+//        root->setCameraMask(2);
+        layer2->addChild(root);
+        
+        auto model = Sprite3D::create("Sprite3DTest/orc.c3b");
+        model->setScale(5);
+        model->setGlobalZOrder(1);
+        model->setPosition3D(Vec3(s.width/2,s.height/2,0.0f));
+        model->runAction( RepeatForever::create( RotateBy::create( 10.0f, Vec3(0.0f, 360.0f, 0.0f) ) ) );
+        root->addChild(model);
+    }
+}
+
+BillBoardTest2::~BillBoardTest2()
+{
+    
+}
+
+std::string BillBoardTest2::title() const
+{
+    return "BillBoardTest2 Test";
+}
+
+std::string BillBoardTest2::subtitle() const
+{
+    return "ABillBoardTest2 subtitle";
+}
+
 //------------------------------------------------------------------
 //
 // Billboard Rendering Test
@@ -130,19 +191,19 @@ BillBoardTest::BillBoardTest()
     }
 
     //Create rotating billboards
-    std::string imgs[3] = {"Images/Icon.png", "Images/r2.png"};
-    for (unsigned int i = 0; i < 4; ++i)
-    {
-        Layer *layer = Layer::create();
-        auto billboard = BillBoard::create(imgs[(unsigned int)(CCRANDOM_0_1() * 1 + 0.5f)]);
-        billboard->setScale(0.5f);
-        billboard->setPosition3D(Vec3(0.0f, 0.0f,  CCRANDOM_MINUS1_1() * 150.0f));
-        billboard->setOpacity(static_cast<uint8_t>(CCRANDOM_0_1() * 128 + 128));
-        _billboards.push_back(billboard);
-        layer->addChild(billboard);
-        _layerBillBoard->addChild(layer);
-        layer->runAction( RepeatForever::create( RotateBy::create( CCRANDOM_0_1() * 10, Vec3(0.0f, 45.0f, 0.0f) ) ) );
-    }
+//    std::string imgs[3] = {"Images/Icon.png", "Images/r2.png"};
+//    for (unsigned int i = 0; i < 4; ++i)
+//    {
+//        Layer *layer = Layer::create();
+//        auto billboard = BillBoard::create(imgs[(unsigned int)(CCRANDOM_0_1() * 1 + 0.5f)]);
+//        billboard->setScale(0.5f);
+//        billboard->setPosition3D(Vec3(0.0f, 0.0f,  CCRANDOM_MINUS1_1() * 150.0f));
+//        billboard->setOpacity(static_cast<uint8_t>(CCRANDOM_0_1() * 128 + 128));
+//        _billboards.push_back(billboard);
+//        layer->addChild(billboard);
+//        _layerBillBoard->addChild(layer);
+//        layer->runAction( RepeatForever::create( RotateBy::create( CCRANDOM_0_1() * 10, Vec3(0.0f, 45.0f, 0.0f) ) ) );
+//    }
 
     {
         auto billboard = BillBoard::create("Images/Icon.png");
@@ -161,18 +222,31 @@ BillBoardTest::BillBoardTest()
         sprite3d->runAction( RepeatForever::create( RotateBy::create( 10.0f, Vec3(0.0f, 360.0f, 0.0f) ) ) );
         _layerBillBoard->addChild(sprite3d);
     }
+    {
+        auto layer3D=Layer::create();
+        addChild(layer3D,0);
+        
+        
+        auto sprite3d = Sprite3D::create("Sprite3DTest/orc.c3t");
+        sprite3d->setScale(2.0f);
+        sprite3d->runAction( RepeatForever::create( RotateBy::create( 10.0f, Vec3(0.0f, 360.0f, 0.0f) ) ) );
+        layer3D->addChild(sprite3d);
+        sprite3d->setPosition3D(Vec3(100,100,0));
+        
+        
+    }
 
-    addNewBillBoardWithCoords(Vec3(20.0f,5.0f,0.0f));
-    addNewBillBoardWithCoords(Vec3(60.0f,5.0f,0.0f));
-    addNewBillBoardWithCoords(Vec3(100.0f,5.0f,0.0f));
-    addNewBillBoardWithCoords(Vec3(140.0f,5.0f,0.0f));
-    addNewBillBoardWithCoords(Vec3(180.0f,5.0f,0.0f));
-    
-    addNewAniBillBoardWithCoords(Vec3(-20.0f,0.0f,0.0f));
-    addNewAniBillBoardWithCoords(Vec3(-60.0f,0.0f,0.0f));
-    addNewAniBillBoardWithCoords(Vec3(-100.0f,0.0f,0.0f));
-    addNewAniBillBoardWithCoords(Vec3(-140.0f,0.0f,0.0f));
-    addNewAniBillBoardWithCoords(Vec3(-180.0f,0.0f,0.0f));
+//    addNewBillBoardWithCoords(Vec3(20.0f,5.0f,0.0f));
+//    addNewBillBoardWithCoords(Vec3(60.0f,5.0f,0.0f));
+//    addNewBillBoardWithCoords(Vec3(100.0f,5.0f,0.0f));
+//    addNewBillBoardWithCoords(Vec3(140.0f,5.0f,0.0f));
+//    addNewBillBoardWithCoords(Vec3(180.0f,5.0f,0.0f));
+//
+//    addNewAniBillBoardWithCoords(Vec3(-20.0f,0.0f,0.0f));
+//    addNewAniBillBoardWithCoords(Vec3(-60.0f,0.0f,0.0f));
+//    addNewAniBillBoardWithCoords(Vec3(-100.0f,0.0f,0.0f));
+//    addNewAniBillBoardWithCoords(Vec3(-140.0f,0.0f,0.0f));
+//    addNewAniBillBoardWithCoords(Vec3(-180.0f,0.0f,0.0f));
     
     _camera->setPosition3D(Vec3(0.0f, 100.0f, 230.0f));
     _camera->lookAt(Vec3(0,0,0), Vec3(0.0f,1.0f,0.0f));
