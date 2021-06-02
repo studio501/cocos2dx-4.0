@@ -287,7 +287,7 @@ LayerColor::LayerColor()
     // default blend function
     _blendFunc = BlendFunc::ALPHA_PREMULTIPLIED;
     
-    auto& pipelineDescriptor = _customCommand.getPipelineDescriptor();
+    auto& pipelineDescriptor = _quadCommand.getPipelineDescriptor();
     auto* program = backend::Program::getBuiltinProgram(backend::ProgramType::POSITION_COLOR);
     _programState = new (std::nothrow) backend::ProgramState(program);
     pipelineDescriptor.programState = _programState;
@@ -302,24 +302,17 @@ LayerColor::LayerColor()
     iter = attributeInfo.find("a_color");
     if(iter != attributeInfo.end())
     {
-        vertexLayout->setAttribute("a_color", iter->second.location, backend::VertexFormat::FLOAT4, sizeof(_vertexData[0].vertices), false);
+        vertexLayout->setAttribute("a_color", iter->second.location, backend::VertexFormat::UBYTE4, offsetof(V3F_C4B_T2F, colors), true);
     }
-    vertexLayout->setLayout(sizeof(_vertexData[0]));
+    vertexLayout->setLayout(sizeof(V3F_C4B_T2F));
     
     _mvpMatrixLocation = pipelineDescriptor.programState->getUniformLocation("u_MVPMatrix");
-    
-    _customCommand.createIndexBuffer(CustomCommand::IndexFormat::U_SHORT, 6, CustomCommand::BufferUsage::STATIC);
-    unsigned short indices[] = {0, 1, 2, 2, 1, 3};
-    _customCommand.updateIndexBuffer(indices, sizeof(indices));
-    
-    _customCommand.createVertexBuffer(sizeof(_vertexData[0]), 4, CustomCommand::BufferUsage::DYNAMIC);
-    
-    _customCommand.setDrawType(CustomCommand::DrawType::ELEMENT);
-    _customCommand.setPrimitiveType(CustomCommand::PrimitiveType::TRIANGLE);
 }
     
 LayerColor::~LayerColor()
 {
+    CC_SAFE_FREE(_trianglesVertex);
+    CC_SAFE_FREE(_trianglesIndex);
 }
 
 /// blendFunc getter
@@ -448,28 +441,49 @@ void LayerColor::updateColor()
 }
 
 void LayerColor::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
-{    
-    _customCommand.init(_globalZOrder, _blendFunc);
-    renderer->addCommand(&_customCommand);
+{
     
     cocos2d::Mat4 projectionMat = Director::getInstance()->getMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_PROJECTION);
-    auto& pipelineDescriptor = _customCommand.getPipelineDescriptor();
+    auto& pipelineDescriptor = _quadCommand.getPipelineDescriptor();
     pipelineDescriptor.programState->setUniform(_mvpMatrixLocation, projectionMat.m, sizeof(projectionMat.m));
+    
+    
+    if(!_trianglesVertex || !_trianglesIndex){
+        CC_SAFE_FREE(_trianglesVertex);
+        CC_SAFE_FREE(_trianglesIndex);
+        _trianglesVertex = (V3F_C4B_T2F*) malloc(sizeof(V3F_C4B_T2F) * 4);
+        _trianglesIndex = (unsigned short *) malloc(sizeof(unsigned short) * 6);
+        _trianglesIndex[0]=0,_trianglesIndex[1]=1,_trianglesIndex[2]=2,_trianglesIndex[3]=2,_trianglesIndex[4]=1,_trianglesIndex[5]=3;
+        _triangle.verts = _trianglesVertex;
+        _triangle.indices = _trianglesIndex;
+        _triangle.vertCount = 4;
+        _triangle.indexCount = 6;
+    }
+    
+    static std::vector<V3F_C4B_T2F> t_verts;
+    t_verts.clear();
+    t_verts.reserve(4);
     
     for(int i = 0; i < 4; ++i)
     {
         Vec4 pos;
         pos.x = _squareVertices[i].x; pos.y = _squareVertices[i].y; pos.z = _positionZ;
         pos.w = 1;
-        _modelViewTransform.transformVector(&pos);
-        _vertexData[i].vertices = Vec3(pos.x,pos.y,pos.z)/pos.w;
+        
+        _trianglesVertex[i].vertices = Vec3(pos.x,pos.y,pos.z)/pos.w;
+        auto tr = _vertexData[i].colors;
+        _trianglesVertex[i].colors = Color4B(tr.r * 255.f, tr.g * 255.f, tr.b * 255.f, tr.a * 255.f);
+        _trianglesVertex[i].texCoords = {0.0f, 0.0f};
     }
-    updateVertexBuffer();
+    
+    
+    _quadCommand.init(_globalZOrder, nullptr, _blendFunc, _triangle, transform, flags);
+    renderer->addCommand(&_quadCommand);
 }
 
 void LayerColor::updateVertexBuffer()
 {
-    _customCommand.updateVertexBuffer(_vertexData, sizeof(_vertexData));
+//    _customCommand.updateVertexBuffer(_vertexData, sizeof(_vertexData));
 }
 
 //

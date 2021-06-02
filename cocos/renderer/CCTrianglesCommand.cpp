@@ -49,11 +49,11 @@ void TrianglesCommand::init(float globalOrder, Texture2D* texture, const BlendFu
     _mv = mv;
 
     if (_programType != _pipelineDescriptor.programState->getProgram()->getProgramType() ||
-        _texture != texture->getBackendTexture() ||
+        _texture != ( texture ? texture->getBackendTexture() : nullptr ) ||
         _blendType != blendType)
     {
         _programType = _pipelineDescriptor.programState->getProgram()->getProgramType();
-        _texture = texture->getBackendTexture();
+        _texture = texture ? texture->getBackendTexture() : nullptr;
         _blendType = blendType;
         
         //since it would be too expensive to check the uniforms, simplify enable batching for built-in program.

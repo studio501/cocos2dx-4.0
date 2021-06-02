@@ -30,6 +30,7 @@ THE SOFTWARE.
 #include "2d/CCNode.h"
 #include "base/CCProtocols.h"
 #include "renderer/CCCustomCommand.h"
+#include "renderer/CCTrianglesCommand.h"
 
 #include <vector>
 
@@ -273,7 +274,12 @@ protected:
 
     BlendFunc _blendFunc;
     Vec2 _squareVertices[4];
-    CustomCommand _customCommand;
+    
+    TrianglesCommand _quadCommand;
+    
+    V3F_C4B_T2F* _trianglesVertex = nullptr;
+    unsigned short* _trianglesIndex = nullptr;
+    TrianglesCommand::Triangles  _triangle;
 
     V3F_C4F _vertexData[4];
     
