@@ -27,6 +27,7 @@
 #include "renderer/backend/Buffer.h"
 #include "renderer/backend/Device.h"
 #include "base/ccUtils.h"
+#include "xxhash.h"
 
 NS_CC_BEGIN
 
@@ -51,10 +52,18 @@ void CustomCommand::init(float globalZOrder)
     _globalOrder = globalZOrder;
 }
 
+void CustomCommand::init(float globalZOrder, backend::TextureBackend* tex, const Mat4& modelViewTransform)
+{
+    _globalOrder = globalZOrder;
+    _mv = modelViewTransform;
+    _texture = tex;
+    generateMaterialID();
+}
+
 void CustomCommand::init(float globalZOrder, const BlendFunc& blendFunc)
 {
     _globalOrder = globalZOrder;
-
+    _blendType = blendFunc;
     auto& blendDescriptor = _pipelineDescriptor.blendDescriptor;
     blendDescriptor.blendEnabled = true;
     blendDescriptor.sourceRGBBlendFactor = blendDescriptor.sourceAlphaBlendFactor = blendFunc.src;
@@ -121,12 +130,16 @@ void CustomCommand::setIndexBuffer(backend::Buffer *indexBuffer, IndexFormat for
 void CustomCommand::updateVertexBuffer(void* data, std::size_t length)
 {
     assert(_vertexBuffer);
+    _vertCount = length / sizeof(V3F_C4B_T2F);
+    _vertexStart = (V3F_C4B_T2F*)data;
     _vertexBuffer->updateData(data, length);
 }
 
 void CustomCommand::updateIndexBuffer(void* data, std::size_t length)
 {
     assert(_indexBuffer);
+    _indexCount = length / sizeof(unsigned short);
+    _indexStart = (unsigned short *)data;
     _indexBuffer->updateData(data, length);
 }
 
@@ -136,6 +149,23 @@ if (IndexFormat::U_SHORT == _indexFormat)
     return sizeof(unsigned short);
 else
     return sizeof(unsigned int);
+}
+
+void CustomCommand::generateMaterialID()
+{
+    struct
+    {
+        void* texture;
+        backend::BlendFactor src;
+        backend::BlendFactor dst;
+    }hashMe;
+    
+    memset(&hashMe, 0, sizeof(hashMe));
+
+    hashMe.texture = _texture;
+    hashMe.src = _blendType.src;
+    hashMe.dst = _blendType.dst;
+    _materialID = XXH32((const void*)&hashMe, sizeof(hashMe), 0);
 }
 
 NS_CC_END

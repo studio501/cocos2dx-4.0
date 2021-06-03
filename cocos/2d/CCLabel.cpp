@@ -1711,8 +1711,15 @@ void Label::updateEffectUniforms(BatchCommand &batch, TextureAtlas* textureAtlas
             setColor(oldColor);
         }
     }
-
-    batch.textCommand.init(_globalZOrder);
+    
+    if(batch.textCommand.getCanBatch()){
+        auto tex = textureAtlas ? textureAtlas->getTexture() : nullptr;
+        auto btex = tex ? tex->getBackendTexture() : nullptr;
+        batch.textCommand.init(_globalZOrder, btex, transform);
+    }else{
+        batch.textCommand.init(_globalZOrder);
+    }
+    
     renderer->addCommand(&batch.textCommand);
 }
 
@@ -1765,6 +1772,12 @@ void Label::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
         }
         else
         {
+            bool canCustomBatch = false;
+            if(_currentLabelType == LabelType::TTF &&
+               !_shadowEnabled &&
+               _currLabelEffect == LabelEffect::NORMAL){
+                canCustomBatch = true;
+            }
             cocos2d::Mat4 matrixMVP = matrixProjection * transform;
 
             for (auto &&it : _letters)
@@ -1801,7 +1814,17 @@ void Label::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
                         programState->setTexture(_alphaTextureLocation, 1, alphaTexture->getBackendTexture());
                     }
                 }
-                batch.textCommand.getPipelineDescriptor().programState->setUniform(_mvpMatrixLocation, matrixMVP.m, sizeof(matrixMVP.m));
+                auto& piplineDesc = batch.textCommand.getPipelineDescriptor();
+                if(canCustomBatch && piplineDesc.programState->getProgram()->getProgramType() == backend::ProgramType::LABEL_NORMAL){
+                    batch.textCommand.setCanBatch(true);
+                }
+                
+                if(batch.textCommand.getCanBatch()){
+                    batch.textCommand.getPipelineDescriptor().programState->setUniform(_mvpMatrixLocation, matrixProjection.m, sizeof(matrixProjection.m));
+                }else{
+                    batch.textCommand.getPipelineDescriptor().programState->setUniform(_mvpMatrixLocation, matrixMVP.m, sizeof(matrixMVP.m));
+                }
+                
                 batch.outLineCommand.getPipelineDescriptor().programState->setUniform(_mvpMatrixLocation, matrixMVP.m, sizeof(matrixMVP.m));
                 updateEffectUniforms(batch, textureAtlas, renderer, transform);
             }

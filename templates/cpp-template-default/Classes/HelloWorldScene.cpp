@@ -24,6 +24,8 @@
 
 #include "HelloWorldScene.h"
 
+#include "extensions/GUI/CCScrollView/CCScrollView.h"
+
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -52,17 +54,56 @@ bool HelloWorld::init()
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
     {
-        auto sprite = Sprite::create("HelloWorld.png");
-
-        // position the sprite on the center of the screen
-        sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-
-        // add the sprite as a child to this layer
-        this->addChild(sprite, 0);
+        Director::getInstance()->setDisplayStats(false);
+        auto visibleSize = Director::getInstance()->getVisibleSize();
+        Vec2 origin = Director::getInstance()->getVisibleOrigin();
         
-        utils::captureNode(this, [](Image* pim){
-            int a = 100;
-        });
+//        {
+//            for(int i=0;i<10;++i){
+//                auto label = Label::createWithTTF(std::string("ABA").append(std::to_string(i)) , "fonts/Marker Felt.ttf", 24);
+//                label->setPosition(Vec2(origin.x + 100,
+//                                        origin.y + visibleSize.height - label->getContentSize().height - i * 20));
+//
+//                label->setColor(Color3B(i*20,(10 - i)*20,i*15));
+//                addChild(label,1);
+//            }
+//        }
+        
+        {
+            
+            auto scroll = cocos2d::extension::ScrollView::create(Size(100,100));
+            scroll->setDirection(cocos2d::extension::ScrollView::Direction::VERTICAL);
+            scroll->setClippingToBounds(true);
+            scroll->setContentSize(Size(100,900));
+//            addChild(scroll);
+            scroll->setPosition(200, 0);
+            
+            
+            for(int i=0;i<10;++i){
+                auto label = Label::createWithTTF(std::string("ABA").append(std::to_string(i)) , "fonts/Marker Felt.ttf", 24);
+//                label->setSystemFontSize(10 + i*2);
+                label->setPosition(Vec2(0 + 50,
+                                         300 - label->getContentSize().height - i * 20));
+                
+                label->setColor(Color3B(i*20,(10 - i)*20,i*15));
+//                scroll->addChild(label,1);
+                this->addChild(label,1);
+            }
+            
+            
+            for(int i=0;i<10;++i){
+                auto label = Label::createWithTTF(std::string("ABA").append(std::to_string(i)) , "fonts/Marker Felt.ttf", 12);
+//                label->setSystemFontSize(10 + i*2);
+                label->setPosition(Vec2(0 + 150,
+                                         300 - label->getContentSize().height - i * 20));
+                
+                label->setColor(Color3B(i*20,(10 - i)*20,i*15));
+//                scroll->addChild(label,1);
+                this->addChild(label,1);
+            }
+        }
+        
+        
         return true;
     }
 

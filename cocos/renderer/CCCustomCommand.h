@@ -90,6 +90,12 @@ public:
     /**
     Init function. The render command will be in 2D mode.
     @param globalZOrder GlobalZOrder of the render command.
+    @param modelViewTransform When in 3D mode, depth sorting needs modelViewTransform.
+    */
+    void init(float globalZOrder, backend::TextureBackend* tex, const Mat4& modelViewTransform);
+    /**
+    Init function. The render command will be in 2D mode.
+    @param globalZOrder GlobalZOrder of the render command.
     @param blendFunc blend function of the render command.
     */
     void init(float globalZOrder, const BlendFunc& blendFunc);
@@ -209,6 +215,23 @@ public:
     const CallBackFunc &getBeforeCallback() { return _beforeCallback; }
 
     const CallBackFunc &getAfterCallback() { return _afterCallback; }
+    
+    size_t getVertexCount() const { return _vertCount; }
+    
+    size_t getIndexCount() const { return _indexCount; }
+    
+    /**Get the vertex data pointer.*/
+    const V3F_C4B_T2F* getVertices() const { return _vertexStart; }
+    /**Get the index data pointer.*/
+    const unsigned short* getIndices() const { return _indexStart; }
+    
+    const Mat4& getModelView() const { return _mv; }
+    
+    uint32_t getMaterialID() const { return _materialID; }
+    
+protected:
+    void generateMaterialID();
+    
 
 protected:
     std::size_t computeIndexSize() const;
@@ -236,6 +259,19 @@ protected:
 
     CallBackFunc _beforeCallback = nullptr;
     CallBackFunc _afterCallback = nullptr;
+    
+    std::size_t _vertCount = 0;
+    std::size_t _indexCount = 0;
+    
+    V3F_C4B_T2F* _vertexStart;
+    unsigned short* _indexStart;
+    
+    BlendFunc _blendType = BlendFunc::DISABLE;
+    uint32_t _materialID = 0;
+    backend::TextureBackend* _texture = nullptr;
+    
+    
+    CC_SYNTHESIZE_DEFAULTVALUE(bool, false, _canBatch, CanBatch);
 };
 
 NS_CC_END
