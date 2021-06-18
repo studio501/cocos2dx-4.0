@@ -69,6 +69,34 @@ bool HelloWorld::init()
 //            }
 //        }
         
+        
+        {
+            auto sp = Sprite::create("HelloWorld.png");
+            utils::captureNode(sp, [](Image *p){
+    
+                int a = 100;
+            });
+    
+    
+            int a = 100;
+            return true;
+        }
+        {
+            
+            auto sf = SpriteFrameCache::getInstance();
+            sf->addSpriteFramesWithFile("Particle.plist");
+            
+            
+            auto _emitter = ParticleSystemQuad::create("NewInnerCloud.plist");
+            _emitter->setDisplayFrame(sf->getSpriteFrameByName("Effect_0169.png"));
+            _emitter->setPosition(100,100);
+            _emitter->setScale(10);
+            addChild(_emitter, 10);
+            
+            
+            return true;
+        }
+        
         {
             
             auto scroll = cocos2d::extension::ScrollView::create(Size(100,100));

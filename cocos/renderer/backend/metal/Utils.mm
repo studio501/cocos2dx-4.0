@@ -221,7 +221,12 @@ void Utils::getTextureBytes(std::size_t origX, std::size_t origY, std::size_t re
     id<MTLDevice> device = static_cast<DeviceMTL*>(DeviceMTL::getInstance())->getMTLDevice();
     id<MTLTexture> copiedTexture = [device newTextureWithDescriptor:textureDescriptor];
     
-    id<MTLCommandQueue> commandQueue = static_cast<DeviceMTL*>(DeviceMTL::getInstance())->getMTLCommandQueue();
+//    id<MTLCommandQueue> commandQueue = static_cast<DeviceMTL*>(DeviceMTL::getInstance())->getMTLCommandQueue();
+    
+    
+    id<MTLCommandQueue> commandQueue = [device newCommandQueue];
+    
+    
     auto commandBuffer = [commandQueue commandBuffer];
     [commandBuffer enqueue];
     
@@ -234,18 +239,28 @@ void Utils::getTextureBytes(std::size_t origX, std::size_t origY, std::size_t re
     [blitCommandEncoder endEncoding];
    
     [commandBuffer addCompletedHandler:^(id<MTLCommandBuffer> commandBufferMTL) {
-        auto bytePerRow = rectWidth * getBitsPerElement(texture.pixelFormat) / 8;
-        unsigned char* image = new (std::nothrow) unsigned char[bytePerRow * rectHeight];
-        if(image != nullptr)
-        {
-            [copiedTexture getBytes:image bytesPerRow:bytePerRow fromRegion:imageRegion mipmapLevel:0];
-            swizzleImage(image, rectWidth, rectHeight, texture.pixelFormat);
-        }
-        callback(image, rectWidth, rectHeight);
-        CC_SAFE_DELETE_ARRAY(image);
-        [copiedTexture release];
+        std::this_thread::sleep_for(std::chrono::milliseconds(5 * 1000));
+        
+        
+        
+        int z = 100;
     }];
     [commandBuffer commit];
+    
+    [commandBuffer waitUntilCompleted];
+    
+    auto bytePerRow = rectWidth * getBitsPerElement(texture.pixelFormat) / 8;
+    unsigned char* image = new (std::nothrow) unsigned char[bytePerRow * rectHeight];
+    if(image != nullptr)
+    {
+        [copiedTexture getBytes:image bytesPerRow:bytePerRow fromRegion:imageRegion mipmapLevel:0];
+        swizzleImage(image, rectWidth, rectHeight, texture.pixelFormat);
+    }
+    callback(image, rectWidth, rectHeight);
+    CC_SAFE_DELETE_ARRAY(image);
+    [copiedTexture release];
+    
+    int a = 100;
 }
 
 CC_BACKEND_END

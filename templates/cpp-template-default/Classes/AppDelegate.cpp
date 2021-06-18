@@ -112,6 +112,17 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // run
     director->runWithScene(scene);
+    
+//    {
+//        auto sp = Sprite::create("HelloWorld.png");
+//        utils::captureNode(sp, [](Image *p){
+//
+//            int a = 100;
+//        });
+//
+//
+//        int a = 100;
+//    }
 
     return true;
 }

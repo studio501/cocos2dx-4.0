@@ -94,6 +94,7 @@ const char *Director::EVENT_BEFORE_UPDATE = "director_before_update";
 const char *Director::EVENT_AFTER_UPDATE = "director_after_update";
 const char *Director::EVENT_RESET = "director_reset";
 const char *Director::EVENT_BEFORE_DRAW = "director_before_draw";
+const char *Director::EVENT_BEFORE_BEGINFRAME = "director_before_beginframe";
 
 Director* Director::getInstance()
 {
@@ -138,6 +139,8 @@ bool Director::init()
     _eventAfterDraw->setUserData(this);
     _eventBeforeDraw = new (std::nothrow) EventCustom(EVENT_BEFORE_DRAW);
     _eventBeforeDraw->setUserData(this);
+    _eventBeforeBeginFrame = new (std::nothrow) EventCustom(EVENT_BEFORE_BEGINFRAME);
+    _eventBeforeBeginFrame->setUserData(this);
     _eventAfterVisit = new (std::nothrow) EventCustom(EVENT_AFTER_VISIT);
     _eventAfterVisit->setUserData(this);
     _eventBeforeUpdate = new (std::nothrow) EventCustom(EVENT_BEFORE_UPDATE);
@@ -247,6 +250,7 @@ void Director::setGLDefaultValues()
 // Draw the Scene
 void Director::drawScene()
 {
+    _eventDispatcher->dispatchEvent(_eventBeforeBeginFrame);
     _renderer->beginFrame();
 
     // calculate "global" dt

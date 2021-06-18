@@ -215,9 +215,11 @@ void captureNode(Node* startNode, std::function<void(Image*)> imageCallback, flo
         finalRtx->newImage(imageCallback);
     };
     
-    auto listener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(Director::EVENT_BEFORE_DRAW, callback);
-    
+    auto listener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(Director::EVENT_BEFORE_BEGINFRAME, callback);
+
     s_captureNodeListener[startNode] = listener;
+    
+//    callback(nullptr);
 }
 
 std::vector<Node*> findChildren(const Node &node, const std::string &name)
