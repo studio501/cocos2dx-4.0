@@ -161,7 +161,9 @@ bool RenderTexture::initWithWidthAndHeight(int w, int h, backend::PixelFormat eF
 bool RenderTexture::initWithWidthAndHeight(int w, int h, backend::PixelFormat format, PixelFormat depthStencilFormat)
 {
     CCASSERT(format != backend::PixelFormat::A8, "only RGB and RGBA formats are valid for a render texture");
-
+#ifdef CC_USE_METAL
+    format = PixelFormat::RGBA8888;
+#endif
     bool ret = false;
     do
     {
