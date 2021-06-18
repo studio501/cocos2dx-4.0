@@ -81,6 +81,7 @@ extern CC_DLL const char * CC3D_skybox_frag;
 extern CC_DLL const char * CC3D_skybox_vert;
 extern CC_DLL const char * CC3D_terrain_frag;
 extern CC_DLL const char * CC3D_terrain_vert;
+extern CC_DLL const char * MeltFragPVR;
 NS_CC_END
 /**
  end of support group

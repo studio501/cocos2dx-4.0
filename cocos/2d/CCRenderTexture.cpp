@@ -189,7 +189,7 @@ bool RenderTexture::initWithWidthAndHeight(int w, int h, backend::PixelFormat fo
         descriptor.width = powW;
         descriptor.height = powH;
         descriptor.textureUsage = TextureUsage::RENDER_TARGET;
-        descriptor.textureFormat = PixelFormat::RGBA8888;
+        descriptor.textureFormat = format;//PixelFormat::RGBA8888;
         auto texture = backend::Device::getInstance()->newTexture(descriptor);
         if (! texture)
             break;

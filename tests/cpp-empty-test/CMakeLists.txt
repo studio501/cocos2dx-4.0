@@ -56,10 +56,14 @@ list(APPEND GAME_HEADER
      Classes/AppMacros.h
      Classes/HelloWorldScene.h
      Classes/AppDelegate.h
+        Classes/SpriteMelt.h
+        Classes/CCMathUtils.h
      )
 list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
      Classes/HelloWorldScene.cpp
+        Classes/SpriteMelt.cpp
+        Classes/CCMathUtils.cpp
      )
 
 if(ANDROID)

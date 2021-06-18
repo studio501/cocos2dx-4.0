@@ -24,6 +24,7 @@
 
 #include "HelloWorldScene.h"
 #include "AppMacros.h"
+#include "SpriteMelt.h"
 
 USING_NS_CC;
 
@@ -456,6 +457,31 @@ bool HelloWorld::init() {
     auto origin = Director::getInstance()->getVisibleOrigin();
 
     auto winSize1 = visibleSize;
+
+    {
+        auto rt = RenderTexture::create(winSize1.width/2, winSize1.height/2, backend::PixelFormat::RGB565);
+//        auto rt = RenderTexture::create(winSize1.width/2, winSize1.height/2, backend::PixelFormat::RGBA8888);
+        rt->setPosition(winSize1.width/2, winSize1.height/2);
+        rt->setKeepMatrix(true);
+        //this->addChild(rt);
+
+        Sprite* pSprUpCloud = Sprite::create("CloseNormal.png");
+        pSprUpCloud->setPosition(400,400);
+        pSprUpCloud->setScale(4);
+        rt->beginWithClear(1.0, 1.0, 1.0, 1.0);
+        pSprUpCloud->visit();
+        rt->end();
+
+        auto sprite = rt->getSprite();
+        auto tx = sprite->getTexture();
+
+        auto meltSp = SpriteMelt::createWithTexture(tx, 1.0f, 0.1f, Vec3(58, 94, 218), Vec3(68, 73, 81));
+        meltSp->setPosition(winSize1.width / 2, winSize1.height / 2);
+//        meltSp->setFlipY(true);
+        addChild(meltSp);
+
+        return true;
+    }
 
 //    {
 //

@@ -74,4 +74,6 @@ NS_CC_BEGIN
 #include "renderer/shaders/lineColor.frag"
 #include "renderer/shaders/lineColor.vert"
 
+#include "renderer/shaders/ccShader_PositionTextureMelt.frag"
+
 NS_CC_END
