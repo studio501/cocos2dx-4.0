@@ -25,6 +25,7 @@
 #include "HelloWorldScene.h"
 
 #include "extensions/GUI/CCScrollView/CCScrollView.h"
+#include "PrismaticSprite.hpp"
 
 USING_NS_CC;
 
@@ -57,6 +58,29 @@ bool HelloWorld::init()
         Director::getInstance()->setDisplayStats(false);
         auto visibleSize = Director::getInstance()->getVisibleSize();
         Vec2 origin = Director::getInstance()->getVisibleOrigin();
+        
+        {
+            float sc = Director::getInstance()->getContentScaleFactor();
+            {
+                auto text = Director::getInstance()->getTextureCache()->addImage("World_1.pvr");
+                auto r1 = Rect(4,4,256,140);
+                
+                auto r2 = Rect(r1.origin.x /sc, r1.origin.y / sc, r1.size.width / sc, r1.size.height/sc);
+                auto sp = PrismaticSprite::createWithTexture(text,r2,false);
+                sp->setPosition(visibleSize.width /2, visibleSize.height /2 - 30);
+                addChild(sp);
+            }
+            
+            {
+                auto text = Director::getInstance()->getTextureCache()->addImage("HelloWorld.png");
+                auto sp = PrismaticSprite::createWithTexture(text);
+                
+                sp->setPosition(visibleSize.width /2, visibleSize.height /2 + 100 - 30);
+                addChild(sp);
+            }
+            
+            return true;
+        }
         
 //        {
 //            for(int i=0;i<10;++i){

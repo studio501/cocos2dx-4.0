@@ -637,7 +637,7 @@ protected:
     virtual void flipY();
     virtual void updateProgramStateTexture();
 
-    void updatePoly();
+    virtual void updatePoly();
     void updateStretchFactor();
     void populateTriangle(int quadIndex, const V3F_C4B_T2F_Quad& quad);
     void setMVPMatrixUniform();

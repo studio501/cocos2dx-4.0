@@ -218,8 +218,6 @@ void captureNode(Node* startNode, std::function<void(Image*)> imageCallback, flo
     auto listener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(Director::EVENT_BEFORE_BEGINFRAME, callback);
 
     s_captureNodeListener[startNode] = listener;
-    
-//    callback(nullptr);
 }
 
 std::vector<Node*> findChildren(const Node &node, const std::string &name)
