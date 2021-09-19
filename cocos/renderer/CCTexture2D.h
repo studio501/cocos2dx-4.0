@@ -416,6 +416,7 @@ protected:
     CustomCommand _customCommand;
     
     bool _isRenderTarget = false;
+    CC_SYNTHESIZE_DEFAULTVALUE(Image*,nullptr, _backImage, BackImage);
 };
 
 

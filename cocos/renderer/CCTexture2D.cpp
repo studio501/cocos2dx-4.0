@@ -548,6 +548,11 @@ bool Texture2D::initWithString(const char *text, const FontDefinition& textDefin
 
     Size  imageSize = Size((float)imageWidth, (float)imageHeight);
     pixelFormat = backend::PixelFormatUtils::convertDataToFormat(outData.getBytes(), imageWidth*imageHeight*4, PixelFormat::RGBA8888, pixelFormat, &outTempData, &outTempDataLen);
+    
+    _backImage = new (std::nothrow) Image();
+    bool ss = outData.getSize() == outTempDataLen;
+    _backImage->initWithRawData(outTempData, outTempDataLen, imageWidth, imageHeight, 8);
+    // _backImage->initWithImageData(outTempData, outTempDataLen);
 
     ret = initWithData(outTempData, outTempDataLen, pixelFormat, imageWidth, imageHeight, imageSize);
 

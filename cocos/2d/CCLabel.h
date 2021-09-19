@@ -635,7 +635,9 @@ CC_CONSTRUCTOR_ACCESS:
 
     bool initWithTTF(const TTFConfig& ttfConfig, const std::string& text,
                      TextHAlignment hAlignment = TextHAlignment::LEFT, int maxLineWidth = 0);
-
+    
+public:
+    Sprite * getTextureSprite() const { return _textSprite; }
 protected:
     struct LetterInfo
     {
