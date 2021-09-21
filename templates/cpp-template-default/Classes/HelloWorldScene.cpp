@@ -28,7 +28,7 @@
 #include "PrismaticSprite.hpp"
 #include "framepacker.hpp"
 
-namespace fp = framepacker;
+namespace fp = framepacker;X
 
 USING_NS_CC;
 
@@ -151,7 +151,7 @@ public:
             if (!tmp) {
                 return false;
             }
-
+            std::memset(tmp, 122, _w * _h * 4);
             color_buffer = tmp;
             w = _w;
             h = _h;
@@ -169,7 +169,9 @@ public:
             color_buffer = tmp;
 
             path = p;
-
+            
+            
+//            save_png(nullptr);
             return true;
         }
 
@@ -187,6 +189,17 @@ public:
             int a = 0;
             return true;
         }
+    
+    Texture2D* getTexture()
+    {
+        auto out_image = new (std::nothrow) Image();
+        auto tlen = sizeof(color_buffer);
+        out_image->initWithRawData(color_buffer, 0, w, h, 8);
+        
+        auto out_texture = new (std::nothrow) Texture2D();
+        out_texture->initWithImage(out_image);
+        return out_texture;
+    }
     
 private:
     std::string path;
@@ -245,17 +258,17 @@ bool HelloWorld::init()
 //    }
     {
         packer_type packer;
-        packer.padding = 2;
-        packer.output_texture_size = fp::vec2(200, 200);
+        packer.padding = 1;
+        packer.output_texture_size = fp::vec2(0, 0);
         packer.allow_rotate = true;
         packer.power_of_2 = false;
         packer.alpha_trim = true;
         packer.comparer = packer_type::compare_area;
         
         
-        for(int i=0;i<2;i++){
-            std::string key = "abcde" + std::to_string(i);
-            auto label1 = Label::createWithSystemFont(key, "Marker Felt", 30);
+        for(int i=0;i<120;i++){
+            std::string key = "中国" + std::to_string(i);
+            auto label1 = Label::createWithSystemFont(key, "Marker Felt", 15);
             label1->setPosition(100, 100);
             label1->updateContent();
             
@@ -267,8 +280,9 @@ bool HelloWorld::init()
 
             packer_type::texture_type texture(img1);
             packer.add(key.c_str(), texture);
+//            texture->save_png(nullptr);
             
-            addChild(label1,100);
+            // addChild(label1,100);
         }
         
         // Pack it.
@@ -277,6 +291,7 @@ bool HelloWorld::init()
         packer_type::texture_coll_type failed;
         packer.pack(result, packed, failed);
         
+        // Texture2D * pResult = result->getTexture();
         // Prompt.
         {
             for (auto it = packed.begin(); it != packed.end(); ++it) {
