@@ -636,6 +636,8 @@ CC_CONSTRUCTOR_ACCESS:
     bool initWithTTF(const TTFConfig& ttfConfig, const std::string& text,
                      TextHAlignment hAlignment = TextHAlignment::LEFT, int maxLineWidth = 0);
     
+    std::size_t getFontDefinitionHash(const cocos2d::FontDefinition& fontDefine) const;
+    
 public:
     Sprite * getTextureSprite() const { return _textSprite; }
 protected:

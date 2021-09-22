@@ -48,6 +48,22 @@
 #include "2d/CCFontFNT.h"
 #include "renderer/ccShaders.h"
 #include "renderer/backend/ProgramState.h"
+#include "renderer/CCTextureCache.h"
+
+namespace std
+{
+    template<> struct hash<cocos2d::FontDefinition>
+    {
+        std::size_t operator()(cocos2d::FontDefinition const& fontDef) const noexcept
+        {
+            std::size_t h1 = std::hash<std::string>{}(fontDef._fontName);
+            std::size_t h2 = std::hash<int>{}(fontDef._fontSize);
+            return h1 ^ (h2 << 1);
+        }
+    };
+}
+
+
 
 NS_CC_BEGIN
 
@@ -1412,12 +1428,20 @@ void Label::disableEffect(LabelEffect effect)
     }
 }
 
+
+std::size_t Label::getFontDefinitionHash(const cocos2d::FontDefinition& fontDefine) const
+{
+    return std::hash<cocos2d::FontDefinition>{}(fontDefine) ^ (std::hash<std::string>{}(_utf8Text));
+}
+
 void Label::createSpriteForSystemFont(const FontDefinition& fontDef)
 {
     _currentLabelType = LabelType::STRING_TEXTURE;
 
-    auto texture = new (std::nothrow) Texture2D;
-    texture->initWithString(_utf8Text.c_str(), fontDef);
+    
+    auto t_hash = getFontDefinitionHash(fontDef);
+    
+    auto texture = Director::getInstance()->getTextureCache()->addSystemLabelTexture(t_hash, fontDef, _utf8Text);
 
     _textSprite = Sprite::createWithTexture(texture);
     //set camera mask using label's camera mask, because _textSprite may be null when setting camera mask to label

@@ -196,12 +196,21 @@ public:
     * @since v3.10
     */
     void renameTextureWithKey(const std::string& srcName, const std::string& dstName);
+    
+    
+    /**/
+    Texture2D* addSystemLabelTexture(std::size_t hash, const cocos2d::FontDefinition& fontDef, std::string text);
+    
+    /**/
+    void removeSystemLabelTexture(Texture2D * texture);
 
 
 private:
     void addImageAsyncCallBack(float dt);
     void loadImage();
     void parseNinePatchImage(Image* image, Texture2D* texture, const std::string& path);
+    
+    std::unordered_map<std::size_t, Texture2D *> _systemLabelTexture;
 public:
 protected:
     struct AsyncStruct;

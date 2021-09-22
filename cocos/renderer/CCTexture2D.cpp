@@ -49,6 +49,7 @@ THE SOFTWARE.
 #include "renderer/ccShaders.h"
 #include "renderer/CCTextureUtils.h"
 #include "renderer/CCRenderer.h"
+#include "renderer/CCTextureCache.h"
 
 #if CC_ENABLE_CACHE_TEXTURE_DATA
     #include "renderer/CCTextureCache.h"
@@ -147,6 +148,7 @@ Texture2D::~Texture2D()
 #if CC_ENABLE_CACHE_TEXTURE_DATA
     VolatileTextureMgr::removeTexture(this);
 #endif
+    Director::getInstance()->getTextureCache()->removeSystemLabelTexture(this);
     CC_SAFE_RELEASE_NULL(_alphaTexture); // ETC1 ALPHA support.
 
     CCLOGINFO("deallocing Texture2D: %p - id=%u", this, _name);

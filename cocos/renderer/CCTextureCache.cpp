@@ -708,6 +708,38 @@ void TextureCache::renameTextureWithKey(const std::string& srcName, const std::s
     }
 }
 
+/**/
+Texture2D* TextureCache::addSystemLabelTexture(std::size_t hash, const cocos2d::FontDefinition& fontDef, std::string text)
+{
+    auto iter = _systemLabelTexture.find(hash);
+    if(iter != _systemLabelTexture.end()){
+        iter->second->retain();
+        return iter->second;
+    }
+    
+    auto texture = new (std::nothrow) Texture2D;
+    texture->initWithString(text.c_str(), fontDef);
+    _systemLabelTexture.insert(std::make_pair(hash, texture));
+    return texture;
+}
+
+/**/
+void TextureCache::removeSystemLabelTexture(Texture2D * texture)
+{
+    auto end_iter = _systemLabelTexture.end();
+    auto it = std::find_if(_systemLabelTexture.begin(),
+                           end_iter,
+                              [texture](std::pair<std::size_t, Texture2D *> const& item)
+                              {
+                                 return (texture == item.second);
+                              });
+    if(it != end_iter){
+        _systemLabelTexture.erase(it);
+    }
+}
+
+
+
 #if CC_ENABLE_CACHE_TEXTURE_DATA
 
 std::list<VolatileTexture*> VolatileTextureMgr::_textures;
