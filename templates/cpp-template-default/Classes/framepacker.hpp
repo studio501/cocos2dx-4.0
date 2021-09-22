@@ -335,6 +335,18 @@ struct block {
 		s << get_indent(indent) << "sourceSize : " << "\"" << vec2(texture->width(), texture->height()) << "\"" << std::endl;
 		indent--;
 	}
+    
+    void get_frame_rect(float &x, float &y, float &width, float &height, int padding) const {
+        rect frame;
+        vec2 loc = fit->min;
+        frame.min = loc;
+        frame.max = loc + valid.size() - vec2(1, 1);
+        rect res = frame.add(padding);
+        x = res.min.x / CC_CONTENT_SCALE_FACTOR();
+        y = res.min.y / CC_CONTENT_SCALE_FACTOR();
+        width = res.size().x / CC_CONTENT_SCALE_FACTOR();
+        height = res.size().y / CC_CONTENT_SCALE_FACTOR();
+    }
 
 	std::string get_indent(int indent) const {
 		std::string ret;

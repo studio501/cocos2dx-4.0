@@ -28,7 +28,7 @@
 #include "PrismaticSprite.hpp"
 #include "framepacker.hpp"
 
-namespace fp = framepacker;X
+namespace fp = framepacker;
 
 USING_NS_CC;
 
@@ -151,7 +151,7 @@ public:
             if (!tmp) {
                 return false;
             }
-            std::memset(tmp, 122, _w * _h * 4);
+            std::memset(tmp, 0, _w * _h * 4);
             color_buffer = tmp;
             w = _w;
             h = _h;
@@ -186,6 +186,7 @@ public:
             auto ts = Sprite::createWithTexture(out_texture);
             ts->setPosition(200,200);
             pHello->addChild(ts,1000);
+            pHello->setScale(0.5);
             int a = 0;
             return true;
         }
@@ -245,30 +246,33 @@ bool HelloWorld::init()
     printf("Writable Path is %s.\n", FileUtils::getInstance()->getWritablePath().c_str());
     
     
-//    {
-//        auto bgLayer = LayerColor::create(Color4B::WHITE, 2000, 2000);
-//        //addChild(bgLayer, -1000);
-//
-//        auto label1 = Label::createWithSystemFont("hello", "Marker Felt", 30);
-//        label1->updateContent();
-//        label1->setPosition(100, 100);
-////        label1->setColor(Color3B::WHITE);
-//        addChild(label1,100);
-//        return true;
-//    }
+    {
+        auto bgLayer = LayerColor::create(Color4B::BLACK, 2000, 2000);
+        addChild(bgLayer, -1000);
+        
+        for(int i=0;i<100;i++){
+            
+        
+            auto label1 = Label::createWithSystemFont("hello", "Marker Felt", 30);
+            label1->updateContent();
+            label1->setPosition(100, i*10+2);
+            addChild(label1,100);
+        }
+        return true;
+    }
     {
         packer_type packer;
         packer.padding = 1;
         packer.output_texture_size = fp::vec2(0, 0);
         packer.allow_rotate = true;
         packer.power_of_2 = false;
-        packer.alpha_trim = true;
+        packer.alpha_trim = false;
         packer.comparer = packer_type::compare_area;
         
         
         for(int i=0;i<120;i++){
             std::string key = "中国" + std::to_string(i);
-            auto label1 = Label::createWithSystemFont(key, "Marker Felt", 15);
+            auto label1 = Label::createWithSystemFont(key, "Arial", 15);
             label1->setPosition(100, 100);
             label1->updateContent();
             
@@ -291,7 +295,24 @@ bool HelloWorld::init()
         packer_type::texture_coll_type failed;
         packer.pack(result, packed, failed);
         
-        // Texture2D * pResult = result->getTexture();
+        Texture2D * pResult = result->getTexture();
+        {// test create a sprite
+            for (auto it = packed.begin(); it != packed.end(); ++it)
+            {
+                if(it->first == "中国118" || true){
+                    const packer_type::block_type &blk = it->second;
+                    float x,  y,  width,  height;
+                    blk.get_frame_rect(x, y, width, height, packer.padding);
+                    auto tr = Rect(x ,y ,width ,height);
+                    auto ts = Sprite::createWithTexture(pResult, tr, false);
+                    addChild(ts);
+                    ts->setPosition(150,80);
+                }
+            }
+            
+            
+        }
+        
         // Prompt.
         {
             for (auto it = packed.begin(); it != packed.end(); ++it) {
@@ -304,7 +325,7 @@ bool HelloWorld::init()
         // Serialize.
         {
             std::string out_tex = outpath + ".png";
-            result->save_png(out_tex.c_str());
+//            result->save_png(out_tex.c_str());
             printf("Texture written: %s.\n", out_tex.c_str());
         }
         {
