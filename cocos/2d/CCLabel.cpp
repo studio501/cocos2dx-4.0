@@ -1439,9 +1439,9 @@ void Label::createSpriteForSystemFont(const FontDefinition& fontDef)
     _currentLabelType = LabelType::STRING_TEXTURE;
 
     
-    auto t_hash = getFontDefinitionHash(fontDef);
+    _hashID = getFontDefinitionHash(fontDef);
     
-    auto texture = Director::getInstance()->getTextureCache()->addSystemLabelTexture(t_hash, fontDef, _utf8Text);
+    auto texture = Director::getInstance()->getTextureCache()->addSystemLabelTexture(_hashID, fontDef, _utf8Text);
 
     _textSprite = Sprite::createWithTexture(texture);
     //set camera mask using label's camera mask, because _textSprite may be null when setting camera mask to label
@@ -1458,6 +1458,10 @@ void Label::createSpriteForSystemFont(const FontDefinition& fontDef)
     _textSprite->retain();
     _textSprite->updateDisplayedColor(_displayedColor);
     _textSprite->updateDisplayedOpacity(_displayedOpacity);
+    
+    if(Director::getInstance()->getEnableSysLabelBatch()){
+        Director::getInstance()->getTextureCache()->addLableToBatch(this);
+    }
 }
 
 void Label::createShadowSpriteForSystemFont(const FontDefinition& fontDef)
@@ -2460,6 +2464,23 @@ void Label::updateLetterSpriteScale(Sprite* sprite)
             sprite->setScale(1.0);
         }
     }
+}
+
+bool Label::isValidBatchable() const
+{
+    auto sp = getTextureSprite();
+    if(!sp)
+        return false;
+    
+    auto tex = sp->getTexture();
+    if(!tex)
+        return false;
+    
+    auto img = tex->getBackImage();
+    if(!img)
+        return false;
+    
+    return true;
 }
 
 NS_CC_END

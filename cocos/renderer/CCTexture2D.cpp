@@ -50,6 +50,7 @@ THE SOFTWARE.
 #include "renderer/CCTextureUtils.h"
 #include "renderer/CCRenderer.h"
 #include "renderer/CCTextureCache.h"
+#include "2d/CCLabel.h"
 
 #if CC_ENABLE_CACHE_TEXTURE_DATA
     #include "renderer/CCTextureCache.h"
@@ -150,6 +151,7 @@ Texture2D::~Texture2D()
 #endif
     Director::getInstance()->getTextureCache()->removeSystemLabelTexture(this);
     CC_SAFE_RELEASE_NULL(_alphaTexture); // ETC1 ALPHA support.
+    CC_SAFE_RELEASE_NULL(_backImage);
 
     CCLOGINFO("deallocing Texture2D: %p - id=%u", this, _name);
 

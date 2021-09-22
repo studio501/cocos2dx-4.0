@@ -640,6 +640,8 @@ CC_CONSTRUCTOR_ACCESS:
     
 public:
     Sprite * getTextureSprite() const { return _textSprite; }
+    
+    bool isValidBatchable() const;
 protected:
     struct LetterInfo
     {
@@ -819,6 +821,8 @@ protected:
     backend::UniformLocation _textColorLocation;
     backend::UniformLocation _effectColorLocation;
     backend::UniformLocation _effectTypeLocation;
+    
+    CC_SYNTHESIZE_DEFAULTVALUE(std::size_t,0,_hashID,HashID);
     
 private:
     CC_DISALLOW_COPY_AND_ASSIGN(Label);

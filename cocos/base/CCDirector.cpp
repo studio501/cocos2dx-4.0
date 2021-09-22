@@ -291,6 +291,10 @@ void Director::drawScene()
         //clear draw stats
         _renderer->clearDrawStats();
         
+        if(_enableSysLabelBatch){
+            _textureCache->calculateSysLabelBatch();
+        }
+        
         //render the scene
         if(_openGLView)
             _openGLView->renderScene(_runningScene, _renderer);

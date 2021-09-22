@@ -649,6 +649,8 @@ protected:
 
     // GLView will recreate stats labels to fit visible rect
     friend class GLView;
+    
+    CC_SYNTHESIZE_DEFAULTVALUE(bool,false, _enableSysLabelBatch, EnableSysLabelBatch);
 };
 
 // end of base group

@@ -43,11 +43,17 @@ THE SOFTWARE.
 #include "base/CCNinePatchImageParser.h"
 #include "renderer/backend/Device.h"
 //#include "renderer/backend/StringUtils.h"
+#include "2d/CCLabel.h"
+#include "2d/CCSprite.h"
+#include "CCLabelPacker.h"
 
 
 using namespace std;
 
 NS_CC_BEGIN
+
+namespace fp = framepacker;
+using packer_type = fp::packer<ns_labelpacker::image>;
 
 std::string TextureCache::s_etc1AlphaFileSuffix = "@alpha";
 
@@ -68,6 +74,7 @@ TextureCache::TextureCache()
 , _needQuit(false)
 , _asyncRefCount(0)
 {
+    _batchesLable.reserve(120);
 }
 
 TextureCache::~TextureCache()
@@ -738,6 +745,100 @@ void TextureCache::removeSystemLabelTexture(Texture2D * texture)
     }
 }
 
+
+/*
+ calculate to merge all system label tecture to one batched texture
+ */
+void TextureCache::calculateSysLabelBatch()
+{
+    if(_batchesLable.empty()){
+        return;
+    }
+    
+    packer_type packer;
+    packer.padding = 1;
+    packer.output_texture_size = fp::vec2(0, 0);
+    packer.allow_rotate = true;
+    packer.power_of_2 = false;
+    packer.alpha_trim = false;
+    packer.comparer = packer_type::compare_area;
+    
+    for(auto label : _batchesLable){
+        if(!label->isValidBatchable())
+            continue;
+        
+        auto img = label->getTextureSprite()->getTexture()->getBackImage();
+        if(!img)
+            continue;
+        
+        try {
+            
+            ns_labelpacker::image* img1 = new ns_labelpacker::image;
+            
+            std::string id_key = std::to_string(label->getHashID());
+            
+            img1->load_file(id_key.c_str(), img, label);
+            
+            packer_type::texture_type texture(img1);
+            
+            packer.add(id_key.c_str(), texture);
+            
+        } catch (exception e) {
+            continue;
+        }
+        
+    }
+    
+    // Pack it.
+    packer_type::texture_type result(new ns_labelpacker::image);
+    packer_type::texture_coll_type packed;
+    packer_type::texture_coll_type failed;
+    packer.pack(result, packed, failed);
+    
+    Texture2D * pResult = result->getTexture();
+    if(!pResult)
+        return;
+    
+    auto csf = CC_CONTENT_SCALE_FACTOR();
+    for (auto it = packed.begin(); it != packed.end(); ++it)
+    {
+        const packer_type::block_type &blk = it->second;
+        int x,  y,  width,  height;
+        blk.get_frame_rect(x, y, width, height, packer.padding);
+        
+        auto tr = Rect(x / csf ,y / csf ,width / csf ,height / csf);
+        
+        cocos2d::Label *pLabel = blk.texture->getLabel();
+        if(pLabel){            
+            pLabel->getTextureSprite()->setTexture(pResult);
+            pLabel->getTextureSprite()->setTextureRect(tr);
+        }
+    }
+    
+    pResult->release();
+    
+    _batchesLable.clear();
+    
+    Director::getInstance()->setEnableSysLabelBatch(false);
+}
+
+/*
+ clean ready for batch label
+ */
+void TextureCache::cleanBatchedLabels()
+{
+    _batchesLable.clear();
+}
+
+/*
+ add one label to batch
+ */
+void TextureCache::addLableToBatch(Label* pl)
+{
+    if(pl->isValidBatchable()){
+        _batchesLable.push_back(pl);
+    }
+}
 
 
 #if CC_ENABLE_CACHE_TEXTURE_DATA

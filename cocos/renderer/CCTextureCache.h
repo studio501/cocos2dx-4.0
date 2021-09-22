@@ -60,6 +60,7 @@ NS_CC_BEGIN
 * Once the texture is loaded, the next time it will return.
 * A reference of the previously loaded texture reducing GPU & CPU memory.
 */
+class Label;
 class CC_DLL TextureCache : public Ref
 {
 public:
@@ -233,6 +234,24 @@ protected:
     std::unordered_map<std::string, Texture2D*> _textures;
 
     static std::string s_etc1AlphaFileSuffix;
+    
+    std::vector<Label*> _batchesLable;
+public:
+    /*
+     calculate to merge all system label tecture to one batched texture
+     */
+    void calculateSysLabelBatch();
+    
+    /*
+     clean ready for batch label
+     */
+    void cleanBatchedLabels();
+    
+    /*
+     add one label to batch
+     */
+    void addLableToBatch(Label* pl);
+    
 };
 
 #if CC_ENABLE_CACHE_TEXTURE_DATA
