@@ -68,8 +68,17 @@ struct rgba final {
 class image {
 public:
     ~image() {
+            //std::free(color_buffer);
+            color_buffer = nullptr;
+            _label = nullptr;
+            w = 0;
+            h = 0;
+        }
+    
+        void release() {
             std::free(color_buffer);
             color_buffer = nullptr;
+            _label = nullptr;
             w = 0;
             h = 0;
         }
@@ -147,7 +156,7 @@ public:
         }
 
         bool resize(size_type _w, size_type _h) noexcept {
-            auto* tmp = (color_type*)std::realloc(color_buffer, _w * _h * 4);
+            auto* tmp = (color_type*)std::malloc(_w * _h * 4);
             if (!tmp) {
                 return false;
             }
@@ -159,13 +168,14 @@ public:
             return true;
         }
 
-        bool load_file(const char* p, cocos2d::Image *pImg) noexcept {
+        bool load_file(const char* p, cocos2d::Image *pImg, cocos2d::Label *pLabel) noexcept {
             w = size_type(pImg->getWidth());
             h = size_type(pImg->getHeight());
             
             color_type* tmp = pImg->getData();
+            _label = pLabel;
             
-            std::free(color_buffer);
+//            std::free(color_buffer);
             color_buffer = tmp;
 
             path = p;
@@ -202,11 +212,16 @@ public:
         return out_texture;
     }
     
+    cocos2d::Label * getLabel() const {
+        return _label;
+    }
+    
 private:
     std::string path;
     color_type* color_buffer = nullptr;
     size_type w = 0;
     size_type h = 0;
+    cocos2d::Label * _label = nullptr;
 };
 
 
@@ -243,24 +258,44 @@ bool HelloWorld::init()
 
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
+
     printf("Writable Path is %s.\n", FileUtils::getInstance()->getWritablePath().c_str());
     
-    
     {
-        auto bgLayer = LayerColor::create(Color4B::BLACK, 2000, 2000);
-        addChild(bgLayer, -1000);
+        Director::getInstance()->setEnableSysLabelBatch(true);
         
-        for(int i=0;i<100;i++){
-            
-        
-            auto label1 = Label::createWithSystemFont("hello", "Marker Felt", 30);
-            label1->updateContent();
-            label1->setPosition(100, i*10+2);
-            addChild(label1,100);
+        auto tlayer = Node::create();
+        addChild(tlayer,1,100);
+        for(int i=0;i<120;i++){
+            std::string key = "中国" + std::to_string(i);
+            auto label1 = Label::createWithSystemFont(key, "Arial", 15);
+            label1->setPosition(100, 100);
+            tlayer->addChild(label1,100);
         }
+        
+        runAction(Sequence::create(DelayTime::create(5), CallFunc::create([&](){
+            auto tlayer = this->getChildByTag(100);
+            tlayer->removeFromParentAndCleanup(true);
+        }), NULL));
         return true;
     }
+    
+//    {
+//        auto bgLayer = LayerColor::create(Color4B::BLACK, 2000, 2000);
+//        addChild(bgLayer, -1000);
+//
+//        for(int i=0;i<100;i++){
+//
+//
+//            auto label1 = Label::createWithSystemFont("hello" + std::to_string(i), "Marker Felt", 30);
+//            label1->updateContent();
+//            label1->setPosition(100, i*10+2);
+//            addChild(label1,100);
+//        }
+//        return true;
+//    }
     {
+        Director::getInstance()->setEnableSysLabelBatch(true);
         packer_type packer;
         packer.padding = 1;
         packer.output_texture_size = fp::vec2(0, 0);
@@ -270,23 +305,28 @@ bool HelloWorld::init()
         packer.comparer = packer_type::compare_area;
         
         
+        std::vector<Label *> all_lables;
+        all_lables.reserve(120);
         for(int i=0;i<120;i++){
             std::string key = "中国" + std::to_string(i);
             auto label1 = Label::createWithSystemFont(key, "Arial", 15);
             label1->setPosition(100, 100);
             label1->updateContent();
+            all_lables.push_back(label1);
             
             auto sp = label1->getTextureSprite();
             auto img = sp->getTexture()->getBackImage();
             Test1::image* img1 = new Test1::image;
-            img1->load_file(key.c_str(), img);
+            
+            std::string id_key = std::to_string(label1->getHashID());
+            img1->load_file(id_key.c_str(), img, label1);
 
 
             packer_type::texture_type texture(img1);
-            packer.add(key.c_str(), texture);
+            packer.add(id_key.c_str(), texture);
 //            texture->save_png(nullptr);
             
-            // addChild(label1,100);
+             addChild(label1,100);
         }
         
         // Pack it.
@@ -297,22 +337,48 @@ bool HelloWorld::init()
         
         Texture2D * pResult = result->getTexture();
         {// test create a sprite
+            
+//            for(auto it=all_lables.begin();it != all_lables.end(); ++it){
+//                std::string hashId = std::to_string((*it)->getHashID());
+//                auto finded = std::find_if( packed.begin(),  packed.end(), [&](packer_type::texture_item_type item){
+//                    return item.first == hashId;
+//                });
+//                if(finded != packed.end()){
+//                    const packer_type::block_type &blk = finded->second;
+//                    float x,  y,  width,  height;
+//                    blk.get_frame_rect(x, y, width, height, packer.padding);
+//                    auto tr = Rect(x ,y ,width ,height);
+//
+//
+//                    // replace texture
+//                    (*it)->getTextureSprite()->setTexture(pResult);
+//                    (*it)->getTextureSprite()->setTextureRect(tr);
+//                }
+//
+//            }
+            
             for (auto it = packed.begin(); it != packed.end(); ++it)
             {
-                if(it->first == "中国118" || true){
+                if(true){
                     const packer_type::block_type &blk = it->second;
                     float x,  y,  width,  height;
                     blk.get_frame_rect(x, y, width, height, packer.padding);
                     auto tr = Rect(x ,y ,width ,height);
-                    auto ts = Sprite::createWithTexture(pResult, tr, false);
-                    addChild(ts);
-                    ts->setPosition(150,80);
+                    
+                    cocos2d::Label *pLabel = blk.texture->getLabel();
+                    pLabel->getTextureSprite()->setTexture(pResult);
+                    pLabel->getTextureSprite()->setTextureRect(tr);
+                    
+//                    auto ts = Sprite::createWithTexture(pResult, tr, false);
+//                    addChild(ts);
+//                    ts->setPosition(150,80);
                 }
             }
             
             
         }
         
+        pResult->release();
         // Prompt.
         {
             for (auto it = packed.begin(); it != packed.end(); ++it) {
