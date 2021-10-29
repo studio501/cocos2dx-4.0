@@ -811,6 +811,13 @@ void Sprite3D::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
     }
 }
 
+void Sprite3D::setFrontFace(backend::Winding wind)
+{
+    for (auto& it : _meshes) {
+        it->getMaterial()->getStateBlock().setFrontFace(wind);
+    }
+}
+
 void Sprite3D::setProgramState(backend::ProgramState* programState)
 {
     for (auto state : _meshes) {

@@ -193,7 +193,7 @@ private:
 
     GLint _defaultFBO = 0;  // The value gets from glGetIntegerv, so need to use GLint
     GLuint _currentFBO = 0;
-    GLuint       _depthRenderBuffer;
+    GLuint       _depthRenderBuffer = 0;
     GLuint       _stencilRenderBuffer;
     BufferGL* _vertexBuffer;
     ProgramState* _programState = nullptr;

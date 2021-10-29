@@ -87,6 +87,10 @@ CommandBufferGL::CommandBufferGL()
 CommandBufferGL::~CommandBufferGL()
 {
     glDeleteFramebuffers(1, &_generatedFBO);
+    if (_depthRenderBuffer)
+    {
+        glDeleteRenderbuffers(1, &_depthRenderBuffer);
+    }
     CC_SAFE_RELEASE_NULL(_renderPipeline);
 
     cleanResources();
@@ -187,7 +191,10 @@ void CommandBufferGL::applyRenderPassDescriptor(const RenderPassDescriptor& desc
 
         auto _depthAndStencilFormat = GL_DEPTH24_STENCIL8;
         //create and attach depth buffer
-        glGenRenderbuffers(1, &_depthRenderBuffer);
+        if(!_depthRenderBuffer){
+            glGenRenderbuffers(1, &_depthRenderBuffer); 
+        }
+        
         glBindRenderbuffer(GL_RENDERBUFFER, _depthRenderBuffer);
         glRenderbufferStorage(GL_RENDERBUFFER, _depthAndStencilFormat, (GLsizei)t_width, (GLsizei)t_height);
         glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthRenderBuffer);

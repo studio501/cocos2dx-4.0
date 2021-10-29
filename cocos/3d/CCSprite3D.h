@@ -241,6 +241,8 @@ CC_CONSTRUCTOR_ACCESS:
 
     static AABB getAABBRecursivelyImp(Node *node);
     
+    void setFrontFace(backend::Winding wind);
+    
 protected:
 
     Skeleton3D*                  _skeleton; //skeleton

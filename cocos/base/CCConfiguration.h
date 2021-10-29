@@ -166,6 +166,17 @@ public:
      */
     bool supportsMapBuffer() const;
 
+
+    /** Whether or not glMapBuffer() is supported.
+     *
+     * On Desktop it returns `true`.
+     * On Mobile it checks for the extension `GL_OES_mapbuffer`
+     *
+     * @return Whether or not `glMapBuffer()` is supported.
+     * @since v3.13
+     */
+    bool supportsOESDepthTexture() const;
+
     
     /** Max support directional light in shader, for Sprite3D.
      *
@@ -257,6 +268,7 @@ protected:
     bool            _supportsOESMapBuffer;
     bool            _supportsOESDepth24;
     bool            _supportsOESPackedDepthStencil;
+    bool            _supportsOESDepthTexture;
     
     std::string     _glExtensions;
     int             _maxDirLightInShader; //max support directional light in shader

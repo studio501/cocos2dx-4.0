@@ -170,6 +170,9 @@ bool DeviceInfoGL::checkForFeatureSupported(FeatureType feature)
     case FeatureType::DEPTH24:
         featureSupported = checkForGLExtension("GL_OES_depth24");
         break;
+    case FeatureType::OESDEPTH_TEXTURE:
+        featureSupported = checkForGLExtension("GL_OES_depth_texture");
+        break;
     default:
         break;
     }

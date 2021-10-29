@@ -457,6 +457,76 @@ bool HelloWorld::init() {
     auto origin = Director::getInstance()->getVisibleOrigin();
 
     auto winSize1 = visibleSize;
+    
+    
+    {
+        Director::getInstance()->setDisplayStats(true);
+        m_pRT = RenderTextureFor3D::create(winSize1.width, winSize1.height);
+        m_pRT->setPosition(winSize1.width/2, winSize1.height/2);
+        m_pRT->setKeepMatrix(true);
+        m_pRT->retain();
+//        this->addChild(m_pRT);
+        
+        m_pModel = cocos2d::Sprite3D::create("neichenglong.c3b");
+        m_pModel->setScale(22);
+
+        // auto f = FileUtils::getInstance()->isFileExist("neichenglong_alpha.pkm");
+        // CCLOGERROR("is file exist %d",f);
+
+        // auto tex = Director::getInstance()->getTextureCache()->addImage("neichenglong.png");
+
+        m_pModel->setTexture("neichenglong.png");
+        
+        
+        m_pModel->setPosition(winSize1.width/2,winSize1.height/2);
+        //m_pModel->setFrontFace(backend::Winding::COUNTER_CLOCK_WISE);
+//        m_pModel->retain();
+        addChild(m_pModel);
+        m_pModel->setVisible(false);
+        
+       // t_pModel->setForce2DQueue(true);
+
+        Sprite* pSprite=Sprite::createWithTexture(m_pRT->getSprite()->getTexture());
+        this->addChild(pSprite);
+        pSprite->setPosition(winSize1.width/2, winSize1.height/2);
+
+        pSprite->setFlippedY(true);
+        
+        
+        m_pModel->runAction(RepeatForever::create(RotateBy::create(1.0f,Vec3(0,-32,0))));
+    
+//        m_pRT->beginWithClear(1, 0, 0, 1.0f,1,0);
+//
+//        m_pModel->cocos2d::Node::visit(Director::getInstance()->getRenderer(),Mat4::IDENTITY,0);
+//       // m_pModel->visit(Director::getInstance()->getRenderer(), Mat4::IDENTITY, 0);
+//
+//        m_pRT->end();
+
+
+
+         scheduleUpdate();
+        return true;
+    }
+
+    
+    {
+
+        Director::getInstance()->setDisplayStats(true);
+
+        auto f = FileUtils::getInstance()->isFileExist("neichenglong.c3b");
+        CCLOGERROR("is file exist %d",f);
+
+
+        auto t_pModel1 = cocos2d::Sprite3D::create("boss.c3b");
+
+
+        t_pModel1->setTexture("boss.png");
+        t_pModel1->setScale(10);
+        t_pModel1->runAction(RepeatForever::create(RotateBy::create(1.0f,Vec3(0,32,0))));
+        this->addChild(t_pModel1);
+
+        return true;
+    }
 
     {
         auto rt = RenderTexture::create(winSize1.width/2, winSize1.height/2, backend::PixelFormat::RGB565);
@@ -738,8 +808,10 @@ void HelloWorld::update(float ftime)
 {
     auto tex = m_pRT;
     tex->beginWithClear(0, 0, 0, 0, 1, 0);
-    m_pModel->setPositionX(m_pModel->getPositionX() + 1);
+//    m_pModel->setPositionX(m_pModel->getPositionX() + 1);
+    m_pModel->setVisible(true);
     m_pModel->cocos2d::Node::visit(Director::getInstance()->getRenderer(),Mat4::IDENTITY,0);
-    tsp->cocos2d::Node::visit(Director::getInstance()->getRenderer(),Mat4::IDENTITY,0);
+//    tsp->cocos2d::Node::visit(Director::getInstance()->getRenderer(),Mat4::IDENTITY,0);
     tex->end();
+    m_pModel->setVisible(false);
 }

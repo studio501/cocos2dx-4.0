@@ -152,6 +152,9 @@ void Configuration::gatherGPUInfo()
     
     _supportsOESDepth24 = _deviceInfo->checkForFeatureSupported(backend::FeatureType::DEPTH24);
     _valueDict["supports_OES_depth24"] = Value(_supportsOESDepth24);
+
+    _supportsOESDepthTexture = _deviceInfo->checkForFeatureSupported(backend::FeatureType::OESDEPTH_TEXTURE);
+    _valueDict["supports_OES_depth_texture"] = Value(_supportsOESDepthTexture);
     
     _glExtensions = _deviceInfo->getExtension();
 }
@@ -260,6 +263,11 @@ bool Configuration::supportsMapBuffer() const
 #else
     return true;
 #endif
+}
+
+bool Configuration::supportsOESDepthTexture() const
+{
+    return _supportsOESDepthTexture;
 }
 
 bool Configuration::supportsOESDepth24() const

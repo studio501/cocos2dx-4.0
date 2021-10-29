@@ -42,7 +42,8 @@ enum class FeatureType : uint32_t
     VAO,
     MAPBUFFER,
     DEPTH24,
-    ASTC
+    ASTC,
+    OESDEPTH_TEXTURE
 };
 
 /**

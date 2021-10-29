@@ -224,7 +224,6 @@ public:
     
     const Mat4& getProjectionMatrix() const { return _p; }
     
-    Mat4 _mv;
     
     Mat4 _p;
 
