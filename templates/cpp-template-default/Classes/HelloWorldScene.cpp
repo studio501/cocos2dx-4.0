@@ -54,6 +54,9 @@ bool HelloWorld::init()
         auto visibleSize = Director::getInstance()->getVisibleSize();
         Vec2 origin = Director::getInstance()->getVisibleOrigin();
         
+        auto label = Label::createWithSystemFont("The green scale9sprite is in the back.", "Arial", 15);
+        addChild(label, 2);
+        
         for(int i=0;i<2;++i){
             auto label = Label::createWithTTF(std::string("ABAAAAAAAAAAAAAAAAAAAAAA").append(std::to_string(i)) , "fonts/Marker Felt.ttf", 24);
             label->setPosition(Vec2(origin.x + visibleSize.width/2,

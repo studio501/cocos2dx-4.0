@@ -191,6 +191,8 @@ void Renderer::init()
     _triangleCommandBufferManager.init();
     _vertexBuffer = _triangleCommandBufferManager.getVertexBuffer();
     _indexBuffer = _triangleCommandBufferManager.getIndexBuffer();
+    
+    _bufferUpdated = true;
 
     auto device = backend::Device::getInstance();
     _commandBuffer = device->newCommandBuffer();
@@ -272,8 +274,13 @@ void Renderer::processRenderCommand(RenderCommand* command)
                 _triangleCommandBufferManager.prepareNextBuffer();
                 _vertexBuffer = _triangleCommandBufferManager.getVertexBuffer();
                 _indexBuffer = _triangleCommandBufferManager.getIndexBuffer();
+                
+                _bufferUpdated = true;
 #endif
             }
+            
+            for(int i=0;i<8000;i++){
+                
             
             // queue it
             _queuedTriangleCommands.push_back(cmd);
@@ -283,6 +290,7 @@ void Renderer::processRenderCommand(RenderCommand* command)
 #endif
             _queuedTotalVertexCount += cmd->getVertexCount();
             _queuedTotalIndexCount += cmd->getIndexCount();
+            }
 
         }
             break;
@@ -323,6 +331,8 @@ void Renderer::processRenderCommand(RenderCommand* command)
                         _triangleCommandBufferManager.prepareNextBuffer();
                         _vertexBuffer = _triangleCommandBufferManager.getVertexBuffer();
                         _indexBuffer = _triangleCommandBufferManager.getIndexBuffer();
+                        
+                        _bufferUpdated = true;
         #endif
                     }
                     
@@ -699,8 +709,12 @@ void Renderer::drawBatchedCustomCommands()
     for (int i = 0; i < batchesTotal; ++i)
     {
         beginRenderPass(_cusCmdBatchesToDraw[i].cmd);
-        _commandBuffer->setVertexBuffer(_vertexBuffer);
-        _commandBuffer->setIndexBuffer(_indexBuffer);
+        if(_bufferUpdated){
+            _bufferUpdated = false;
+            _commandBuffer->setVertexBuffer(_vertexBuffer);
+            _commandBuffer->setIndexBuffer(_indexBuffer);
+        }
+        
         auto& pipelineDescriptor = _cusCmdBatchesToDraw[i].cmd->getPipelineDescriptor();
         
         backend::UniformLocation uf = pipelineDescriptor.programState->getUniformLocation(backend::Uniform::MVP_MATRIX);
@@ -747,22 +761,44 @@ void Renderer::drawBatchedTriangles()
     _triBatchesToDraw[0].cmd = nullptr;
     
     int batchesTotal = 0;
-    int prevMaterialID = -1;
+    uint32_t prevMaterialID = 0;
     bool firstCommand = true;
 
     _filledVertex = 0;
     _filledIndex = 0;
-
+    
+    int ti = 0;
+    
+    static TriBatchToDraw* pTemp = _triBatchesToDraw;
     for(const auto& cmd : _queuedTriangleCommands)
     {
+        
+        if(pTemp != _triBatchesToDraw){
+            int a = 100;
+        }
         auto currentMaterialID = cmd->getMaterialID();
         const bool batchable = !cmd->isSkipBatching();
         
+        if(pTemp != _triBatchesToDraw){
+            int a = 100;
+        }
+        
         fillVerticesAndIndices(cmd, vertexBufferFillOffset);
+        
+        if(pTemp != _triBatchesToDraw){
+            int a = 100;
+        }
         
         // in the same batch ?
         if (batchable && (prevMaterialID == currentMaterialID || firstCommand))
         {
+            if(&_triBatchesToDraw[batchesTotal] == (void *)nullptr){
+                int a = 100;
+            }
+            
+            if(!_triBatchesToDraw[batchesTotal].cmd){
+                int a = 100;
+            }
             CC_ASSERT((firstCommand || _triBatchesToDraw[batchesTotal].cmd->getMaterialID() == cmd->getMaterialID()) && "argh... error in logic");
             _triBatchesToDraw[batchesTotal].indicesToDraw += cmd->getIndexCount();
             _triBatchesToDraw[batchesTotal].cmd = cmd;
@@ -775,6 +811,10 @@ void Renderer::drawBatchedTriangles()
                 batchesTotal++;
                 _triBatchesToDraw[batchesTotal].offset =
                     _triBatchesToDraw[batchesTotal-1].offset + _triBatchesToDraw[batchesTotal-1].indicesToDraw;
+            }
+            
+            if(batchesTotal == 1){
+                int a = 100;
             }
             
             _triBatchesToDraw[batchesTotal].cmd = cmd;
@@ -794,6 +834,7 @@ void Renderer::drawBatchedTriangles()
         
         prevMaterialID = currentMaterialID;
         firstCommand = false;
+        ti++;
     }
     batchesTotal++;
 #ifdef CC_USE_METAL
@@ -808,13 +849,17 @@ void Renderer::drawBatchedTriangles()
     for (int i = 0; i < batchesTotal; ++i)
     {
         beginRenderPass(_triBatchesToDraw[i].cmd);
-        _commandBuffer->setVertexBuffer(_vertexBuffer);
-        _commandBuffer->setIndexBuffer(_indexBuffer);
+        if(_bufferUpdated){
+            // _bufferUpdated = false;
+            _commandBuffer->setVertexBuffer(_vertexBuffer);
+            _commandBuffer->setIndexBuffer(_indexBuffer);
+        }
         auto& pipelineDescriptor = _triBatchesToDraw[i].cmd->getPipelineDescriptor();
         _commandBuffer->setProgramState(pipelineDescriptor.programState);
         _commandBuffer->drawElements(backend::PrimitiveType::TRIANGLE,
                                      backend::IndexFormat::U_SHORT,
                                      _triBatchesToDraw[i].indicesToDraw,
+//                                     6,
                                      _triBatchesToDraw[i].offset * sizeof(_indices[0]));
         _commandBuffer->endRenderPass();
 

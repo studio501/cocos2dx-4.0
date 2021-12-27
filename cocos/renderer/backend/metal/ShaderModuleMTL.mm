@@ -29,6 +29,70 @@
 
 CC_BACKEND_BEGIN
 
+
+static const char* test_vert = R"(
+#ifndef __METAL_VERSION__
+#include <TargetConditionals.h>
+#endif
+
+#include <simd/simd.h>
+
+#include <metal_stdlib>
+//#pragma clang diagnostic ignored "-Wparentheses-equality"
+using namespace metal;
+struct xlatMtlShaderInput1 {
+    float4 a_position [[attribute(0)]];
+    float2 a_texCoord [[attribute(1)]];
+    float4 a_color [[attribute(2)]];
+};
+struct xlatMtlShaderOutput1 {
+    float4 gl_Position [[position]];
+    float4 v_fragmentColor;
+    float2 v_texCoord;
+};
+struct xlatMtlShaderUniform1 {
+  float4x4 u_MVPMatrix;
+};
+vertex xlatMtlShaderOutput1 xlatMtlMain1 (xlatMtlShaderInput1 _mtl_i [[stage_in]], constant xlatMtlShaderUniform1& _mtl_u [[buffer(1)]])
+{
+  xlatMtlShaderOutput1 _mtl_o;
+  _mtl_o.gl_Position = (_mtl_u.u_MVPMatrix * _mtl_i.a_position);
+  _mtl_o.v_fragmentColor = _mtl_i.a_color;
+  _mtl_o.v_texCoord = _mtl_i.a_texCoord;
+  return _mtl_o;
+}
+)";
+
+static const char* test_frag = R"(
+#include <metal_stdlib>
+//#pragma clang diagnostic ignored "-Wparentheses-equality"
+using namespace metal;
+struct xlatMtlShaderInput2 {
+    float4 v_fragmentColor;
+    float2 v_texCoord;
+};
+struct xlatMtlShaderOutput2 {
+  half4 gl_FragColor;
+};
+struct xlatMtlShaderUniform2 {
+};
+fragment xlatMtlShaderOutput2 xlatMtlMain2 (xlatMtlShaderInput2 _mtl_i [[stage_in]], constant xlatMtlShaderUniform2& _mtl_u [[buffer(1)]]
+  ,   texture2d<float> u_texture [[texture(0)]], sampler _mtlsmp_u_texture [[sampler(0)]])
+{
+  xlatMtlShaderOutput2 _mtl_o;
+  half4 tmpvar_1 = 0;
+    tmpvar_1 = half4(u_texture.sample(_mtlsmp_u_texture, (float2)(_mtl_i.v_texCoord)));
+  // _mtl_o.gl_FragColor = (half4)(_mtl_i.v_fragmentColor);
+
+    half4 tmpvar_2 = (half4)(_mtl_i.v_fragmentColor * (float4)(tmpvar_1));
+    if(tmpvar_2.w == 0.0h)
+        discard_fragment();
+
+    _mtl_o.gl_FragColor = half4(tmpvar_2.xyz, tmpvar_2.w );
+    return _mtl_o;
+}
+)";
+
 ShaderModuleMTL::ShaderModuleMTL(id<MTLDevice> mtlDevice, ShaderStage stage, const std::string& source)
 : ShaderModule(stage)
 {
@@ -44,7 +108,19 @@ ShaderModuleMTL::ShaderModuleMTL(id<MTLDevice> mtlDevice, ShaderStage stage, con
         return;
     }
     
-    const char* metalShader = glslopt_get_output(glslShader);
+    char* metalShader = nullptr;
+    static int ta = 0;
+    if(ta < 2){
+        if (ShaderStage::VERTEX == stage)
+            metalShader = (char *)test_vert;
+        else
+            metalShader = (char *)test_frag;
+    }else{
+        metalShader = (char *)glslopt_get_output(glslShader);
+    }
+    
+    ta++;
+    
     if (!metalShader)
     {
         NSLog(@"Can not get metal shader:");

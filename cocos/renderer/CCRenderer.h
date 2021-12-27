@@ -487,7 +487,7 @@ protected:
     backend::RenderPipeline* _renderPipeline = nullptr;
 
     Viewport _viewport;
-    CullMode _cullMode  = CullMode::NONE;
+    CullMode _cullMode  = CullMode::BACK;
     Winding _winding    = Winding::COUNTER_CLOCK_WISE; //default front face is CCW in GL
 
     std::stack<int> _commandGroupStack;
@@ -574,6 +574,8 @@ protected:
     std::deque<StateBlock> _stateBlockStack;
     
     bool _lastIsCanBatchedCustomCommand = false;
+    
+    bool _bufferUpdated = false;
 };
 
 NS_CC_END

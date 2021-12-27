@@ -458,6 +458,57 @@ bool HelloWorld::init() {
 
     auto winSize1 = visibleSize;
     
+    // Director::getInstance()->setDisplayStats(true);
+    
+    {
+        Sprite* pSprUpCloud = Sprite::create("CloseNormal.png");
+        pSprUpCloud->setPosition(100, 100);
+        addChild(pSprUpCloud);
+        
+        pSprUpCloud->runAction(Sequence::create(DelayTime::create(5), CallFunc::create([=](){
+            pSprUpCloud->setPosition(-1000, 100);
+        }), NULL));
+        return true;
+    }
+    
+    {
+        for(int i=0;i<2;++i){
+            auto label = Label::createWithTTF(std::string("ABAAAAAAAAAAAAAAAAAAAAAA").append(std::to_string(i)) , "fonts/Marker Felt.ttf", 24);
+            label->setPosition(Vec2(origin.x + visibleSize.width/2,
+                                    origin.y + visibleSize.height - label->getContentSize().height - i * 20));
+            
+            label->setColor(Color3B(i*20,(10 - i)*20,i*15));
+            addChild(label,1);
+        }
+        
+        auto label = Label::createWithSystemFont("The green scale9sprite is in the back.", "Arial", 15);
+        addChild(label, 2);
+        return true;
+    }
+    
+    {
+        
+        auto m_pLayerColor1 = LayerColor::create(Color4B(255, 255, 255, 255), winSize1.width, winSize1.height);
+        addChild(m_pLayerColor1);
+        
+        const int repeate_count = 1;
+        const int draw_cnt = 1;
+        for(int i=0;i<draw_cnt;i++){
+            for(int j = 0; j< repeate_count; j++){
+                Sprite* pSprUpCloud = Sprite::create("CloseNormal.png");
+                addChild(pSprUpCloud);
+                pSprUpCloud->setPosition(winSize1.width/2 - 200, winSize1.height/2);
+            }
+            
+            for(int j = 0; j< repeate_count; j++){
+                Sprite* pSprUpCloud2 = Sprite::create("boss.png");
+                addChild(pSprUpCloud2);
+                pSprUpCloud2->setPosition(winSize1.width/2 + 200, winSize1.height/2);
+            }
+        }
+        
+        return true;
+    }
     
     {
         Director::getInstance()->setDisplayStats(true);

@@ -77,8 +77,10 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     director->setOpenGLView(glview);
 
+    CCLOGERROR("designResolutionSize [%f, %f]", designResolutionSize.width, designResolutionSize.height);
+
     // Set the design resolution
-    glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::FIXED_WIDTH);
+    glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::NO_BORDER);
 //    glview->setDesignResolutionSize(2048,1536, ResolutionPolicy::FIXED_WIDTH);
     Size frameSize = glview->getFrameSize();
     

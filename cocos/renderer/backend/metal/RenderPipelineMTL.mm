@@ -278,16 +278,22 @@ void RenderPipelineMTL::setVertexLayout(MTLRenderPipelineDescriptor* mtlDescript
 void RenderPipelineMTL::setBlendState(MTLRenderPipelineColorAttachmentDescriptor* colorAttachmentDescriptor,
                                       const BlendDescriptor& blendDescriptor)
 {
-    colorAttachmentDescriptor.blendingEnabled = blendDescriptor.blendEnabled;
+    colorAttachmentDescriptor.blendingEnabled = false; //blendDescriptor.blendEnabled;
     colorAttachmentDescriptor.writeMask = toMTLColorWriteMask(blendDescriptor.writeMask);
     
     colorAttachmentDescriptor.rgbBlendOperation = toMTLBlendOperation(blendDescriptor.rgbBlendOperation);
     colorAttachmentDescriptor.alphaBlendOperation = toMTLBlendOperation(blendDescriptor.alphaBlendOperation);
     
-    colorAttachmentDescriptor.sourceRGBBlendFactor = toMTLBlendFactor(blendDescriptor.sourceRGBBlendFactor);
-    colorAttachmentDescriptor.destinationRGBBlendFactor = toMTLBlendFactor(blendDescriptor.destinationRGBBlendFactor);
-    colorAttachmentDescriptor.sourceAlphaBlendFactor = toMTLBlendFactor(blendDescriptor.sourceAlphaBlendFactor);
-    colorAttachmentDescriptor.destinationAlphaBlendFactor = toMTLBlendFactor(blendDescriptor.destinationAlphaBlendFactor);
+//    colorAttachmentDescriptor.sourceRGBBlendFactor = toMTLBlendFactor(blendDescriptor.sourceRGBBlendFactor);
+//    colorAttachmentDescriptor.destinationRGBBlendFactor = toMTLBlendFactor(blendDescriptor.destinationRGBBlendFactor);
+//    colorAttachmentDescriptor.sourceAlphaBlendFactor = toMTLBlendFactor(blendDescriptor.sourceAlphaBlendFactor);
+//    colorAttachmentDescriptor.destinationAlphaBlendFactor = toMTLBlendFactor(blendDescriptor.destinationAlphaBlendFactor);
+    
+    
+//    colorAttachmentDescriptor.sourceRGBBlendFactor = MTLBlendFactorOne;//toMTLBlendFactor(blendDescriptor.sourceRGBBlendFactor);
+//    colorAttachmentDescriptor.destinationRGBBlendFactor = MTLBlendFactorOne;// toMTLBlendFactor(blendDescriptor.destinationRGBBlendFactor);
+//    colorAttachmentDescriptor.sourceAlphaBlendFactor = MTLBlendFactorOne;// toMTLBlendFactor(blendDescriptor.sourceAlphaBlendFactor);
+//    colorAttachmentDescriptor.destinationAlphaBlendFactor = MTLBlendFactorOne;// toMTLBlendFactor(blendDescriptor.destinationAlphaBlendFactor);
 }
 
 void RenderPipelineMTL::setShaderModules(const PipelineDescriptor& descriptor)

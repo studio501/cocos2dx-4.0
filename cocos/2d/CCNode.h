@@ -1847,7 +1847,10 @@ protected:
 
     // "cache" variables are allowed to be mutable
     mutable Mat4 _transform;        ///< transform
+public:
     mutable bool _transformDirty;   ///< transform dirty flag
+    mutable bool _transformDirtyLast;   ///< transform dirty flag
+protected:
     mutable Mat4 _inverse;          ///< inverse transform
     mutable bool _inverseDirty;     ///< inverse transform dirty flag
     mutable Mat4* _additionalTransform; ///< two transforms needed by additional transforms

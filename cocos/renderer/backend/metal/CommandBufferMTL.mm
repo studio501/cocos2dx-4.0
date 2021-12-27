@@ -153,7 +153,7 @@ namespace
                 else
                     mtlDescritpor.depthAttachment.loadAction = MTLLoadActionLoad;
 
-                mtlDescritpor.depthAttachment.storeAction = MTLStoreActionStore;
+                mtlDescritpor.depthAttachment.storeAction = MTLStoreActionDontCare;
             }
             
             // Set stencil attachment
@@ -171,7 +171,7 @@ namespace
                 else
                     mtlDescritpor.stencilAttachment.loadAction = MTLLoadActionLoad;
 
-                mtlDescritpor.stencilAttachment.storeAction = MTLStoreActionStore;
+                mtlDescritpor.stencilAttachment.storeAction = MTLStoreActionDontCare;
             }
         }
         

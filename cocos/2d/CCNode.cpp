@@ -1215,6 +1215,8 @@ void Node::visit(Renderer* renderer, const Mat4 &parentTransform, uint32_t paren
     {
         return;
     }
+    
+    _transformDirtyLast = _transformDirty;
 
     uint32_t flags = processParentFlags(parentTransform, parentFlags);
 

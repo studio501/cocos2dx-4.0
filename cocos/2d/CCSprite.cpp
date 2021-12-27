@@ -1102,9 +1102,15 @@ void Sprite::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
     
     //TODO: arnold: current camera can be a non-default one.
     setMVPMatrixUniform();
+    if(_transformDirty){
+        int a = 100;
+    }
 
 #if CC_USE_CULLING
     // Don't calculate the culling if the transform was not updated
+    if(_transformDirtyLast){
+        
+    
     auto visitingCamera = Camera::getVisitingCamera();
     auto defaultCamera = Camera::getDefaultCamera();
     if (visitingCamera == nullptr)
@@ -1114,6 +1120,9 @@ void Sprite::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
     else
         // XXX: this always return true since
         _insideBounds = renderer->checkVisibility(transform, _contentSize);
+    }else{
+        int a = 100;
+    }
 
     if(_insideBounds)
 #endif
@@ -1714,7 +1723,7 @@ void Sprite::updateBlendFunc()
     backend::BlendDescriptor& blendDescriptor = _trianglesCommand.getPipelineDescriptor().blendDescriptor;
     blendDescriptor.blendEnabled = true;
     
-    if (! _texture || ! _texture->hasPremultipliedAlpha())
+    if ((! _texture || ! _texture->hasPremultipliedAlpha()))
     {
         _blendFunc = BlendFunc::ALPHA_NON_PREMULTIPLIED;
         setOpacityModifyRGB(false);
