@@ -1114,7 +1114,10 @@ void Sprite::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
     else
         // XXX: this always return true since
         _insideBounds = renderer->checkVisibility(transform, _contentSize);
-
+    
+    if(getTag() == 101){
+        int a = 100;
+    }
     if(_insideBounds)
 #endif
     {

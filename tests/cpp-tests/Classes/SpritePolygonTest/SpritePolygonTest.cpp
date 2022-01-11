@@ -176,11 +176,24 @@ void SpritePolygonTest1::initSprites()
 {
     auto s = Director::getInstance()->getWinSize();
     auto offset = Vec2(0.15*s.width,0);
-    auto filename = s_pathGrossini;
+    auto filename = "092.png";
+//    auto filename = "Images/grossini_dance_01.png";
+//    auto filename = "Images/001.png";
+//    auto filename = s_pathGrossini;
+    // s_pathGrossini;
+    
+//    auto pTex = Director::getInstance()->getTextureCache()->addImage("Images/World_1.pvr");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("World_1.plist");
+//    /Users/mac/Downloads/cocos2d-x-4 2/tests/cpp-tests/Resources/animations/grossini_dance_poly.plist
+//    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("animations/grossini_dance_poly.plist");
+    
+    auto frame_1 = SpriteFrameCache::getInstance()->getSpriteFrameByName("098.png");
     
     //Sprite
     auto pinfo = AutoPolygon::generatePolygon(filename);
-    _polygonSprite = Sprite::create(pinfo);
+//    _polygonSprite = Sprite::create(pinfo);
+    
+    _polygonSprite = Sprite::createWithSpriteFrame(frame_1);
     _polygonSprite->setTag(101);
     addChild(_polygonSprite);
     _polygonSprite->setPosition(Vec2(s)/2 + offset);

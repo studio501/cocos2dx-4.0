@@ -1844,7 +1844,7 @@ void Label::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
                 }
                 auto& piplineDesc = batch.textCommand.getPipelineDescriptor();
                 if(canCustomBatch && piplineDesc.programState->getProgram()->getProgramType() == backend::ProgramType::LABEL_NORMAL){
-                    batch.textCommand.setCanBatch(true);
+//                    batch.textCommand.setCanBatch(true);
                 }
                 
                 if(batch.textCommand.getCanBatch()){

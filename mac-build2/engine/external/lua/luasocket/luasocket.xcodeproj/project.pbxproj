@@ -1,0 +1,778 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		A916EBF0E8CF48B7B510022A /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 72D1074C08BA4745B0BEF64A /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				99B3888860DC4C6CB33E47CA /* Generate CMakeFiles/ALL_BUILD */,
+			);
+			dependencies = (
+				2C37278C1B5C41E5B9FCDB47 /* PBXTargetDependency */,
+				D9B3A008EA07432DADEFE697 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+		F3E7EC9A18F74277A35DC881 /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 59CE8C29DB924AAE92EDEF30 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				BA0450A5725F43EEA99566C7 /* Generate CMakeFiles/ZERO_CHECK */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		0183D6B406854400951A5DEC /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/timeout.c */ = {isa = PBXBuildFile; fileRef = DE38EF7C2A5945B59CC24F17 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/timeout.c */; };
+		0240F439D8F448EAA4950F9C /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/io.c */ = {isa = PBXBuildFile; fileRef = 105FE61DE3704400BC60B07B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/io.c */; };
+		06949220D6D047C294D14EE1 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/select.c */ = {isa = PBXBuildFile; fileRef = AD70567AFE1543DF9BA28665 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/select.c */; };
+		09062C951C8343A78F26C4AB /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/luasocket.c */ = {isa = PBXBuildFile; fileRef = 85B0EBB64ED44EE9A6321FC8 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/luasocket.c */; };
+		403939201FAB4F80927BF269 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/udp.c */ = {isa = PBXBuildFile; fileRef = 2937371B088E415BBD42A3EA /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/udp.c */; };
+		59AA0F7819A74816BBB5E622 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/options.c */ = {isa = PBXBuildFile; fileRef = 0209DFC83C604979B64FFD30 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/options.c */; };
+		67BAE1A9C3AA47AFAE5F8170 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/serial.c */ = {isa = PBXBuildFile; fileRef = FCF8A9853FB24556868A8E6D /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/serial.c */; };
+		74915FE7D0F34410A20EC247 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/usocket.c */ = {isa = PBXBuildFile; fileRef = 1DDB035076E14D3690F3F07F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/usocket.c */; };
+		8B87A5644455455E988B2C3D /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = 979420B1DE9A49D4932D83B3 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/CMakeLists.txt */; };
+		8FD7DB692ECA457894995801 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/except.c */ = {isa = PBXBuildFile; fileRef = DC8C4F33F6FA4F2D8F203293 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/except.c */; };
+		B85B4460F4574D84A3962802 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/tcp.c */ = {isa = PBXBuildFile; fileRef = E885AB7048AE45EE9F084F6C /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/tcp.c */; };
+		CAB010018B8C4114878E99ED /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/luasocket_scripts.c */ = {isa = PBXBuildFile; fileRef = D2E24953CD54415AB01FF077 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/luasocket_scripts.c */; };
+		DB231ED3531246B6B9B85A59 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/buffer.c */ = {isa = PBXBuildFile; fileRef = 48FE22555AA749869B401BA8 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/buffer.c */; };
+		E2CD40AF1489424DB685254A /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/auxiliar.c */ = {isa = PBXBuildFile; fileRef = 08FA904F4A394255B9EEFF7D /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/auxiliar.c */; };
+		E5D8783F6A5644ECB6BA92CA /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/inet.c */ = {isa = PBXBuildFile; fileRef = 5029172AA1E94A27BC99521B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/inet.c */; };
+		ED4E5FC8013F4F8CA36976D8 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/unix.c */ = {isa = PBXBuildFile; fileRef = 983168A9F5C248009D9029A4 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/unix.c */; };
+		F9FF55250EC645459CCB8864 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/mime.c */ = {isa = PBXBuildFile; fileRef = 8E817F67A0BD46EAA49ABDBA /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/mime.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildStyle section */
+		58732DDBD520455E97F9AE4A /* MinSizeRel */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = MinSizeRel;
+		};
+		8186AD5E0C38471594AE3117 /* RelWithDebInfo */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = RelWithDebInfo;
+		};
+		AFA92F68DE904DEBB31CE54A /* Release */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Release;
+		};
+		EF6C0DA40216464EBF4BAFDE /* Debug */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXContainerItemProxy section */
+		AD4F895C13634C21AF2BEE13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5276C9ED56145E09AF3D6CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A8997E5CCC41405BBDC1EA5C;
+			remoteInfo = ext_luasocket;
+		};
+		AF20CB9C210C420FB8534D56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5276C9ED56145E09AF3D6CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3E7EC9A18F74277A35DC881;
+			remoteInfo = ZERO_CHECK;
+		};
+		F304A07AA969481FAD1DD293 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5276C9ED56145E09AF3D6CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3E7EC9A18F74277A35DC881;
+			remoteInfo = ZERO_CHECK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0209DFC83C604979B64FFD30 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/options.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = options.c; path = options.c; sourceTree = SOURCE_ROOT; };
+		08FA904F4A394255B9EEFF7D /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/auxiliar.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = auxiliar.c; path = auxiliar.c; sourceTree = SOURCE_ROOT; };
+		105FE61DE3704400BC60B07B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/io.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = io.c; path = io.c; sourceTree = SOURCE_ROOT; };
+		1DDB035076E14D3690F3F07F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/usocket.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = usocket.c; path = usocket.c; sourceTree = SOURCE_ROOT; };
+		2937371B088E415BBD42A3EA /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/udp.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = udp.c; path = udp.c; sourceTree = SOURCE_ROOT; };
+		48FE22555AA749869B401BA8 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/buffer.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = buffer.c; path = buffer.c; sourceTree = SOURCE_ROOT; };
+		5029172AA1E94A27BC99521B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/inet.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = inet.c; path = inet.c; sourceTree = SOURCE_ROOT; };
+		7C9B52EF9379496880C8405B /* ext_luasocket */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libext_luasocket.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		85B0EBB64ED44EE9A6321FC8 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/luasocket.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = luasocket.c; path = luasocket.c; sourceTree = SOURCE_ROOT; };
+		8E817F67A0BD46EAA49ABDBA /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/mime.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = mime.c; path = mime.c; sourceTree = SOURCE_ROOT; };
+		979420B1DE9A49D4932D83B3 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		983168A9F5C248009D9029A4 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/unix.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = unix.c; path = unix.c; sourceTree = SOURCE_ROOT; };
+		A36DDBAD3A8A49E48559BD7E /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		AD70567AFE1543DF9BA28665 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/select.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = select.c; path = select.c; sourceTree = SOURCE_ROOT; };
+		D2E24953CD54415AB01FF077 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/luasocket_scripts.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = luasocket_scripts.c; path = luasocket_scripts.c; sourceTree = SOURCE_ROOT; };
+		DC8C4F33F6FA4F2D8F203293 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/except.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = except.c; path = except.c; sourceTree = SOURCE_ROOT; };
+		DE38EF7C2A5945B59CC24F17 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/timeout.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = timeout.c; path = timeout.c; sourceTree = SOURCE_ROOT; };
+		E885AB7048AE45EE9F084F6C /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/tcp.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = tcp.c; path = tcp.c; sourceTree = SOURCE_ROOT; };
+		FCF8A9853FB24556868A8E6D /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/serial.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = serial.c; path = serial.c; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0777DA6CE3BB4FCDA016CEFB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		70ADD6E7EB7D41EDA3DED649 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7C9B52EF9379496880C8405B /* ext_luasocket */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7DDF4075C17B425FB14ADFCD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		956D0AA55F4D4DEC99BC37AF /* ext_luasocket */ = {
+			isa = PBXGroup;
+			children = (
+				B2171F18289447F5952583DC /* Source Files */,
+				979420B1DE9A49D4932D83B3 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/CMakeLists.txt */,
+			);
+			name = ext_luasocket;
+			sourceTree = "<group>";
+		};
+		A15F2AB9271B4EFB9A56460D /* External */ = {
+			isa = PBXGroup;
+			children = (
+				956D0AA55F4D4DEC99BC37AF /* ext_luasocket */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
+		A901E329F1224A0D80CD9807 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		B2171F18289447F5952583DC /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				08FA904F4A394255B9EEFF7D /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/auxiliar.c */,
+				48FE22555AA749869B401BA8 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/buffer.c */,
+				DC8C4F33F6FA4F2D8F203293 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/except.c */,
+				5029172AA1E94A27BC99521B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/inet.c */,
+				105FE61DE3704400BC60B07B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/io.c */,
+				85B0EBB64ED44EE9A6321FC8 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/luasocket.c */,
+				D2E24953CD54415AB01FF077 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/luasocket_scripts.c */,
+				8E817F67A0BD46EAA49ABDBA /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/mime.c */,
+				0209DFC83C604979B64FFD30 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/options.c */,
+				AD70567AFE1543DF9BA28665 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/select.c */,
+				FCF8A9853FB24556868A8E6D /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/serial.c */,
+				E885AB7048AE45EE9F084F6C /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/tcp.c */,
+				DE38EF7C2A5945B59CC24F17 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/timeout.c */,
+				2937371B088E415BBD42A3EA /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/udp.c */,
+				983168A9F5C248009D9029A4 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/unix.c */,
+				1DDB035076E14D3690F3F07F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/usocket.c */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		E70B5E85F8D74B12AE06C5B2 /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				A901E329F1224A0D80CD9807 /* CMake Rules */,
+				A36DDBAD3A8A49E48559BD7E /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		F1FFB7C1B4E94E2CA640F1E7 = {
+			isa = PBXGroup;
+			children = (
+				A15F2AB9271B4EFB9A56460D /* External */,
+				E70B5E85F8D74B12AE06C5B2 /* ALL_BUILD */,
+				70ADD6E7EB7D41EDA3DED649 /* Products */,
+				7DDF4075C17B425FB14ADFCD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A8997E5CCC41405BBDC1EA5C /* ext_luasocket */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADC464351C6B4963BC99C451 /* Build configuration list for PBXNativeTarget "ext_luasocket" */;
+			buildPhases = (
+				AE8B7F9B523241EFAFAFDB94 /* Sources */,
+				0777DA6CE3BB4FCDA016CEFB /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2D3F5E38C225478DA46E7B75 /* PBXTargetDependency */,
+			);
+			name = ext_luasocket;
+			productName = ext_luasocket;
+			productReference = 7C9B52EF9379496880C8405B /* ext_luasocket */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D5276C9ED56145E09AF3D6CA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1200;
+			};
+			buildConfigurationList = B32356084F5E4B8AAD4B271A /* Build configuration list for PBXProject "luasocket" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				EF6C0DA40216464EBF4BAFDE /* Debug */,
+				AFA92F68DE904DEBB31CE54A /* Release */,
+				58732DDBD520455E97F9AE4A /* MinSizeRel */,
+				8186AD5E0C38471594AE3117 /* RelWithDebInfo */,
+			);
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 0;
+			mainGroup = F1FFB7C1B4E94E2CA640F1E7;
+			projectDirPath = ../../../../../external/lua/luasocket;
+			projectRoot = "";
+			targets = (
+				A916EBF0E8CF48B7B510022A /* ALL_BUILD */,
+				F3E7EC9A18F74277A35DC881 /* ZERO_CHECK */,
+				A8997E5CCC41405BBDC1EA5C /* ext_luasocket */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		20C7089D9926466988D85D29 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		46CCE700269B4C94ADB7DF89 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		99B3888860DC4C6CB33E47CA /* Generate CMakeFiles/ALL_BUILD */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate CMakeFiles/ALL_BUILD";
+			outputPaths = (
+"/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket/CMakeFiles/ALL_BUILD"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket
+  echo Build\\ all\\ projects
+fi
+if test \"$CONFIGURATION\" = \"Release\"; then :
+  cd /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket
+  echo Build\\ all\\ projects
+fi
+if test \"$CONFIGURATION\" = \"MinSizeRel\"; then :
+  cd /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket
+  echo Build\\ all\\ projects
+fi
+if test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :
+  cd /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket
+  echo Build\\ all\\ projects
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		BA0450A5725F43EEA99566C7 /* Generate CMakeFiles/ZERO_CHECK */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate CMakeFiles/ZERO_CHECK";
+			outputPaths = (
+"/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket/CMakeFiles/ZERO_CHECK"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket
+  make -f /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket/CMakeScripts/ReRunCMake.make
+fi
+if test \"$CONFIGURATION\" = \"Release\"; then :
+  cd /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket
+  make -f /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket/CMakeScripts/ReRunCMake.make
+fi
+if test \"$CONFIGURATION\" = \"MinSizeRel\"; then :
+  cd /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket
+  make -f /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket/CMakeScripts/ReRunCMake.make
+fi
+if test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :
+  cd /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket
+  make -f /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket/CMakeScripts/ReRunCMake.make
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AE8B7F9B523241EFAFAFDB94 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2CD40AF1489424DB685254A /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/auxiliar.c */,
+				DB231ED3531246B6B9B85A59 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/buffer.c */,
+				8FD7DB692ECA457894995801 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/except.c */,
+				E5D8783F6A5644ECB6BA92CA /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/inet.c */,
+				0240F439D8F448EAA4950F9C /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/io.c */,
+				09062C951C8343A78F26C4AB /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/luasocket.c */,
+				CAB010018B8C4114878E99ED /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/luasocket_scripts.c */,
+				F9FF55250EC645459CCB8864 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/mime.c */,
+				59AA0F7819A74816BBB5E622 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/options.c */,
+				06949220D6D047C294D14EE1 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/select.c */,
+				67BAE1A9C3AA47AFAE5F8170 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/serial.c */,
+				B85B4460F4574D84A3962802 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/tcp.c */,
+				0183D6B406854400951A5DEC /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/timeout.c */,
+				403939201FAB4F80927BF269 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/udp.c */,
+				ED4E5FC8013F4F8CA36976D8 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/unix.c */,
+				74915FE7D0F34410A20EC247 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/usocket.c */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2C37278C1B5C41E5B9FCDB47 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3E7EC9A18F74277A35DC881 /* ZERO_CHECK */;
+			targetProxy = AF20CB9C210C420FB8534D56 /* PBXContainerItemProxy */;
+		};
+		2D3F5E38C225478DA46E7B75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3E7EC9A18F74277A35DC881 /* ZERO_CHECK */;
+			targetProxy = F304A07AA969481FAD1DD293 /* PBXContainerItemProxy */;
+		};
+		D9B3A008EA07432DADEFE697 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A8997E5CCC41405BBDC1EA5C /* ext_luasocket */;
+			targetProxy = AD4F895C13634C21AF2BEE13 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0A37563CDF05443F91F6AEB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket/build";
+			};
+			name = Release;
+		};
+		0B41D67624C54D0F8109687D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Release;
+		};
+		151AA6EE77DE471BAA14DED4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Release";
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/../luajit/include");
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CFLAGS = "    -DNDEBUG '-std=gnu99' ";
+				OTHER_LIBTOOLFLAGS = ("");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ext_luasocket;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Release;
+		};
+		16F624AD42AF4FABB96DDB48 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/MinSizeRel";
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/../luajit/include");
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CFLAGS = "    -DNDEBUG '-std=gnu99' ";
+				OTHER_LIBTOOLFLAGS = ("");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ext_luasocket;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		25BD64EC8274486B99415DF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Debug;
+		};
+		30EAB522D29A49A9B0EA24E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket/build";
+			};
+			name = Debug;
+		};
+		370FFB5886D049499496AE06 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket/build";
+			};
+			name = RelWithDebInfo;
+		};
+		4D4DC8D7A5D64BC8BAB7100D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Debug;
+		};
+		56E9333D315B465DB33A1688 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Debug";
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/../luajit/include");
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CFLAGS = "   '-std=gnu99' ";
+				OTHER_LIBTOOLFLAGS = ("");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ext_luasocket;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Debug;
+		};
+		6F5BFA7413BA450AA5342124 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/RelWithDebInfo";
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/../luajit/include");
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CFLAGS = "       -DNDEBUG '-std=gnu99' ";
+				OTHER_LIBTOOLFLAGS = ("");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ext_luasocket;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		855CA626260C4C05879461CE /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		9AB81D24AB024B11A1D6A5AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Release;
+		};
+		CDB1AE6002FF41FC9411FC5B /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		D37C075C996545FCA6EFE3CC /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		D4F4DEE362524E87A0782430 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket/build";
+			};
+			name = MinSizeRel;
+		};
+		E718DB449C49493696563026 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/external/lua/luasocket";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		59CE8C29DB924AAE92EDEF30 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D4DC8D7A5D64BC8BAB7100D /* Debug */,
+				9AB81D24AB024B11A1D6A5AD /* Release */,
+				CDB1AE6002FF41FC9411FC5B /* MinSizeRel */,
+				D37C075C996545FCA6EFE3CC /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		72D1074C08BA4745B0BEF64A /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25BD64EC8274486B99415DF4 /* Debug */,
+				0B41D67624C54D0F8109687D /* Release */,
+				855CA626260C4C05879461CE /* MinSizeRel */,
+				E718DB449C49493696563026 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		ADC464351C6B4963BC99C451 /* Build configuration list for PBXNativeTarget "ext_luasocket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56E9333D315B465DB33A1688 /* Debug */,
+				151AA6EE77DE471BAA14DED4 /* Release */,
+				16F624AD42AF4FABB96DDB48 /* MinSizeRel */,
+				6F5BFA7413BA450AA5342124 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B32356084F5E4B8AAD4B271A /* Build configuration list for PBXProject "luasocket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30EAB522D29A49A9B0EA24E6 /* Debug */,
+				0A37563CDF05443F91F6AEB8 /* Release */,
+				D4F4DEE362524E87A0782430 /* MinSizeRel */,
+				370FFB5886D049499496AE06 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D5276C9ED56145E09AF3D6CA /* Project object */;
+}

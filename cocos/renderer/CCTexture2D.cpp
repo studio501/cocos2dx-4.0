@@ -141,7 +141,11 @@ Texture2D::Texture2D()
 {
     backend::TextureDescriptor textureDescriptor;
     textureDescriptor.textureFormat = PixelFormat::NONE;
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     _texture = static_cast<backend::Texture2DBackend*>(backend::Device::getInstance()->newTexture(textureDescriptor));
+#else
+    _texture = nullptr;
+#endif
 }
 
 Texture2D::~Texture2D()
@@ -308,17 +312,19 @@ bool Texture2D::initWithMipmaps(MipmapInfo* mipmaps, int mipmapsNum, backend::Pi
        
         textureDescriptor.textureFormat = pixelFormat;
         CCASSERT(textureDescriptor.textureFormat != backend::PixelFormat::NONE, "PixelFormat should not be NONE");
+        
+        if(_texture){
+            if(_texture->getTextureFormat() != textureDescriptor.textureFormat)
+                _texture->updateTextureDescriptor(textureDescriptor);
 
-        if(_texture->getTextureFormat() != textureDescriptor.textureFormat)
-            _texture->updateTextureDescriptor(textureDescriptor);
-
-        if(info.compressed)
-        {
-            _texture->updateCompressedData(data, width, height, dataLen, i);
-        }
-        else
-        {
-            _texture->updateData(outData, width, height, i);
+            if(info.compressed)
+            {
+                _texture->updateCompressedData(data, width, height, dataLen, i);
+            }
+            else
+            {
+                _texture->updateData(outData, width, height, i);
+            }
         }
 
         if(outData && outData != data && outDataLen > 0)
@@ -374,7 +380,9 @@ bool Texture2D::initWithImage(Image *image, backend::PixelFormat format)
         CCLOG("cocos2d: Texture2D. Can't create Texture. UIImage is nil");
         return false;
     }
-
+    
+    _backImage = image;
+    image->retain();
     int imageWidth = image->getWidth();
     int imageHeight = image->getHeight();
     this->_filePath = image->getFilePath();

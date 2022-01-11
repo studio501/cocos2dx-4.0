@@ -168,6 +168,9 @@ public:
      * @param plist Plist file name.
      */
     void addSpriteFramesWithFile(const std::string& plist);
+    
+    
+    void addSpriteFramesWithFile(const std::string& plist, ValueMap& outMap);
 
     /** Adds multiple Sprite Frames from a plist file. The texture will be associated with the created sprite frames.
      @since v0.99.5
@@ -273,6 +276,8 @@ public:
     SpriteFrame* getSpriteFrameByName(const std::string& name);
 
     bool reloadTexture(const std::string& plist);
+    
+    inline PlistFramesCache& getInnerCache() { return _spriteFramesCache; }
 
 protected:
     // MARMALADE: Made this protected not private, as deriving from this class is pretty useful

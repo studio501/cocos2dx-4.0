@@ -27,6 +27,7 @@ THE SOFTWARE.
 ****************************************************************************/
 
 #include "2d/CCAutoPolygon.h"
+#include "2d/CCSpriteFrame.h"
 #include "poly2tri/poly2tri.h"
 #include "base/CCDirector.h"
 #include "renderer/CCTextureCache.h"
@@ -54,6 +55,7 @@ PolygonInfo::PolygonInfo()
 : _isVertsOwner(true)
 , _rect(Rect::ZERO)
 , _filename("")
+, _allTransparent(false)
 {
     triangles.verts = nullptr;
     triangles.indices = nullptr;
@@ -183,15 +185,79 @@ AutoPolygon::AutoPolygon(const std::string &filename)
 ,_width(0)
 ,_height(0)
 ,_scaleFactor(0)
+,_sourceColorRect(Rect::ZERO)
 {
     _filename = filename;
     _image = new (std::nothrow) Image();
     _image->initWithImageFile(filename);
-    CCASSERT(_image->getPixelFormat()==backend::PixelFormat::RGBA8888, "unsupported format, currently only supports rgba8888");
+//    CCASSERT(_image->getPixelFormat()==backend::PixelFormat::RGBA8888, "unsupported format, currently only supports rgba8888");
+    if(_image->getPixelFormat()==backend::PixelFormat::RGBA8888){
+        _data = _image->getData();
+        _width = _image->getWidth();
+        _height = _image->getHeight();
+        _scaleFactor = Director::getInstance()->getContentScaleFactor();
+    }else{
+        int a = 100;
+    }
+}
+
+AutoPolygon::AutoPolygon(SpriteFrame * sf)
+:_image(nullptr)
+,_data(nullptr)
+,_filename("")
+,_width(0)
+,_height(0)
+,_scaleFactor(0)
+{
+    _filename = sf->getFrameName();
+    
+    _image = new (std::nothrow) Image();
+    
+    
+    Image* backImage = sf->getTexture()->getBackImage();
+    
+    int textureWidth = backImage->getWidth();
+    int textureHeight = backImage->getHeight();
+    
+    
+    int pixelWidth = sf->getOriginalSizeInPixels().width;
+    int pixelHeight = sf->getOriginalSizeInPixels().height;
+    int dataLen = pixelWidth * pixelHeight * 4;
+    
+    unsigned char * data_start = backImage->getData();
+    
+    unsigned char * temp_buffer = (unsigned char *)malloc(pixelWidth * pixelHeight * 4);
+    
+    const int x0 = sf->getRectInPixels().origin.x;
+    const int y0 = sf->getRectInPixels().origin.y;
+    
+    for(int y=0; y < pixelHeight; y++){
+        int ty = y0 + y;
+        int prev_raws = std::max(0, ty - 1)* textureWidth;
+        int cur_off = prev_raws + x0;
+        
+        unsigned char * src_ptr = &data_start[cur_off * 4];
+        
+        unsigned char * dst_ptr = &temp_buffer[y * pixelWidth * 4];
+        
+        memcpy(dst_ptr, src_ptr, pixelWidth * 4);
+        
+    }
+    
+    _image->initWithRawData(temp_buffer, dataLen, pixelWidth, pixelHeight, 8);
+    
+    free(temp_buffer);
+    
     _data = _image->getData();
     _width = _image->getWidth();
     _height = _image->getHeight();
+    
+    
+    _image->saveToFile("test1.png", false);
+    
     _scaleFactor = Director::getInstance()->getContentScaleFactor();
+    
+    int a = 100;
 }
 
 AutoPolygon::~AutoPolygon()
@@ -202,6 +268,14 @@ AutoPolygon::~AutoPolygon()
 std::vector<Vec2> AutoPolygon::trace(const Rect& rect, float threshold)
 {
     Vec2 first = findFirstNoneTransparentPixel(rect, threshold);
+    if(first.x == -1 && first.y == -1){
+        return std::vector<Vec2>{};
+    }
+    
+    if(first.x == -2 && first.y == -2){
+        return std::vector<Vec2>{{-2, -2}};
+    }
+    
     return marchSquare(rect, first, threshold);
 }
 
@@ -222,8 +296,12 @@ Vec2 AutoPolygon::findFirstNoneTransparentPixel(const Rect& rect, float threshol
             }
         }
     }
-    CCASSERT(found, "image is all transparent!");
-    return i;
+//    CCASSERT(found, "image is all transparent!");
+    if(found){
+        return i;
+    }else{
+        return Vec2(-2, -2);
+    }
 }
 
 unsigned char AutoPolygon::getAlphaByIndex(unsigned int i)
@@ -257,8 +335,38 @@ unsigned int AutoPolygon::getSquareValue(unsigned int x, unsigned int y, const R
     sv += (fixedRect.containsPoint(bl) && getAlphaByPos(bl) > threshold)? 4 : 0;
     Vec2 br = Vec2(x-0.0f, y-0.0f);
     sv += (fixedRect.containsPoint(br) && getAlphaByPos(br) > threshold)? 8 : 0;
-    CCASSERT(sv != 0 && sv != 15, "square value should not be 0, or 15");
+//    CCASSERT(sv != 0 && sv != 15, "square value should not be 0, or 15");
     return sv;
+}
+
+static bool isOnePixelSquare(const std::vector<cocos2d::Vec2> & points)
+{
+    if(points.size() != 4){
+        return false;
+    }
+    
+    float minX, minY, maxX, maxY;
+    minX = maxX = points[0].x;
+    minY = maxY = points[0].y;
+    
+    for(auto i : points){
+        if(i.x < minX){
+            minX = i.x;
+        }
+        
+        if(i.y < minY){
+            minY = i.y;
+        }
+        
+        if(maxX < i.x){
+            maxX = i.x;
+        }
+        
+        if(maxY < i.y){
+            maxY = i.y;
+        }
+    }
+    return maxX - minX == 1.0f && maxY - minY == 1.0f;
 }
 
 std::vector<cocos2d::Vec2> AutoPolygon::marchSquare(const Rect& rect, const Vec2& start, float threshold)
@@ -279,6 +387,9 @@ std::vector<cocos2d::Vec2> AutoPolygon::marchSquare(const Rect& rect, const Vec2
     std::vector<cocos2d::Vec2> _points;
     do{
         int sv = getSquareValue(curx, cury, rect, threshold);
+        if(sv == 0 || sv == 15){
+            return std::vector<cocos2d::Vec2>{};
+        }
         switch(sv){
 
             case 1:
@@ -423,6 +534,10 @@ std::vector<cocos2d::Vec2> AutoPolygon::marchSquare(const Rect& rect, const Vec2
         CCASSERT(count <= totalPixel, "oh no, marching square cannot find starting position");
 #endif
     } while(curx != startx || cury != starty);
+    
+    if(isOnePixelSquare(_points)){
+        return std::vector<cocos2d::Vec2>{};
+    }
     return _points;
 }
 
@@ -490,13 +605,13 @@ std::vector<Vec2> AutoPolygon::reduce(const std::vector<Vec2>& points, const Rec
     // if there are less than 3 points, then we have nothing
     if(size<3)
     {
-        log("AUTOPOLYGON: cannot reduce points for %s that has less than 3 points in input, e: %f", _filename.c_str(), epsilon);
+//        log("AUTOPOLYGON: cannot reduce points for %s that has less than 3 points in input, e: %f", _filename.c_str(), epsilon);
         return std::vector<Vec2>();
     }
     // if there are less than 9 points (but more than 3), then we don't need to reduce it
     else if (size < 9)
     {
-        log("AUTOPOLYGON: cannot reduce points for %s e: %f",_filename.c_str(), epsilon);
+//        log("AUTOPOLYGON: cannot reduce points for %s e: %f",_filename.c_str(), epsilon);
         return points;
     }
     float maxEp = MIN(rect.size.width, rect.size.height);
@@ -510,6 +625,28 @@ std::vector<Vec2> AutoPolygon::reduce(const std::vector<Vec2>& points, const Rec
         result.pop_back();
     }
     return result;
+}
+
+static float off_num_tocenter(float value, float center, float precision = PRECISION)
+{
+    if(value == center)
+        return center;
+    
+    if(value < center)
+        return value - 2 * precision;
+    
+    return value + 2 * precision;
+}
+
+static float scale_num_toorigin(float value, float center, float precision = PRECISION)
+{
+    if(value == center)
+        return center;
+    
+    if(value < center)
+        return value - 2 * precision;
+    
+    return value + 2 * precision;
 }
 
 std::vector<Vec2> AutoPolygon::expand(const std::vector<Vec2>& points, const cocos2d::Rect &rect, float epsilon)
@@ -563,9 +700,26 @@ std::vector<Vec2> AutoPolygon::expand(const std::vector<Vec2>& points, const coc
     while(p2->IsHole()){
         p2 = p2->GetNext();
     }
+    
+    Vec2 center = Vec2(rect.size.width / 2 *_scaleFactor * PRECISION, rect.size.width/2*_scaleFactor * PRECISION);
+    
     for(const auto& pt : p2->Contour)
     {
-        outPoints.push_back(Vec2(pt.X/PRECISION, pt.Y/PRECISION));
+        // 原版
+//        outPoints.push_back(Vec2(pt.X/PRECISION, pt.Y/PRECISION));
+        
+        // test1
+//        Vec2 dir = Vec2(clampf(off_num_tocenter(pt.X, center.x, PRECISION), 0.0f, rect.size.width * PRECISION), clampf(off_num_tocenter(pt.Y, center.y, PRECISION), 0.0f, rect.size.height * PRECISION));
+//        outPoints.push_back(dir);
+        
+        // test2
+//        Vec2 dir = Vec2(clampf(pt.X * 1.01, 0.0f, rect.size.width * PRECISION), clampf(pt.Y * 1.01, 0.0f, rect.size.height * PRECISION));
+//        outPoints.push_back(dir);
+        
+        
+        // 使用版本
+        outPoints.push_back(Vec2(pt.X, pt.Y));
+
     }
     return outPoints;
 }
@@ -671,15 +825,44 @@ void AutoPolygon::calculateUV(const Rect& rect, V3F_C4B_T2F* verts, ssize_t coun
     CCASSERT(_width && _height, "please specify width and height for this AutoPolygon instance");
     auto texWidth  = _width;
     auto texHeight = _height;
+//    auto texWidth  = rect.size.width; //_width;
+//    auto texHeight = rect.size.height; // _height;
 
     auto end = &verts[count];
+    Mat4 tm = Mat4::IDENTITY;
+    
+    float sx = texWidth / _sourceColorRect.size.width;
+    float sy = texHeight / _sourceColorRect.size.height;
+    
+    tm.scale(_uvScale);
+    
+    Vec3 center = Vec3(0.5f, 0.5f, 0.0f);
+    
     for(auto i = verts; i != end; ++i)
     {
         // for every point, offset with the center point
-        float u = (i->vertices.x*_scaleFactor + rect.origin.x) / texWidth;
-        float v = (rect.origin.y+rect.size.height - i->vertices.y*_scaleFactor) / texHeight;
-        i->texCoords.u = u;
-        i->texCoords.v = v;
+        float u = (i->vertices.x / (PRECISION *_scaleFactor) + rect.origin.x) / texWidth;
+        float v = (rect.origin.y+rect.size.height - i->vertices.y / (PRECISION *_scaleFactor) ) / texHeight;
+        
+        float u1 = u;
+        float v1 = v;
+        
+        if(_uvScale < 1.0f || _uvScale > 1.0f){
+            Vec3 v0 = Vec3(u, v, 0.0f);
+            
+            Vec3 vd = v0 - center;
+            
+            Vec3 t1 = tm * vd;
+            
+            Vec3 tv = center + t1;
+            
+            
+            u1 = clampf(tv.x, 0.0f, 1.0f);
+            v1 = clampf(tv.y, 0.0f, 1.0f);
+        }
+        
+        i->texCoords.u = u1;
+        i->texCoords.v = v1;
     }
 }
 
@@ -697,26 +880,103 @@ Rect AutoPolygon::getRealRect(const Rect& rect)
         //rect is specified, so convert to real rect
         realRect = CC_RECT_POINTS_TO_PIXELS(rect);
     }
+    if(_sourceColorRect.equals(Rect::ZERO)){
+        _sourceColorRect = realRect;
+    }
     return realRect;
 }
 
-PolygonInfo AutoPolygon::generateTriangles(const Rect& rect, float epsilon, float threshold)
+PolygonInfo AutoPolygon::generateTriangles(const Rect& rect, float epsilon, float threshold, int maxVerts)
 {
+    PolygonInfo ret;
     Rect realRect = getRealRect(rect);
     auto p = trace(realRect, threshold);
+    if(p.size() == 0){
+        return ret;
+    }
+    
+    if(p.size() == 1 && p.at(0) == Vec2(-2, -2)){
+        ret.setAllTransparent(true);
+        
+        
+        V3F_C4B_T2F_Quad quad;
+        
+        float x1 = realRect.size.width/2;
+        float y1 = realRect.size.height/2;
+        float x2 = x1 + 2;
+        float y2 = y1 + 2;
+        
+        x1 *= PRECISION;
+        x2 *= PRECISION;
+        y1 *= PRECISION;
+        y2 *= PRECISION;
+        
+        quad.bl.vertices.set(x1, y1, 0.0f);
+        quad.br.vertices.set(x2, y1, 0.0f);
+        quad.tl.vertices.set(x1, y2, 0.0f);
+        quad.tr.vertices.set(x2, y2, 0.0f);
+        
+        quad.bl.colors = Color4B::WHITE;
+        quad.br.colors = Color4B::WHITE;
+        quad.tl.colors = Color4B::WHITE;
+        quad.tr.colors = Color4B::WHITE;
+        
+        quad.bl.texCoords = Tex2F(0,0);
+        quad.br.texCoords = Tex2F(0,0);
+        quad.tl.texCoords = Tex2F(0,0);
+        quad.tr.texCoords = Tex2F(0,0);
+        
+        const int vert_cnt = 4;
+        
+        const int idx_cnt = 6;
+    
+        unsigned short idx[idx_cnt] = {0,1,2,3,2,1};
+        
+        V3F_C4B_T2F* vertsBuf = new (std::nothrow) V3F_C4B_T2F[vert_cnt];
+        memcpy(vertsBuf, &quad.tl, vert_cnt * sizeof(V3F_C4B_T2F));
+
+        unsigned short* indicesBuf = new (std::nothrow) unsigned short[idx_cnt];
+        memcpy(indicesBuf, &idx, idx_cnt * sizeof(unsigned short));
+        
+        
+        TrianglesCommand::Triangles triangles = { vertsBuf, indicesBuf, vert_cnt, idx_cnt };
+        calculateUV(realRect, triangles.verts, triangles.vertCount);
+        
+        ret.triangles = triangles;
+        ret.setFilename(_filename);
+        ret.setRect(realRect);
+        
+        return ret;
+    }
+    
     p = reduce(p, realRect, epsilon);
+    if(p.size() > maxVerts){
+        return ret;
+    }
     p = expand(p, realRect, epsilon);
     auto tri = triangulate(p);
     calculateUV(realRect, tri.verts, tri.vertCount);
-    PolygonInfo ret;
+    
     ret.triangles = tri;
     ret.setFilename(_filename);
     ret.setRect(realRect);
     return ret;
 }
 
-PolygonInfo AutoPolygon::generatePolygon(const std::string& filename, const Rect& rect, float epsilon, float threshold)
+PolygonInfo AutoPolygon::generatePolygon(const std::string& filename, const Rect& rect, float epsilon, float threshold, float uvscale, float maxVerts)
 {
     AutoPolygon ap(filename);
+    if(ap.hasValidData()){
+        ap.setUVScale(uvscale);
+        ap.setSourceColorRect(rect);
+        return ap.generateTriangles(Rect::ZERO, epsilon, threshold, maxVerts);
+    }else{
+        return PolygonInfo();
+    }
+}
+
+PolygonInfo AutoPolygon::generatePolygon(SpriteFrame *sf, const Rect& rect, float epsilon, float threshold)
+{
+    AutoPolygon ap(sf);
     return ap.generateTriangles(rect, epsilon, threshold);
 }

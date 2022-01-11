@@ -252,6 +252,10 @@ public:
      * @return true if polygonInfo is available
      */
     bool hasPolygonInfo() const;
+    
+    const Rect& getSourceColorRect() const { return _sourceColorRect;}
+    
+    void setSourceColorRect(const Rect& r) { _sourceColorRect = r; }
 
 CC_CONSTRUCTOR_ACCESS:
     /**
@@ -291,6 +295,7 @@ protected:
     Vec2 _anchorPoint;
     Size _originalSize;
     Rect _rectInPixels;
+    Rect _sourceColorRect;
     bool   _rotated;
     Rect _rect;
     Rect _centerRect;
@@ -299,6 +304,15 @@ protected:
     Texture2D *_texture;
     std::string  _textureFilename;
     PolygonInfo _polygonInfo;
+    CC_SYNTHESIZE_DEFAULTVALUE(std::string, "", _frameName, FrameName);
+    
+    CC_SYNTHESIZE_DEFAULTVALUE(std::string, "", _relativePngPath, RelativePngPath);
+    
+    CC_SYNTHESIZE_DEFAULTVALUE(std::string, "", _trianglesStr, TrianglesStr);
+    
+    CC_SYNTHESIZE_DEFAULTVALUE(std::string, "", _verticesStr, VerticesStr);
+    
+    CC_SYNTHESIZE_DEFAULTVALUE(std::string, "", _verticesUVStr, VerticesUVStr);
 };
 
 // end of _2d group

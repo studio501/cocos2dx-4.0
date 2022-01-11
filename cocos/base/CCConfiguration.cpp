@@ -184,8 +184,13 @@ bool Configuration::checkForGLExtension(const std::string &searchName) const
 //
 int Configuration::getMaxTextureSize() const
 {
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     auto _deviceInfo = backend::Device::getInstance()->getDeviceInfo();
     return _deviceInfo->getMaxTextureSize();
+#else
+    return 4194304;
+#endif
+    
 }
 
 int Configuration::getMaxModelviewStackDepth() const

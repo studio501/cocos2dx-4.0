@@ -94,8 +94,11 @@ void SpriteFrameCache::initializePolygonInfo(const Size &textureSize,
     for (size_t i = 0; i < vertexCount/2; i++)
     {
         vertexData[i].colors = Color4B::WHITE;
+//        vertexData[i].vertices = Vec3(vertices[i*2] / scaleFactor,
+//                                      (spriteSize.height - vertices[i*2+1]) / scaleFactor,
+//                                      0);
         vertexData[i].vertices = Vec3(vertices[i*2] / scaleFactor,
-                                      (spriteSize.height - vertices[i*2+1]) / scaleFactor,
+                                      (vertices[i*2+1]) / scaleFactor,
                                       0);
         vertexData[i].texCoords = Tex2F(verticesUV[i*2] / textureSize.width,
                                         verticesUV[i*2+1] / textureSize.height);
@@ -149,7 +152,7 @@ void SpriteFrameCache::addSpriteFramesWithDictionary(ValueMap& dictionary, Textu
     }
 
     // check the format
-    CCASSERT(format >=0 && format <= 3, "format is not supported for SpriteFrameCache addSpriteFramesWithDictionary:textureFilename:");
+    CCASSERT(format >=0 && format <= 4, "format is not supported for SpriteFrameCache addSpriteFramesWithDictionary:textureFilename:");
 
     auto textureFileName = Director::getInstance()->getTextureCache()->getTextureFilePath(texture);
     Image* image = nullptr;
@@ -203,6 +206,7 @@ void SpriteFrameCache::addSpriteFramesWithDictionary(ValueMap& dictionary, Textu
 
             Vec2 offset = PointFromString(frameDict["offset"].asString());
             Size sourceSize = SizeFromString(frameDict["sourceSize"].asString());
+            Rect sourceColorRect = RectFromString(frameDict["sourceColorRect"].asString());
 
             // create frame
             spriteFrame = SpriteFrame::createWithTexture(texture,
@@ -211,6 +215,13 @@ void SpriteFrameCache::addSpriteFramesWithDictionary(ValueMap& dictionary, Textu
                                                          offset,
                                                          sourceSize
                                                          );
+            spriteFrame->setFrameName(spriteFrameName);
+            
+            spriteFrame->setSourceColorRect(sourceColorRect);
+            
+            if(texture->getPath().find("World_1.pvr") != std::string::npos){
+                
+            }
         } 
         else if (format == 3)
         {
@@ -255,6 +266,45 @@ void SpriteFrameCache::addSpriteFramesWithDictionary(ValueMap& dictionary, Textu
             if (frameDict.find("anchor") != frameDict.end())
             {
                 spriteFrame->setAnchorPoint(PointFromString(frameDict["anchor"].asString()));
+            }
+        }
+        else if(format == 4)
+        {
+            Rect frame = RectFromString(frameDict["frame"].asString());
+            bool rotated = false;
+
+            // rotation
+            if (format == 2)
+            {
+                rotated = frameDict["rotated"].asBool();
+            }
+
+            Vec2 offset = PointFromString(frameDict["offset"].asString());
+            Size sourceSize = SizeFromString(frameDict["sourceSize"].asString());
+
+            // create frame
+            spriteFrame = SpriteFrame::createWithTexture(texture,
+                                                         frame,
+                                                         rotated,
+                                                         offset,
+                                                         sourceSize
+                                                         );
+            spriteFrame->setFrameName(spriteFrameName);
+            
+            if(frameDict.find("vertices") != frameDict.end())
+            {
+                spriteFrame->setVerticesStr(frameDict["vertices"].asString());
+                spriteFrame->setVerticesUVStr(frameDict["verticesUV"].asString());
+                spriteFrame->setTrianglesStr(frameDict["triangles"].asString());
+                
+                using cocos2d::utils::parseIntegerList;
+                std::vector<int> vertices = parseIntegerList(frameDict["vertices"].asString());
+                std::vector<int> verticesUV = parseIntegerList(frameDict["verticesUV"].asString());
+                std::vector<int> indices = parseIntegerList(frameDict["triangles"].asString());
+
+                PolygonInfo info;
+                initializePolygonInfo(textureSize, sourceSize, vertices, verticesUV, indices, info);
+                spriteFrame->setPolygonInfo(info);
             }
         }
 
@@ -347,6 +397,54 @@ void SpriteFrameCache::addSpriteFramesWithFile(const std::string& plist, const s
     const std::string fullPath = FileUtils::getInstance()->fullPathForFilename(plist);
     ValueMap dict = FileUtils::getInstance()->getValueMapFromFile(fullPath);
     addSpriteFramesWithDictionary(dict, textureFileName, plist);
+}
+
+void SpriteFrameCache::addSpriteFramesWithFile(const std::string& plist, ValueMap& dict)
+{
+    CCASSERT(!plist.empty(), "plist filename should not be nullptr");
+    
+    std::string fullPath = FileUtils::getInstance()->fullPathForFilename(plist);
+    if (fullPath.empty())
+    {
+        // return if plist file doesn't exist
+        CCLOG("cocos2d: SpriteFrameCache: can not find %s", plist.c_str());
+        return;
+    }
+
+    dict = FileUtils::getInstance()->getValueMapFromFile(fullPath);
+
+    string texturePath("");
+
+    if (dict.find("metadata") != dict.end())
+    {
+        ValueMap& metadataDict = dict["metadata"].asValueMap();
+        // try to read  texture file name from meta data
+        texturePath = metadataDict["textureFileName"].asString();
+    }
+
+    if (!texturePath.empty())
+    {
+        // build texture path relative to plist file
+        texturePath = FileUtils::getInstance()->fullPathFromRelativeFile(texturePath, plist);
+    }
+    else
+    {
+        // build texture path by replacing file extension
+        texturePath = plist;
+
+        // remove .xxx
+        size_t startPos = texturePath.find_last_of('.');
+        if(startPos != string::npos)
+        {
+            texturePath = texturePath.erase(startPos);
+        }
+
+        // append .png
+        texturePath = texturePath.append(".png");
+
+        CCLOG("cocos2d: SpriteFrameCache: Trying to use file %s as texture", texturePath.c_str());
+    }
+    addSpriteFramesWithDictionary(dict, texturePath, plist);
 }
 
 void SpriteFrameCache::addSpriteFramesWithFile(const std::string& plist)

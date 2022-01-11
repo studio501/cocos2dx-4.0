@@ -128,6 +128,8 @@ protected:
     bool _isVertsOwner;
     Rect _rect;
     std::string _filename;
+    
+    CC_SYNTHESIZE(bool, _allTransparent, AllTransparent);
 
 private:
     void releaseVertsAndIndices();
@@ -150,6 +152,9 @@ public:
      * @return  an AutoPolygon object;
      */
     AutoPolygon(const std::string &filename);
+    
+    
+    AutoPolygon(SpriteFrame * sf);
     
     /**
      * Destructor of AutoPolygon.
@@ -239,7 +244,7 @@ public:
      * auto sp2 = Sprite::create(myInfo2);
      * @endcode
      */
-    PolygonInfo generateTriangles(const Rect& rect = Rect::ZERO, float epsilon = 2.0f, float threshold = 0.05f);
+    PolygonInfo generateTriangles(const Rect& rect = Rect::ZERO, float epsilon = 2.0f, float threshold = 0.05f, int maxVerts = 256);
     
     /**
      * a helper function, packing autoPolygon creation, trace, reduce, expand, triangulate and calculate uv in one function
@@ -253,7 +258,13 @@ public:
      * auto sp = Sprite::create(AutoPolygon::generatePolygon("grossini.png"));
      * @endcode
      */
-    static PolygonInfo generatePolygon(const std::string& filename, const Rect& rect = Rect::ZERO, float epsilon = 2.0f, float threshold = 0.05f);
+    static PolygonInfo generatePolygon(const std::string& filename, const Rect& rect = Rect::ZERO, float epsilon = 2.0f, float threshold = 0.05f, float uvscale = 1.0f, float maxVerts = 256);
+    
+    static PolygonInfo generatePolygon(SpriteFrame *sf, const Rect& rect = Rect::ZERO, float epsilon = 2.0f, float threshold = 0.05f);
+    
+    const Rect& getSourceColorRect() const { return _sourceColorRect; }
+    
+    void setSourceColorRect(const Rect& r) { _sourceColorRect = r; }
 protected:
     Vec2 findFirstNoneTransparentPixel(const Rect& rect, float threshold);
     std::vector<cocos2d::Vec2> marchSquare(const Rect& rect, const Vec2& first, float threshold);
@@ -278,6 +289,11 @@ protected:
     unsigned int _height;
     float _scaleFactor;
     unsigned int _threshold;
+    Rect _sourceColorRect;
+    
+    CC_SYNTHESIZE_DEFAULTVALUE(float, 1.0f, _uvScale, UVScale);
+public:
+    bool hasValidData() const { return _data != nullptr; }
 };
 
 NS_CC_END

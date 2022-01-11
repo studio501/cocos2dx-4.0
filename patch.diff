@@ -1,0 +1,334 @@
+diff --git a/cocos/2d/CCRenderTexture.cpp b/cocos/2d/CCRenderTexture.cpp
+index c7bdcf7..e268b37 100644
+--- a/cocos/2d/CCRenderTexture.cpp
++++ b/cocos/2d/CCRenderTexture.cpp
+@@ -209,21 +209,25 @@ bool RenderTexture::initWithWidthAndHeight(int w, int h, backend::PixelFormat fo
+ 
+         if (PixelFormat::D24S8 == depthStencilFormat)
+         {
+-            _renderTargetFlags = RenderTargetFlag::ALL;
+-            descriptor.textureFormat = depthStencilFormat;
+-            texture = backend::Device::getInstance()->newTexture(descriptor);
+-            if (! texture)
+-                break;
+-
+-            _depthStencilTexture = new (std::nothrow) Texture2D;
+-            if (!_depthStencilTexture)
+-            {
++            if (Configuration::getInstance()->isSupportsOESDepth24ES2()){
++                _renderTargetFlags = RenderTargetFlag::ALL;
++                descriptor.textureFormat = depthStencilFormat;
++                texture = backend::Device::getInstance()->newTexture(descriptor);
++                if (! texture)
++                    break;
++
++                _depthStencilTexture = new (std::nothrow) Texture2D;
++                if (!_depthStencilTexture)
++                {
++                    texture->release();
++                    break;
++                }
++
++                _depthStencilTexture->initWithBackendTexture(texture);
+                 texture->release();
+-                break;
++            }else{
++                _androidEsDS = true;
+             }
+-
+-            _depthStencilTexture->initWithBackendTexture(texture);
+-            texture->release();
+         }
+ 
+         _texture2D->setAntiAliasTexParameters();
+@@ -568,7 +572,7 @@ void RenderTexture::onBegin()
+     _oldStencilAttachment = renderer->getStencilAttachment();
+     _oldRenderTargetFlag = renderer->getRenderTargetFlag();
+ 
+-    renderer->setRenderTarget(_renderTargetFlags, _texture2D, _depthStencilTexture, _depthStencilTexture);
++    renderer->setRenderTarget(_renderTargetFlags, _texture2D, _depthStencilTexture, _depthStencilTexture, _androidEsDS);
+ }
+ 
+ void RenderTexture::onEnd()
+diff --git a/cocos/2d/CCRenderTexture.h b/cocos/2d/CCRenderTexture.h
+index c8c8887..7b6c7e5 100644
+--- a/cocos/2d/CCRenderTexture.h
++++ b/cocos/2d/CCRenderTexture.h
+@@ -370,6 +370,7 @@ protected:
+     float _clearDepth = 1.f;
+     int _clearStencil = 0;
+     bool _autoDraw = false;
++    bool _androidEsDS = false;
+     ClearFlag _clearFlags = ClearFlag::NONE;
+ 
+     /** The Sprite being used.
+diff --git a/cocos/base/CCConfiguration.cpp b/cocos/base/CCConfiguration.cpp
+index 00467c1..689bdda 100644
+--- a/cocos/base/CCConfiguration.cpp
++++ b/cocos/base/CCConfiguration.cpp
+@@ -265,6 +265,18 @@ bool Configuration::supportsOESDepth24() const
+     return _supportsOESDepth24;
+     
+ }
++
++bool Configuration::isSupportsOESDepth24ES2() const
++{
++#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
++    bool flag = supportsOESDepth24();
++//    auto t = getValue("version",Value("2.0"));
++    return flag;
++#else
++    return true;
++#endif
++}
++
+ bool Configuration::supportsOESPackedDepthStencil() const
+ {
+     return _supportsOESPackedDepthStencil;
+diff --git a/cocos/base/CCConfiguration.h b/cocos/base/CCConfiguration.h
+index 5a2282c..c0c8161 100644
+--- a/cocos/base/CCConfiguration.h
++++ b/cocos/base/CCConfiguration.h
+@@ -146,6 +146,8 @@ public:
+      * @since v2.0.0
+      */
+     bool supportsOESDepth24() const;
++
++	bool isSupportsOESDepth24ES2() const;
+     
+     /** Whether or not OES_Packed_depth_stencil is supported.
+      *
+diff --git a/cocos/renderer/CCRenderer.cpp b/cocos/renderer/CCRenderer.cpp
+index 81550d6..ee9d5f0 100644
+--- a/cocos/renderer/CCRenderer.cpp
++++ b/cocos/renderer/CCRenderer.cpp
+@@ -772,9 +772,10 @@ void Renderer::beginRenderPass(RenderCommand* cmd)
+     _commandBuffer->setStencilReferenceValue(_stencilRef);
+ }
+ 
+-void Renderer::setRenderTarget(RenderTargetFlag flags, Texture2D* colorAttachment, Texture2D* depthAttachment, Texture2D* stencilAttachment)
++void Renderer::setRenderTarget(RenderTargetFlag flags, Texture2D* colorAttachment, Texture2D* depthAttachment, Texture2D* stencilAttachment, bool androidEs2D)
+ {
+     _renderTargetFlag = flags;
++    _renderPassDescriptor.androidEs2DepthStencil = androidEs2D;
+     if (flags & RenderTargetFlag::COLOR)
+     {
+         _renderPassDescriptor.needColorAttachment = true;
+@@ -858,6 +859,12 @@ void Renderer::clear(ClearFlag flags, const Color4F& color, float depth, unsigne
+             descriptor.stencilAttachmentTexture = _renderPassDescriptor.stencilAttachmentTexture;
+         }
+ 
++        //
++        if(_renderPassDescriptor.androidEs2DepthStencil){
++            descriptor.androidEs2DepthStencil = true;
++            descriptor.clearDepthValue = depth;
++            _renderPassDescriptor.androidEs2DepthStencil = false;
++        }
+         _commandBuffer->beginRenderPass(descriptor);
+         _commandBuffer->endRenderPass();
+ 
+diff --git a/cocos/renderer/CCRenderer.h b/cocos/renderer/CCRenderer.h
+index 7006021..b63d2b9 100644
+--- a/cocos/renderer/CCRenderer.h
++++ b/cocos/renderer/CCRenderer.h
+@@ -185,7 +185,7 @@ public:
+      @stencilAttachment The value to replace stencil attachment. Depth attachment and stencil attachment
+                         can be the same value.
+      */
+-    void setRenderTarget(RenderTargetFlag flags, Texture2D* colorAttachment, Texture2D* depthAttachment, Texture2D* stencilAttachment);
++    void setRenderTarget(RenderTargetFlag flags, Texture2D* colorAttachment, Texture2D* depthAttachment, Texture2D* stencilAttachment, bool androidEs2DS = false);
+     /**
+     Set clear values for each attachment.
+     @flags Flags to indicate which attachment clear value to be modified.
+diff --git a/cocos/renderer/backend/RenderPassDescriptor.h b/cocos/renderer/backend/RenderPassDescriptor.h
+index 67396c7..3ec62ca 100644
+--- a/cocos/renderer/backend/RenderPassDescriptor.h
++++ b/cocos/renderer/backend/RenderPassDescriptor.h
+@@ -56,6 +56,7 @@ struct RenderPassDescriptor
+     bool needClearColor = false;
+     bool needClearDepth = false;
+     bool needClearStencil = false;
++    bool androidEs2DepthStencil = false;
+     TextureBackend* depthAttachmentTexture = nullptr;
+     TextureBackend* stencilAttachmentTexture = nullptr;
+     TextureBackend* colorAttachmentsTexture[MAX_COLOR_ATTCHMENT] = { nullptr };
+diff --git a/cocos/renderer/backend/opengl/CommandBufferGL.cpp b/cocos/renderer/backend/opengl/CommandBufferGL.cpp
+index 721a653..7a48081 100644
+--- a/cocos/renderer/backend/opengl/CommandBufferGL.cpp
++++ b/cocos/renderer/backend/opengl/CommandBufferGL.cpp
+@@ -111,6 +111,7 @@ void CommandBufferGL::applyRenderPassDescriptor(const RenderPassDescriptor& desc
+     bool useDepthAttachmentExternal = descirptor.depthTestEnabled && descirptor.depthAttachmentTexture;
+     bool useStencilAttachmentExternal = descirptor.stencilTestEnabled && descirptor.stencilAttachmentTexture;
+     bool useGeneratedFBO = false;
++    bool useAndroidEs2DepthStencil = descirptor.androidEs2DepthStencil;
+     if (useColorAttachmentExternal || useDepthAttachmentExternal || useStencilAttachmentExternal)
+     {
+         if(_generatedFBO == 0)
+@@ -125,6 +126,103 @@ void CommandBufferGL::applyRenderPassDescriptor(const RenderPassDescriptor& desc
+         _currentFBO = _defaultFBO;
+     }
+     glBindFramebuffer(GL_FRAMEBUFFER, _currentFBO);
++
++    uint32_t t_width = 0;
++    uint32_t t_height = 0;
++    if (descirptor.needColorAttachment)
++    {
++        int i = 0;
++        for (const auto& texture : descirptor.colorAttachmentsTexture)
++        {
++            if (texture)
++            {
++                // TODO: support texture cube
++                glFramebufferTexture2D(GL_FRAMEBUFFER,
++                                       GL_COLOR_ATTACHMENT0 + i,
++                                       GL_TEXTURE_2D,
++                                       getHandler(texture),
++                                       0);
++
++                if(useAndroidEs2DepthStencil &&i == 0){
++                    auto tex2d = dynamic_cast<Texture2DBackend*>(texture);
++                    if(tex2d){
++                        t_width = tex2d->getWidth();
++                        t_height = tex2d->getHeight();
++                    }
++                }
++            }
++            CHECK_GL_ERROR_DEBUG();
++            ++i;
++        }
++
++        if (useGeneratedFBO)
++            _generatedFBOBindColor = true;
++    }
++    else
++    {
++        if (_generatedFBOBindColor && useGeneratedFBO)
++        {
++            // FIXME: Now only support attaching to attachment 0.
++            glFramebufferTexture2D(GL_FRAMEBUFFER,
++                                   GL_COLOR_ATTACHMENT0,
++                                   GL_TEXTURE_2D,
++                                   0,
++                                   0);
++
++            _generatedFBOBindColor = false;
++        }
++
++        // If not draw buffer is needed, should invoke this line explicitly, or it will cause
++        // GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER and GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER error.
++        // https://stackoverflow.com/questions/28313782/porting-opengl-es-framebuffer-to-opengl
++#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
++        glDrawBuffer(GL_NONE);
++        glReadBuffer(GL_NONE);
++#endif
++    }
++
++    if(useAndroidEs2DepthStencil){
++        GLint oldRBO;
++        glGetIntegerv(GL_RENDERBUFFER_BINDING, &oldRBO);
++
++        auto _depthAndStencilFormat = GL_DEPTH24_STENCIL8;
++        //create and attach depth buffer
++        glGenRenderbuffers(1, &_depthRenderBuffer);
++        glBindRenderbuffer(GL_RENDERBUFFER, _depthRenderBuffer);
++        glRenderbufferStorage(GL_RENDERBUFFER, _depthAndStencilFormat, (GLsizei)t_width, (GLsizei)t_height);
++        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthRenderBuffer);
++
++        // if depth format is the one with stencil part, bind same render buffer as stencil attachment
++        if (_depthAndStencilFormat == GL_DEPTH24_STENCIL8)
++        {
++            glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_RENDERBUFFER, _depthRenderBuffer);
++        }
++        glBindRenderbuffer(GL_RENDERBUFFER, oldRBO);
++
++        GLfloat oldDepthClearValue = 0.0f;
++        GLint oldStencilClearValue = 0;
++        GLboolean oldDepthWrite = GL_FALSE;
++
++        auto t_clearDepth = descirptor.clearDepthValue;
++        glGetFloatv(GL_DEPTH_CLEAR_VALUE, &oldDepthClearValue);
++        glClearDepth(t_clearDepth);
++
++        glGetBooleanv(GL_DEPTH_WRITEMASK, &oldDepthWrite);
++        glDepthMask(GL_TRUE);
++
++        auto t_clearStencil = 0;
++        glGetIntegerv(GL_STENCIL_CLEAR_VALUE, &oldStencilClearValue);
++        glClearStencil(t_clearStencil);
++
++        GLbitfield mask = 0;
++        mask = mask | GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT;
++        glClear(mask);
++
++        glClearDepth(oldDepthClearValue);
++        glDepthMask(oldDepthWrite);
++
++        glClearStencil(oldStencilClearValue);
++    }
+     
+     if (useDepthAttachmentExternal)
+     {
+@@ -177,50 +275,7 @@ void CommandBufferGL::applyRenderPassDescriptor(const RenderPassDescriptor& desc
+             _generatedFBOBindStencil = false;
+         }
+     }
+-    
+-    if (descirptor.needColorAttachment)
+-    {
+-        int i = 0;
+-        for (const auto& texture : descirptor.colorAttachmentsTexture)
+-        {
+-            if (texture)
+-            {
+-                // TODO: support texture cube
+-                glFramebufferTexture2D(GL_FRAMEBUFFER,
+-                                       GL_COLOR_ATTACHMENT0 + i,
+-                                       GL_TEXTURE_2D,
+-                                       getHandler(texture),
+-                                       0);
+-            }
+-            CHECK_GL_ERROR_DEBUG();
+-            ++i;
+-        }
+-
+-        if (useGeneratedFBO)
+-            _generatedFBOBindColor = true;
+-    }
+-    else
+-    {
+-        if (_generatedFBOBindColor && useGeneratedFBO)
+-        {
+-           // FIXME: Now only support attaching to attachment 0.
+-           glFramebufferTexture2D(GL_FRAMEBUFFER,
+-                                  GL_COLOR_ATTACHMENT0,
+-                                  GL_TEXTURE_2D,
+-                                  0,
+-                                  0);
+-
+-            _generatedFBOBindColor = false;
+-        }
+ 
+-        // If not draw buffer is needed, should invoke this line explicitly, or it will cause
+-        // GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER and GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER error.
+-        // https://stackoverflow.com/questions/28313782/porting-opengl-es-framebuffer-to-opengl
+-#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
+-        glDrawBuffer(GL_NONE);
+-        glReadBuffer(GL_NONE);
+-#endif
+-    }
+     CHECK_GL_ERROR_DEBUG();
+     
+     // set clear color, depth and stencil
+diff --git a/cocos/renderer/backend/opengl/CommandBufferGL.h b/cocos/renderer/backend/opengl/CommandBufferGL.h
+index eb7dff7..e458067 100644
+--- a/cocos/renderer/backend/opengl/CommandBufferGL.h
++++ b/cocos/renderer/backend/opengl/CommandBufferGL.h
+@@ -193,6 +193,8 @@ private:
+ 
+     GLint _defaultFBO = 0;  // The value gets from glGetIntegerv, so need to use GLint
+     GLuint _currentFBO = 0;
++    GLuint       _depthRenderBuffer;
++    GLuint       _stencilRenderBuffer;
+     BufferGL* _vertexBuffer;
+     ProgramState* _programState = nullptr;
+     BufferGL* _indexBuffer = nullptr;

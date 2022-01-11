@@ -1,0 +1,1366 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		A916EBF0E8CF48B7B510022A /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = D79F98A306554A2CB7F9710F /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				DDF446DE583F4168AF47BBC8 /* Generate CMakeFiles/ALL_BUILD */,
+			);
+			dependencies = (
+				CADE9339759743DFA78DF7C3 /* PBXTargetDependency */,
+				A947F1880B744A0DB0E8459A /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+		F3E7EC9A18F74277A35DC881 /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = AD53A79EEEF7484FBA1537FE /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				A5EBBA3AA8064835B3F079C3 /* Generate CMakeFiles/ZERO_CHECK */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		0029DBF90DA04449ADEA88B2 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/land.png */ = {isa = PBXBuildFile; fileRef = 6B9F318ED7574062BC9819A4 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/land.png */; };
+		06385DB0E1024430B982A418 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/3d/3dConstants.lua */ = {isa = PBXBuildFile; fileRef = 0FB5AD3898E04004A622279B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/3d/3dConstants.lua */; };
+		0EBD4434EF91456992FFE789 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/ui/GuiConstants.lua */ = {isa = PBXBuildFile; fileRef = E9801B19CEE4483789B15781 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/ui/GuiConstants.lua */; };
+		0EBDE3F710D1495B87CACB0B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/Cocos2dConstants.lua */ = {isa = PBXBuildFile; fileRef = B45579BFC334468BA03A6290 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/Cocos2dConstants.lua */; };
+		139CA6B1DB284B86ABDF3EFE /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/src/mobdebug.lua */ = {isa = PBXBuildFile; fileRef = 6A1578762AFA4AF8893FCEF6 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/src/mobdebug.lua */; };
+		1C46963979E842CB9A96B11F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/ui/DeprecatedUIEnum.lua */ = {isa = PBXBuildFile; fileRef = 2B841C6625D74EF1B87F5BAE /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/ui/DeprecatedUIEnum.lua */; };
+		1DB93DBD261F4A5689E99842 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/Classes/AppDelegate.cpp */ = {isa = PBXBuildFile; fileRef = 8016CE9883CC4CE58C076EFC /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/Classes/AppDelegate.cpp */; };
+		1EA4857BEE124CCC90FC54AF /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/menu1.png */ = {isa = PBXBuildFile; fileRef = 5A063F3CDEDD4C49AE872BDF /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/menu1.png */; };
+		26DAF604668541CB80FEF56F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/DrawPrimitives.lua */ = {isa = PBXBuildFile; fileRef = C6BEB47F3E2343CFBAB5051B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/DrawPrimitives.lua */; };
+		2C7E1EF676F544A0B019ADE4 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/DeprecatedCocos2dClass.lua */ = {isa = PBXBuildFile; fileRef = 023854BE7F254E41A578D5BA /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/DeprecatedCocos2dClass.lua */; };
+		2C8165CF80EF45E68985D0F0 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/DeprecatedCocos2dEnum.lua */ = {isa = PBXBuildFile; fileRef = 14BC4670506E4DEC9645076B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/DeprecatedCocos2dEnum.lua */; };
+		3146384729644257AECADF0F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/Classes/lua_module_register.h */ = {isa = PBXBuildFile; fileRef = 5A1FB87704884672BBAC5ECD /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/Classes/lua_module_register.h */; };
+		31D770190D86435CA3088E41 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/bitExtend.lua */ = {isa = PBXBuildFile; fileRef = 84ADA992D3C64FC5A727FD07 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/bitExtend.lua */; };
+		3328C77D66574AACB737FCAA /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/physics3d/physics3d-constants.lua */ = {isa = PBXBuildFile; fileRef = 3B054FD5D237476F8990371F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/physics3d/physics3d-constants.lua */; };
+		38E00187E143444EB4BEEA1D /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocostudio/CocoStudio.lua */ = {isa = PBXBuildFile; fileRef = EC2205478E0B4C76A3733253 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocostudio/CocoStudio.lua */; };
+		4094D6AF281C4EFDA430B681 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/network/DeprecatedNetworkEnum.lua */ = {isa = PBXBuildFile; fileRef = FD89553627EF4E02BC3B353F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/network/DeprecatedNetworkEnum.lua */; };
+		42323D64A7E247D58B64D0DD /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/MenuEx.lua */ = {isa = PBXBuildFile; fileRef = 2BD46838F6924B6DBD842F4C /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/MenuEx.lua */; };
+		46A828837A844BEF93F1F2B2 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test/CMakeFiles/lua-empty-test.dir/Info.plist */ = {isa = PBXBuildFile; fileRef = 21003F44C9E546A9A5D55BF5 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test/CMakeFiles/lua-empty-test.dir/Info.plist */; };
+		4D702B27995F4B1C85A8C8AD /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UITextField.lua */ = {isa = PBXBuildFile; fileRef = AD69107A6E8A42ECA13E37C8 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UITextField.lua */; };
+		4E3B3EEF448248AF98DEE174 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/extension/ExtensionConstants.lua */ = {isa = PBXBuildFile; fileRef = 2DFDE1D0879E43EC8BDD21EA /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/extension/ExtensionConstants.lua */; };
+		52E88DFE879F4448995CF3F3 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/main.cpp */ = {isa = PBXBuildFile; fileRef = CB64D8CB8D284A89A8DDFBF2 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/main.cpp */; };
+		53B521112EBE4043BC4EB47F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocosdenshion/AudioEngine.lua */ = {isa = PBXBuildFile; fileRef = C2FF1C61BA8A443EB98513EB /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocosdenshion/AudioEngine.lua */; };
+		5464EA92322143A9954E0DA2 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/device.lua */ = {isa = PBXBuildFile; fileRef = FEF32E6603EB48D48F3B04C8 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/device.lua */; };
+		5548A55A36BE4ED8912F83A6 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/DeprecatedCocos2dFunc.lua */ = {isa = PBXBuildFile; fileRef = C8E67AA88E5B42DCAA5D30DD /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/DeprecatedCocos2dFunc.lua */; };
+		59C7CDDC86F543B8B422CB65 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/NodeEx.lua */ = {isa = PBXBuildFile; fileRef = FD4459E92EAD47ECBDFADBC6 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/NodeEx.lua */; };
+		60A90440383842B58DC7BDB1 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/effect1.wav */ = {isa = PBXBuildFile; fileRef = F3600242187C468E923F087F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/effect1.wav */; };
+		6144F397873D4D439D5D54BC /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/background.caf */ = {isa = PBXBuildFile; fileRef = 18B9615AFED44C41B4B964BD /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/background.caf */; };
+		6642F07763554036BD1305C3 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/extension/DeprecatedExtensionClass.lua */ = {isa = PBXBuildFile; fileRef = F9AFECCE758046DD8126117D /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/extension/DeprecatedExtensionClass.lua */; };
+		69C4DD14C430404698B74C10 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/.gitignore */ = {isa = PBXBuildFile; fileRef = 2ED9740102514C93BEA74198 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/.gitignore */; };
+		6D244F4BB2F041E9A0B95FF8 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/ui/DeprecatedUIFunc.lua */ = {isa = PBXBuildFile; fileRef = F2A812DC82C64C96B22957A5 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/ui/DeprecatedUIFunc.lua */; };
+		6D9617C22CBF4456A1F6E8AE /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/controller/ControllerConstants.lua */ = {isa = PBXBuildFile; fileRef = 7FE1FE7E51374563A27D6713 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/controller/ControllerConstants.lua */; };
+		73A352F621324A19A29875E9 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/background.ogg */ = {isa = PBXBuildFile; fileRef = 56240EC72AD34562935B7978 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/background.ogg */; };
+		7461AFCDE691418390A97BD4 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/components/event.lua */ = {isa = PBXBuildFile; fileRef = DB0FBC1E7B0349719B283F98 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/components/event.lua */; };
+		75B371F9C9A74A3F8F4D8C04 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/dog.png */ = {isa = PBXBuildFile; fileRef = 6730C4D66D9048BA8E2EDD6D /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/dog.png */; };
+		75BD7DD5A82F45549A5F8C9D /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/Icon.icns */ = {isa = PBXBuildFile; fileRef = 2BF5D40037D3495F885DF4CC /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/Icon.icns */; };
+		7B658EEB14AB4A22B40E8134 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/Classes/AppDelegate.h */ = {isa = PBXBuildFile; fileRef = F146050F20C04EB1B3E97E3A /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/Classes/AppDelegate.h */; };
+		7E5A2B7C5EAD4597B079340C /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIWidget.lua */ = {isa = PBXBuildFile; fileRef = 698308515D9A4A429B33EFE6 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIWidget.lua */; };
+		884981B8B21748FBA8CC956D /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/extension/DeprecatedExtensionFunc.lua */ = {isa = PBXBuildFile; fileRef = AA5158A1D9724B6D9EED541B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/extension/DeprecatedExtensionFunc.lua */; };
+		8AA8977E66B2470D979EE264 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/network/DeprecatedNetworkFunc.lua */ = {isa = PBXBuildFile; fileRef = C1A6E148DCC34F9F94467986 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/network/DeprecatedNetworkFunc.lua */; };
+		8C5FA0AA61894007BA4EF160 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/functions.lua */ = {isa = PBXBuildFile; fileRef = 6E66769B0A53485E86C19C22 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/functions.lua */; };
+		9077627ED63941A7B9A7B35E /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/background.mp3 */ = {isa = PBXBuildFile; fileRef = 1537A5F6904D4689B0C849F4 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/background.mp3 */; };
+		9102E0E933D746D69F2AFD1F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = 34AA51C36B2A4FB2B3FD4C3B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/CMakeLists.txt */; };
+		92137F9B3EB2411CB6018A68 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UICheckBox.lua */ = {isa = PBXBuildFile; fileRef = 7026E2932A3047568EDA4E45 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UICheckBox.lua */; };
+		937FB09678B345CF82454FC2 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/luaoc.lua */ = {isa = PBXBuildFile; fileRef = 445556FEEC2C45708FCF146E /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/luaoc.lua */; };
+		955F4B4163A5437F82324CE8 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/Cocos2d.lua */ = {isa = PBXBuildFile; fileRef = DCC5D0C782724903B5C2BF7C /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/Cocos2d.lua */; };
+		971928DEF4C349D5997B5C19 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/src/hello.lua */ = {isa = PBXBuildFile; fileRef = 134B554C48394E26A56F7970 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/src/hello.lua */; };
+		9855E2D6F60D4793A8648F08 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/display.lua */ = {isa = PBXBuildFile; fileRef = 4D1A15108F534B3488DD8421 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/display.lua */; };
+		9E9710FC527D4F1F965A399C /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/fonts/Marker Felt.ttf */ = {isa = PBXBuildFile; fileRef = 969DFA5FCB254339A1B37429 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/fonts/Marker Felt.ttf */; };
+		9F5D85D995024CE19A88F0C6 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/package_support.lua */ = {isa = PBXBuildFile; fileRef = FFB1DFC42BB74CD68B2C3D0B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/package_support.lua */; };
+		9F9C14CC2D994ED99482357F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/HelloLua_Prefix.pch */ = {isa = PBXBuildFile; fileRef = B8EB943DB1C2425396BC3109 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/HelloLua_Prefix.pch */; };
+		A2FF2530A8D34ECB8B133ECF /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIScrollView.lua */ = {isa = PBXBuildFile; fileRef = 846D68CFE0ED47618ECC5869 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIScrollView.lua */; };
+		A3FFAF1AD1B74137A53BB12D /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/transition.lua */ = {isa = PBXBuildFile; fileRef = 013628F472744FE9907A6F61 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/transition.lua */; };
+		B2F9229E94024B4F93E5E411 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/spine/SpineConstants.lua */ = {isa = PBXBuildFile; fileRef = F56AA4A921A248FFB9098414 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/spine/SpineConstants.lua */; };
+		B510EC7A73974227A0899E7B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/init.lua */ = {isa = PBXBuildFile; fileRef = ED153F5C8D3D4CD48D8089D7 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/init.lua */; };
+		C0F2075852B14E56BD5422AD /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/json.lua */ = {isa = PBXBuildFile; fileRef = 28D61E294CA649CCA9DF6417 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/json.lua */; };
+		C24B55B84809448BB15F9762 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/network/DeprecatedNetworkClass.lua */ = {isa = PBXBuildFile; fileRef = DB43B1B9B69A459A9F4640EA /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/network/DeprecatedNetworkClass.lua */; };
+		C308E40E510E4D108C292B63 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocostudio/StudioConstants.lua */ = {isa = PBXBuildFile; fileRef = 3A6EC8BCA14C433CA052A4C6 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocostudio/StudioConstants.lua */; };
+		C39F175E9B454F239B3AC850 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/farm.jpg */ = {isa = PBXBuildFile; fileRef = A295002B1104490AA9243EDE /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/farm.jpg */; };
+		D33A995F6A3F41A5B55A8776 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIEditBox.lua */ = {isa = PBXBuildFile; fileRef = A902D0A03B4E44CAB9570F7B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIEditBox.lua */; };
+		D4D1B6682318449BB05C4501 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/deprecated.lua */ = {isa = PBXBuildFile; fileRef = B5B61C1D75B24A0780CE575B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/deprecated.lua */; };
+		D5D0D15625E3408C8B60A7D2 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocostudio/DeprecatedCocoStudioFunc.lua */ = {isa = PBXBuildFile; fileRef = B1202CF87F6A4553A06E50A4 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocostudio/DeprecatedCocoStudioFunc.lua */; };
+		D797FB92456C4AB8897F6B5A /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/menu2.png */ = {isa = PBXBuildFile; fileRef = C78AE7142D30481D843CC4B9 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/menu2.png */; };
+		DFC7CE941F7944B9AB30E80E /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/Info.plist */ = {isa = PBXBuildFile; fileRef = A90B55A20BF44DEC853D9D15 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/Info.plist */; };
+		E104A01827BD4D8E87E13044 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/SpriteEx.lua */ = {isa = PBXBuildFile; fileRef = 7B16710D708B4B4ABC51ABC6 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/SpriteEx.lua */; };
+		E2E5C633338E4AF9AADDDBA1 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/en.lproj/InfoPlist.strings */ = {isa = PBXBuildFile; fileRef = AFC5FFD234B640D3AF158C55 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/en.lproj/InfoPlist.strings */; };
+		E3062C8D95BA421C8E1D2CF2 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/luaj.lua */ = {isa = PBXBuildFile; fileRef = 8C8ADF013E824319B2DF0466 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/luaj.lua */; };
+		E7DA99C055994EE5AFBB081E /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIPageView.lua */ = {isa = PBXBuildFile; fileRef = EC48B78C3AC14D53825BFC5C /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIPageView.lua */; };
+		E9CCCA42509648DB81A5A882 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/LayerEx.lua */ = {isa = PBXBuildFile; fileRef = BB73C6805FF84F37BC806DFD /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/LayerEx.lua */; };
+		ED7EDA92BE224D60B1E5E2EC /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/src/hello2.lua */ = {isa = PBXBuildFile; fileRef = 2A7A4EDFE95E4A05B7B526AB /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/src/hello2.lua */; };
+		EFC3DFCCE19E40AEA6D47FEB /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/extension/DeprecatedExtensionEnum.lua */ = {isa = PBXBuildFile; fileRef = FDE930E12EED455EB4698E5F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/extension/DeprecatedExtensionEnum.lua */; };
+		EFD7D86341EF4069BD60A7E7 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIListView.lua */ = {isa = PBXBuildFile; fileRef = E4622F871A88440BA644E2E5 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIListView.lua */; };
+		F040A131295449D9993F032B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/crop.png */ = {isa = PBXBuildFile; fileRef = 1C48871252364B748672E386 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/crop.png */; };
+		F0E73EA0673340DBA6553DE6 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/init.lua */ = {isa = PBXBuildFile; fileRef = 203E017DEB724584B09B0C8C /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/init.lua */; };
+		F62AC749C02D4916BB96D828 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/network/NetworkConstants.lua */ = {isa = PBXBuildFile; fileRef = D4BD2B8079414B4A908F6CAC /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/network/NetworkConstants.lua */; };
+		F8A08E2974E241AF9360AEEC /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocostudio/DeprecatedCocoStudioClass.lua */ = {isa = PBXBuildFile; fileRef = 30FB04B3D6BE4C7096C4BFC9 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocostudio/DeprecatedCocoStudioClass.lua */; };
+		F9EDA1C460404749A85E8555 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UISlider.lua */ = {isa = PBXBuildFile; fileRef = 1ABDE2D9672D48C3939A8EE3 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UISlider.lua */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildStyle section */
+		0429B7BF08914495A3457C7A /* Debug */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+		116C3104AD02449282829FDD /* RelWithDebInfo */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = RelWithDebInfo;
+		};
+		7B8AC7BD34F64C1CA090EDAA /* MinSizeRel */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = MinSizeRel;
+		};
+		F403F0BB95164CA984AE768B /* Release */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Release;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXContainerItemProxy section */
+		531440437F9C4649B0C0088D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 792A09EB8C1B44B7A96B1FA3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3E7EC9A18F74277A35DC881;
+			remoteInfo = ZERO_CHECK;
+		};
+		740A5055E01E4E7BBDCCFD4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 792A09EB8C1B44B7A96B1FA3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 36A0377B83DC47EFAA8AE669;
+			remoteInfo = "lua-empty-test";
+		};
+		D20E9F84EE4645ACA2F964FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 792A09EB8C1B44B7A96B1FA3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3E7EC9A18F74277A35DC881;
+			remoteInfo = ZERO_CHECK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		013628F472744FE9907A6F61 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/transition.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = transition.lua; path = "../../../cocos/scripting/lua-bindings/script/framework/transition.lua"; sourceTree = SOURCE_ROOT; };
+		023854BE7F254E41A578D5BA /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/DeprecatedCocos2dClass.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = DeprecatedCocos2dClass.lua; path = "../../../cocos/scripting/lua-bindings/script/cocos2d/DeprecatedCocos2dClass.lua"; sourceTree = SOURCE_ROOT; };
+		0FB5AD3898E04004A622279B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/3d/3dConstants.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = 3dConstants.lua; path = "../../../cocos/scripting/lua-bindings/script/3d/3dConstants.lua"; sourceTree = SOURCE_ROOT; };
+		134B554C48394E26A56F7970 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/src/hello.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = hello.lua; path = ../src/hello.lua; sourceTree = SOURCE_ROOT; };
+		14BC4670506E4DEC9645076B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/DeprecatedCocos2dEnum.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = DeprecatedCocos2dEnum.lua; path = "../../../cocos/scripting/lua-bindings/script/cocos2d/DeprecatedCocos2dEnum.lua"; sourceTree = SOURCE_ROOT; };
+		1537A5F6904D4689B0C849F4 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/background.mp3 */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = background.mp3; path = ../res/background.mp3; sourceTree = SOURCE_ROOT; };
+		18B9615AFED44C41B4B964BD /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/background.caf */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = background.caf; path = ../res/background.caf; sourceTree = SOURCE_ROOT; };
+		1ABDE2D9672D48C3939A8EE3 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UISlider.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = UISlider.lua; path = "../../../cocos/scripting/lua-bindings/script/framework/extends/UISlider.lua"; sourceTree = SOURCE_ROOT; };
+		1C48871252364B748672E386 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/crop.png */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = image; name = crop.png; path = ../res/crop.png; sourceTree = SOURCE_ROOT; };
+		203E017DEB724584B09B0C8C /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/init.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = init.lua; path = "../../../cocos/scripting/lua-bindings/script/framework/init.lua"; sourceTree = SOURCE_ROOT; };
+		21003F44C9E546A9A5D55BF5 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test/CMakeFiles/lua-empty-test.dir/Info.plist */ = {isa = PBXFileReference; explicitFileType = sourcecode.text.plist; fileEncoding = 4; name = Info.plist; path = "../../../mac-build2/engine/tests/lua-empty-test/CMakeFiles/lua-empty-test.dir/Info.plist"; sourceTree = SOURCE_ROOT; };
+		28D61E294CA649CCA9DF6417 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/json.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = json.lua; path = "../../../cocos/scripting/lua-bindings/script/cocos2d/json.lua"; sourceTree = SOURCE_ROOT; };
+		2A7A4EDFE95E4A05B7B526AB /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/src/hello2.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = hello2.lua; path = ../src/hello2.lua; sourceTree = SOURCE_ROOT; };
+		2B841C6625D74EF1B87F5BAE /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/ui/DeprecatedUIEnum.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = DeprecatedUIEnum.lua; path = "../../../cocos/scripting/lua-bindings/script/ui/DeprecatedUIEnum.lua"; sourceTree = SOURCE_ROOT; };
+		2BD46838F6924B6DBD842F4C /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/MenuEx.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = MenuEx.lua; path = "../../../cocos/scripting/lua-bindings/script/framework/extends/MenuEx.lua"; sourceTree = SOURCE_ROOT; };
+		2BF5D40037D3495F885DF4CC /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/Icon.icns */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = Icon.icns; path = proj.mac/Icon.icns; sourceTree = SOURCE_ROOT; };
+		2DFDE1D0879E43EC8BDD21EA /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/extension/ExtensionConstants.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = ExtensionConstants.lua; path = "../../../cocos/scripting/lua-bindings/script/extension/ExtensionConstants.lua"; sourceTree = SOURCE_ROOT; };
+		2ED9740102514C93BEA74198 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/.gitignore */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = .gitignore; path = ../res/.gitignore; sourceTree = SOURCE_ROOT; };
+		30FB04B3D6BE4C7096C4BFC9 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocostudio/DeprecatedCocoStudioClass.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = DeprecatedCocoStudioClass.lua; path = "../../../cocos/scripting/lua-bindings/script/cocostudio/DeprecatedCocoStudioClass.lua"; sourceTree = SOURCE_ROOT; };
+		34AA51C36B2A4FB2B3FD4C3B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		3607773567804A6C8C4BA2F8 /* lua-empty-test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = "lua-empty-test"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A6EC8BCA14C433CA052A4C6 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocostudio/StudioConstants.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = StudioConstants.lua; path = "../../../cocos/scripting/lua-bindings/script/cocostudio/StudioConstants.lua"; sourceTree = SOURCE_ROOT; };
+		3B054FD5D237476F8990371F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/physics3d/physics3d-constants.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = "physics3d-constants.lua"; path = "../../../cocos/scripting/lua-bindings/script/physics3d/physics3d-constants.lua"; sourceTree = SOURCE_ROOT; };
+		3DA959F30D5D4353A0D42155 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		445556FEEC2C45708FCF146E /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/luaoc.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = luaoc.lua; path = "../../../cocos/scripting/lua-bindings/script/cocos2d/luaoc.lua"; sourceTree = SOURCE_ROOT; };
+		4D1A15108F534B3488DD8421 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/display.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = display.lua; path = "../../../cocos/scripting/lua-bindings/script/framework/display.lua"; sourceTree = SOURCE_ROOT; };
+		56240EC72AD34562935B7978 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/background.ogg */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = background.ogg; path = ../res/background.ogg; sourceTree = SOURCE_ROOT; };
+		5A063F3CDEDD4C49AE872BDF /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/menu1.png */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = image; name = menu1.png; path = ../res/menu1.png; sourceTree = SOURCE_ROOT; };
+		5A1FB87704884672BBAC5ECD /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/Classes/lua_module_register.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = lua_module_register.h; path = Classes/lua_module_register.h; sourceTree = SOURCE_ROOT; };
+		6730C4D66D9048BA8E2EDD6D /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/dog.png */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = image; name = dog.png; path = ../res/dog.png; sourceTree = SOURCE_ROOT; };
+		698308515D9A4A429B33EFE6 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIWidget.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = UIWidget.lua; path = "../../../cocos/scripting/lua-bindings/script/framework/extends/UIWidget.lua"; sourceTree = SOURCE_ROOT; };
+		6A1578762AFA4AF8893FCEF6 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/src/mobdebug.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = mobdebug.lua; path = ../src/mobdebug.lua; sourceTree = SOURCE_ROOT; };
+		6B9F318ED7574062BC9819A4 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/land.png */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = image; name = land.png; path = ../res/land.png; sourceTree = SOURCE_ROOT; };
+		6E66769B0A53485E86C19C22 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/functions.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = functions.lua; path = "../../../cocos/scripting/lua-bindings/script/cocos2d/functions.lua"; sourceTree = SOURCE_ROOT; };
+		7026E2932A3047568EDA4E45 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UICheckBox.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = UICheckBox.lua; path = "../../../cocos/scripting/lua-bindings/script/framework/extends/UICheckBox.lua"; sourceTree = SOURCE_ROOT; };
+		7B16710D708B4B4ABC51ABC6 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/SpriteEx.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = SpriteEx.lua; path = "../../../cocos/scripting/lua-bindings/script/framework/extends/SpriteEx.lua"; sourceTree = SOURCE_ROOT; };
+		7FE1FE7E51374563A27D6713 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/controller/ControllerConstants.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = ControllerConstants.lua; path = "../../../cocos/scripting/lua-bindings/script/controller/ControllerConstants.lua"; sourceTree = SOURCE_ROOT; };
+		8016CE9883CC4CE58C076EFC /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/Classes/AppDelegate.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = SOURCE_ROOT; };
+		846D68CFE0ED47618ECC5869 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIScrollView.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = UIScrollView.lua; path = "../../../cocos/scripting/lua-bindings/script/framework/extends/UIScrollView.lua"; sourceTree = SOURCE_ROOT; };
+		84ADA992D3C64FC5A727FD07 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/bitExtend.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = bitExtend.lua; path = "../../../cocos/scripting/lua-bindings/script/cocos2d/bitExtend.lua"; sourceTree = SOURCE_ROOT; };
+		8C8ADF013E824319B2DF0466 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/luaj.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = luaj.lua; path = "../../../cocos/scripting/lua-bindings/script/cocos2d/luaj.lua"; sourceTree = SOURCE_ROOT; };
+		969DFA5FCB254339A1B37429 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/fonts/Marker Felt.ttf */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = "Marker Felt.ttf"; path = "../res/fonts/Marker Felt.ttf"; sourceTree = SOURCE_ROOT; };
+		A295002B1104490AA9243EDE /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/farm.jpg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = image; name = farm.jpg; path = ../res/farm.jpg; sourceTree = SOURCE_ROOT; };
+		A902D0A03B4E44CAB9570F7B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIEditBox.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = UIEditBox.lua; path = "../../../cocos/scripting/lua-bindings/script/framework/extends/UIEditBox.lua"; sourceTree = SOURCE_ROOT; };
+		A90B55A20BF44DEC853D9D15 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/Info.plist */ = {isa = PBXFileReference; explicitFileType = sourcecode.text.plist; fileEncoding = 4; name = Info.plist; path = proj.mac/Info.plist; sourceTree = SOURCE_ROOT; };
+		AA5158A1D9724B6D9EED541B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/extension/DeprecatedExtensionFunc.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = DeprecatedExtensionFunc.lua; path = "../../../cocos/scripting/lua-bindings/script/extension/DeprecatedExtensionFunc.lua"; sourceTree = SOURCE_ROOT; };
+		AD69107A6E8A42ECA13E37C8 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UITextField.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = UITextField.lua; path = "../../../cocos/scripting/lua-bindings/script/framework/extends/UITextField.lua"; sourceTree = SOURCE_ROOT; };
+		AFC5FFD234B640D3AF158C55 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/en.lproj/InfoPlist.strings */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = InfoPlist.strings; path = proj.mac/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
+		B1202CF87F6A4553A06E50A4 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocostudio/DeprecatedCocoStudioFunc.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = DeprecatedCocoStudioFunc.lua; path = "../../../cocos/scripting/lua-bindings/script/cocostudio/DeprecatedCocoStudioFunc.lua"; sourceTree = SOURCE_ROOT; };
+		B45579BFC334468BA03A6290 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/Cocos2dConstants.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = Cocos2dConstants.lua; path = "../../../cocos/scripting/lua-bindings/script/cocos2d/Cocos2dConstants.lua"; sourceTree = SOURCE_ROOT; };
+		B5B61C1D75B24A0780CE575B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/deprecated.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = deprecated.lua; path = "../../../cocos/scripting/lua-bindings/script/cocos2d/deprecated.lua"; sourceTree = SOURCE_ROOT; };
+		B8EB943DB1C2425396BC3109 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/HelloLua_Prefix.pch */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = HelloLua_Prefix.pch; path = proj.mac/HelloLua_Prefix.pch; sourceTree = SOURCE_ROOT; };
+		BB73C6805FF84F37BC806DFD /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/LayerEx.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = LayerEx.lua; path = "../../../cocos/scripting/lua-bindings/script/framework/extends/LayerEx.lua"; sourceTree = SOURCE_ROOT; };
+		C1A6E148DCC34F9F94467986 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/network/DeprecatedNetworkFunc.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = DeprecatedNetworkFunc.lua; path = "../../../cocos/scripting/lua-bindings/script/network/DeprecatedNetworkFunc.lua"; sourceTree = SOURCE_ROOT; };
+		C2FF1C61BA8A443EB98513EB /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocosdenshion/AudioEngine.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = AudioEngine.lua; path = "../../../cocos/scripting/lua-bindings/script/cocosdenshion/AudioEngine.lua"; sourceTree = SOURCE_ROOT; };
+		C6BEB47F3E2343CFBAB5051B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/DrawPrimitives.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = DrawPrimitives.lua; path = "../../../cocos/scripting/lua-bindings/script/cocos2d/DrawPrimitives.lua"; sourceTree = SOURCE_ROOT; };
+		C78AE7142D30481D843CC4B9 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/menu2.png */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = image; name = menu2.png; path = ../res/menu2.png; sourceTree = SOURCE_ROOT; };
+		C8E67AA88E5B42DCAA5D30DD /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/DeprecatedCocos2dFunc.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = DeprecatedCocos2dFunc.lua; path = "../../../cocos/scripting/lua-bindings/script/cocos2d/DeprecatedCocos2dFunc.lua"; sourceTree = SOURCE_ROOT; };
+		CB64D8CB8D284A89A8DDFBF2 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = main.cpp; path = proj.mac/main.cpp; sourceTree = SOURCE_ROOT; };
+		D4BD2B8079414B4A908F6CAC /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/network/NetworkConstants.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = NetworkConstants.lua; path = "../../../cocos/scripting/lua-bindings/script/network/NetworkConstants.lua"; sourceTree = SOURCE_ROOT; };
+		DB0FBC1E7B0349719B283F98 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/components/event.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = event.lua; path = "../../../cocos/scripting/lua-bindings/script/framework/components/event.lua"; sourceTree = SOURCE_ROOT; };
+		DB43B1B9B69A459A9F4640EA /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/network/DeprecatedNetworkClass.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = DeprecatedNetworkClass.lua; path = "../../../cocos/scripting/lua-bindings/script/network/DeprecatedNetworkClass.lua"; sourceTree = SOURCE_ROOT; };
+		DCC5D0C782724903B5C2BF7C /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/Cocos2d.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = Cocos2d.lua; path = "../../../cocos/scripting/lua-bindings/script/cocos2d/Cocos2d.lua"; sourceTree = SOURCE_ROOT; };
+		E4622F871A88440BA644E2E5 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIListView.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = UIListView.lua; path = "../../../cocos/scripting/lua-bindings/script/framework/extends/UIListView.lua"; sourceTree = SOURCE_ROOT; };
+		E9801B19CEE4483789B15781 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/ui/GuiConstants.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = GuiConstants.lua; path = "../../../cocos/scripting/lua-bindings/script/ui/GuiConstants.lua"; sourceTree = SOURCE_ROOT; };
+		EC2205478E0B4C76A3733253 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocostudio/CocoStudio.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = CocoStudio.lua; path = "../../../cocos/scripting/lua-bindings/script/cocostudio/CocoStudio.lua"; sourceTree = SOURCE_ROOT; };
+		EC48B78C3AC14D53825BFC5C /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIPageView.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = UIPageView.lua; path = "../../../cocos/scripting/lua-bindings/script/framework/extends/UIPageView.lua"; sourceTree = SOURCE_ROOT; };
+		ED153F5C8D3D4CD48D8089D7 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/init.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = init.lua; path = "../../../cocos/scripting/lua-bindings/script/init.lua"; sourceTree = SOURCE_ROOT; };
+		F146050F20C04EB1B3E97E3A /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/Classes/AppDelegate.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		F2A812DC82C64C96B22957A5 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/ui/DeprecatedUIFunc.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = DeprecatedUIFunc.lua; path = "../../../cocos/scripting/lua-bindings/script/ui/DeprecatedUIFunc.lua"; sourceTree = SOURCE_ROOT; };
+		F3600242187C468E923F087F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/effect1.wav */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = effect1.wav; path = ../res/effect1.wav; sourceTree = SOURCE_ROOT; };
+		F56AA4A921A248FFB9098414 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/spine/SpineConstants.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = SpineConstants.lua; path = "../../../cocos/scripting/lua-bindings/script/spine/SpineConstants.lua"; sourceTree = SOURCE_ROOT; };
+		F9AFECCE758046DD8126117D /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/extension/DeprecatedExtensionClass.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = DeprecatedExtensionClass.lua; path = "../../../cocos/scripting/lua-bindings/script/extension/DeprecatedExtensionClass.lua"; sourceTree = SOURCE_ROOT; };
+		FD4459E92EAD47ECBDFADBC6 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/NodeEx.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = NodeEx.lua; path = "../../../cocos/scripting/lua-bindings/script/framework/extends/NodeEx.lua"; sourceTree = SOURCE_ROOT; };
+		FD89553627EF4E02BC3B353F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/network/DeprecatedNetworkEnum.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = DeprecatedNetworkEnum.lua; path = "../../../cocos/scripting/lua-bindings/script/network/DeprecatedNetworkEnum.lua"; sourceTree = SOURCE_ROOT; };
+		FDE930E12EED455EB4698E5F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/extension/DeprecatedExtensionEnum.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = DeprecatedExtensionEnum.lua; path = "../../../cocos/scripting/lua-bindings/script/extension/DeprecatedExtensionEnum.lua"; sourceTree = SOURCE_ROOT; };
+		FEF32E6603EB48D48F3B04C8 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/device.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = device.lua; path = "../../../cocos/scripting/lua-bindings/script/framework/device.lua"; sourceTree = SOURCE_ROOT; };
+		FFB1DFC42BB74CD68B2C3D0B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/package_support.lua */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = package_support.lua; path = "../../../cocos/scripting/lua-bindings/script/framework/package_support.lua"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A1857862E3C4443E90E61A92 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		035A15769D5044B79913CB33 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				1A93649FF0D14A0DB6F37B1D /* Classes */,
+				B768001C5E5444F5B29B39AB /* proj.mac */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		0CE9C565EED742AFBC357B2A /* cocostudio */ = {
+			isa = PBXGroup;
+			children = (
+				EC2205478E0B4C76A3733253 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocostudio/CocoStudio.lua */,
+				30FB04B3D6BE4C7096C4BFC9 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocostudio/DeprecatedCocoStudioClass.lua */,
+				B1202CF87F6A4553A06E50A4 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocostudio/DeprecatedCocoStudioFunc.lua */,
+				3A6EC8BCA14C433CA052A4C6 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocostudio/StudioConstants.lua */,
+			);
+			name = cocostudio;
+			sourceTree = "<group>";
+		};
+		1179E67FF92E472282602B70 = {
+			isa = PBXGroup;
+			children = (
+				387838F3F1B74A10944ED087 /* lua-empty-test */,
+				F9A7C39D9AF1441BB9A8189E /* ALL_BUILD */,
+				EAE7C51626ED42A5ABD66354 /* Products */,
+				F88EFF69421C4984AD174709 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1450450B64094D508C888C7E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3AE8F166FD504D118C6BC9DB /* res */,
+				F897184D37454093B2804B64 /* src */,
+				21003F44C9E546A9A5D55BF5 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test/CMakeFiles/lua-empty-test.dir/Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		1A93649FF0D14A0DB6F37B1D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8016CE9883CC4CE58C076EFC /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/Classes/AppDelegate.cpp */,
+				F146050F20C04EB1B3E97E3A /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/Classes/AppDelegate.h */,
+				5A1FB87704884672BBAC5ECD /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/Classes/lua_module_register.h */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		387838F3F1B74A10944ED087 /* lua-empty-test */ = {
+			isa = PBXGroup;
+			children = (
+				035A15769D5044B79913CB33 /* Source Files */,
+				1450450B64094D508C888C7E /* Resources */,
+				34AA51C36B2A4FB2B3FD4C3B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/CMakeLists.txt */,
+			);
+			name = "lua-empty-test";
+			sourceTree = "<group>";
+		};
+		3AE8F166FD504D118C6BC9DB /* res */ = {
+			isa = PBXGroup;
+			children = (
+				79810C94E2DC489D84605FA2 /* fonts */,
+				2ED9740102514C93BEA74198 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/.gitignore */,
+				18B9615AFED44C41B4B964BD /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/background.caf */,
+				1537A5F6904D4689B0C849F4 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/background.mp3 */,
+				56240EC72AD34562935B7978 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/background.ogg */,
+				1C48871252364B748672E386 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/crop.png */,
+				6730C4D66D9048BA8E2EDD6D /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/dog.png */,
+				F3600242187C468E923F087F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/effect1.wav */,
+				A295002B1104490AA9243EDE /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/farm.jpg */,
+				6B9F318ED7574062BC9819A4 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/land.png */,
+				5A063F3CDEDD4C49AE872BDF /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/menu1.png */,
+				C78AE7142D30481D843CC4B9 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/menu2.png */,
+			);
+			name = res;
+			sourceTree = "<group>";
+		};
+		4ABE320556464FD782CF544E /* spine */ = {
+			isa = PBXGroup;
+			children = (
+				F56AA4A921A248FFB9098414 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/spine/SpineConstants.lua */,
+			);
+			name = spine;
+			sourceTree = "<group>";
+		};
+		566013418FE046E29A25788D /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				2B841C6625D74EF1B87F5BAE /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/ui/DeprecatedUIEnum.lua */,
+				F2A812DC82C64C96B22957A5 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/ui/DeprecatedUIFunc.lua */,
+				E9801B19CEE4483789B15781 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/ui/GuiConstants.lua */,
+			);
+			name = ui;
+			sourceTree = "<group>";
+		};
+		71DE176CDD7B4D42B74DC8F4 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				DB43B1B9B69A459A9F4640EA /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/network/DeprecatedNetworkClass.lua */,
+				FD89553627EF4E02BC3B353F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/network/DeprecatedNetworkEnum.lua */,
+				C1A6E148DCC34F9F94467986 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/network/DeprecatedNetworkFunc.lua */,
+				D4BD2B8079414B4A908F6CAC /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/network/NetworkConstants.lua */,
+			);
+			name = network;
+			sourceTree = "<group>";
+		};
+		79810C94E2DC489D84605FA2 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				969DFA5FCB254339A1B37429 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/fonts/Marker Felt.ttf */,
+			);
+			name = fonts;
+			sourceTree = "<group>";
+		};
+		7D7CAF90241740D59A88ADCB /* cocosdenshion */ = {
+			isa = PBXGroup;
+			children = (
+				C2FF1C61BA8A443EB98513EB /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocosdenshion/AudioEngine.lua */,
+			);
+			name = cocosdenshion;
+			sourceTree = "<group>";
+		};
+		818D1E95671A479CB30E8F8D /* cocos */ = {
+			isa = PBXGroup;
+			children = (
+				FFE7884BAF72415BBD986D86 /* 3d */,
+				F63A10566E22401E9EECFDE5 /* cocos2d */,
+				7D7CAF90241740D59A88ADCB /* cocosdenshion */,
+				0CE9C565EED742AFBC357B2A /* cocostudio */,
+				DF3E741353E94FCABB519C00 /* controller */,
+				87C25E55964344E9B20ED4F2 /* extension */,
+				F62B6513005E4AFD989139F0 /* framework */,
+				71DE176CDD7B4D42B74DC8F4 /* network */,
+				BA544C6D7AD9479BB074D612 /* physics3d */,
+				4ABE320556464FD782CF544E /* spine */,
+				566013418FE046E29A25788D /* ui */,
+				ED153F5C8D3D4CD48D8089D7 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/init.lua */,
+			);
+			name = cocos;
+			sourceTree = "<group>";
+		};
+		87C25E55964344E9B20ED4F2 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				F9AFECCE758046DD8126117D /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/extension/DeprecatedExtensionClass.lua */,
+				FDE930E12EED455EB4698E5F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/extension/DeprecatedExtensionEnum.lua */,
+				AA5158A1D9724B6D9EED541B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/extension/DeprecatedExtensionFunc.lua */,
+				2DFDE1D0879E43EC8BDD21EA /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/extension/ExtensionConstants.lua */,
+			);
+			name = extension;
+			sourceTree = "<group>";
+		};
+		8C89616A7E9744F390316922 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		98E2E3B8F3E74FD0A77EF686 /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				AFC5FFD234B640D3AF158C55 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/en.lproj/InfoPlist.strings */,
+			);
+			name = en.lproj;
+			sourceTree = "<group>";
+		};
+		B768001C5E5444F5B29B39AB /* proj.mac */ = {
+			isa = PBXGroup;
+			children = (
+				98E2E3B8F3E74FD0A77EF686 /* en.lproj */,
+				B8EB943DB1C2425396BC3109 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/HelloLua_Prefix.pch */,
+				2BF5D40037D3495F885DF4CC /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/Icon.icns */,
+				A90B55A20BF44DEC853D9D15 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/Info.plist */,
+				CB64D8CB8D284A89A8DDFBF2 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/main.cpp */,
+			);
+			name = proj.mac;
+			sourceTree = "<group>";
+		};
+		BA544C6D7AD9479BB074D612 /* physics3d */ = {
+			isa = PBXGroup;
+			children = (
+				3B054FD5D237476F8990371F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/physics3d/physics3d-constants.lua */,
+			);
+			name = physics3d;
+			sourceTree = "<group>";
+		};
+		DF3E741353E94FCABB519C00 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				7FE1FE7E51374563A27D6713 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/controller/ControllerConstants.lua */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		E2903C31B60144C4AED59496 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				DB0FBC1E7B0349719B283F98 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/components/event.lua */,
+			);
+			name = components;
+			sourceTree = "<group>";
+		};
+		EAE7C51626ED42A5ABD66354 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3607773567804A6C8C4BA2F8 /* lua-empty-test */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F62B6513005E4AFD989139F0 /* framework */ = {
+			isa = PBXGroup;
+			children = (
+				E2903C31B60144C4AED59496 /* components */,
+				F6443E194A3647F3A45CFC9C /* extends */,
+				FEF32E6603EB48D48F3B04C8 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/device.lua */,
+				4D1A15108F534B3488DD8421 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/display.lua */,
+				203E017DEB724584B09B0C8C /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/init.lua */,
+				FFB1DFC42BB74CD68B2C3D0B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/package_support.lua */,
+				013628F472744FE9907A6F61 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/transition.lua */,
+			);
+			name = framework;
+			sourceTree = "<group>";
+		};
+		F63A10566E22401E9EECFDE5 /* cocos2d */ = {
+			isa = PBXGroup;
+			children = (
+				DCC5D0C782724903B5C2BF7C /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/Cocos2d.lua */,
+				B45579BFC334468BA03A6290 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/Cocos2dConstants.lua */,
+				023854BE7F254E41A578D5BA /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/DeprecatedCocos2dClass.lua */,
+				14BC4670506E4DEC9645076B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/DeprecatedCocos2dEnum.lua */,
+				C8E67AA88E5B42DCAA5D30DD /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/DeprecatedCocos2dFunc.lua */,
+				C6BEB47F3E2343CFBAB5051B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/DrawPrimitives.lua */,
+				84ADA992D3C64FC5A727FD07 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/bitExtend.lua */,
+				B5B61C1D75B24A0780CE575B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/deprecated.lua */,
+				6E66769B0A53485E86C19C22 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/functions.lua */,
+				28D61E294CA649CCA9DF6417 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/json.lua */,
+				8C8ADF013E824319B2DF0466 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/luaj.lua */,
+				445556FEEC2C45708FCF146E /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/luaoc.lua */,
+			);
+			name = cocos2d;
+			sourceTree = "<group>";
+		};
+		F6443E194A3647F3A45CFC9C /* extends */ = {
+			isa = PBXGroup;
+			children = (
+				BB73C6805FF84F37BC806DFD /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/LayerEx.lua */,
+				2BD46838F6924B6DBD842F4C /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/MenuEx.lua */,
+				FD4459E92EAD47ECBDFADBC6 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/NodeEx.lua */,
+				7B16710D708B4B4ABC51ABC6 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/SpriteEx.lua */,
+				7026E2932A3047568EDA4E45 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UICheckBox.lua */,
+				A902D0A03B4E44CAB9570F7B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIEditBox.lua */,
+				E4622F871A88440BA644E2E5 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIListView.lua */,
+				EC48B78C3AC14D53825BFC5C /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIPageView.lua */,
+				846D68CFE0ED47618ECC5869 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIScrollView.lua */,
+				1ABDE2D9672D48C3939A8EE3 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UISlider.lua */,
+				AD69107A6E8A42ECA13E37C8 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UITextField.lua */,
+				698308515D9A4A429B33EFE6 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIWidget.lua */,
+			);
+			name = extends;
+			sourceTree = "<group>";
+		};
+		F88EFF69421C4984AD174709 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F897184D37454093B2804B64 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				818D1E95671A479CB30E8F8D /* cocos */,
+				134B554C48394E26A56F7970 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/src/hello.lua */,
+				2A7A4EDFE95E4A05B7B526AB /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/src/hello2.lua */,
+				6A1578762AFA4AF8893FCEF6 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/src/mobdebug.lua */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		F9A7C39D9AF1441BB9A8189E /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				8C89616A7E9744F390316922 /* CMake Rules */,
+				3DA959F30D5D4353A0D42155 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		FFE7884BAF72415BBD986D86 /* 3d */ = {
+			isa = PBXGroup;
+			children = (
+				0FB5AD3898E04004A622279B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/3d/3dConstants.lua */,
+			);
+			name = 3d;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		36A0377B83DC47EFAA8AE669 /* lua-empty-test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D64EF201592642D1B1382BF7 /* Build configuration list for PBXNativeTarget "lua-empty-test" */;
+			buildPhases = (
+				D24DB4805ECE43A78109B5AF /* Resources */,
+				5F2BC5A14BAF48EC96D956AC /* Copy files */,
+				4B12D0855B704D10BEF566CA /* Copy files */,
+				4F14A4AB19E24D64883854C9 /* Copy files */,
+				BF97170989B54C3B9F5A8E43 /* Copy files */,
+				3A1A36A406AC4271A56F1074 /* Copy files */,
+				4700F831B8C44BC0B10C8B13 /* Copy files */,
+				76FC04707C9F4BC2A68A01FC /* Copy files */,
+				5D0A32DCF12440F68C783F71 /* Copy files */,
+				55E2238C11ED4E7188CDD1A4 /* Copy files */,
+				97BB166F7D904224BEDE39AC /* Copy files */,
+				509E8D2B24A349A6AC7840E5 /* Copy files */,
+				A92BDE0937B344C2B34FD3CB /* Copy files */,
+				6A6F49DFDE4443659C43427D /* Copy files */,
+				8F90E343C7FC4E1AA58CB715 /* Copy files */,
+				07330D3EB4254A05BBE0E237 /* Copy files */,
+				FEB341D6E97841AA81597AF4 /* Copy files */,
+				879B6119C6E74263B231A3AD /* Copy files */,
+				E2091D5C1A7846ABA93AD855 /* Sources */,
+				A1857862E3C4443E90E61A92 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				47E141BC3C694CF2960AAA78 /* PBXTargetDependency */,
+			);
+			name = "lua-empty-test";
+			productName = "lua-empty-test";
+			productReference = 3607773567804A6C8C4BA2F8 /* lua-empty-test */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		792A09EB8C1B44B7A96B1FA3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1200;
+			};
+			buildConfigurationList = 0F0ABDAA8134450AA1D55D00 /* Build configuration list for PBXProject "lua-empty-test" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				0429B7BF08914495A3457C7A /* Debug */,
+				F403F0BB95164CA984AE768B /* Release */,
+				7B8AC7BD34F64C1CA090EDAA /* MinSizeRel */,
+				116C3104AD02449282829FDD /* RelWithDebInfo */,
+			);
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 0;
+			mainGroup = 1179E67FF92E472282602B70;
+			projectDirPath = "../../../../tests/lua-empty-test/project";
+			projectRoot = "";
+			targets = (
+				A916EBF0E8CF48B7B510022A /* ALL_BUILD */,
+				F3E7EC9A18F74277A35DC881 /* ZERO_CHECK */,
+				36A0377B83DC47EFAA8AE669 /* lua-empty-test */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7021D60F03894B43A590F172 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		A5EBBA3AA8064835B3F079C3 /* Generate CMakeFiles/ZERO_CHECK */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate CMakeFiles/ZERO_CHECK";
+			outputPaths = (
+"/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test/CMakeFiles/ZERO_CHECK"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test
+  make -f /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test/CMakeScripts/ReRunCMake.make
+fi
+if test \"$CONFIGURATION\" = \"Release\"; then :
+  cd /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test
+  make -f /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test/CMakeScripts/ReRunCMake.make
+fi
+if test \"$CONFIGURATION\" = \"MinSizeRel\"; then :
+  cd /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test
+  make -f /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test/CMakeScripts/ReRunCMake.make
+fi
+if test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :
+  cd /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test
+  make -f /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test/CMakeScripts/ReRunCMake.make
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		DDF446DE583F4168AF47BBC8 /* Generate CMakeFiles/ALL_BUILD */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate CMakeFiles/ALL_BUILD";
+			outputPaths = (
+"/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test/CMakeFiles/ALL_BUILD"			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test
+  echo Build\\ all\\ projects
+fi
+if test \"$CONFIGURATION\" = \"Release\"; then :
+  cd /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test
+  echo Build\\ all\\ projects
+fi
+if test \"$CONFIGURATION\" = \"MinSizeRel\"; then :
+  cd /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test
+  echo Build\\ all\\ projects
+fi
+if test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :
+  cd /Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test
+  echo Build\\ all\\ projects
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		EF4BA08835F749E396B1BEB4 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D24DB4805ECE43A78109B5AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75BD7DD5A82F45549A5F8C9D /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/Icon.icns */,
+				DFC7CE941F7944B9AB30E80E /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/Info.plist */,
+				E2E5C633338E4AF9AADDDBA1 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/en.lproj/InfoPlist.strings */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E2091D5C1A7846ABA93AD855 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DB93DBD261F4A5689E99842 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/Classes/AppDelegate.cpp */,
+				52E88DFE879F4448995CF3F3 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/main.cpp */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		07330D3EB4254A05BBE0E237 /* Copy files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = src/cocos/physics3d;
+			dstSubfolderSpec = 7;
+			files = (
+				3328C77D66574AACB737FCAA /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/physics3d/physics3d-constants.lua */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A1A36A406AC4271A56F1074 /* Copy files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = src/cocos/3d;
+			dstSubfolderSpec = 7;
+			files = (
+				06385DB0E1024430B982A418 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/3d/3dConstants.lua */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4700F831B8C44BC0B10C8B13 /* Copy files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = src/cocos/cocos2d;
+			dstSubfolderSpec = 7;
+			files = (
+				955F4B4163A5437F82324CE8 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/Cocos2d.lua */,
+				0EBDE3F710D1495B87CACB0B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/Cocos2dConstants.lua */,
+				2C7E1EF676F544A0B019ADE4 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/DeprecatedCocos2dClass.lua */,
+				2C8165CF80EF45E68985D0F0 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/DeprecatedCocos2dEnum.lua */,
+				5548A55A36BE4ED8912F83A6 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/DeprecatedCocos2dFunc.lua */,
+				26DAF604668541CB80FEF56F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/DrawPrimitives.lua */,
+				31D770190D86435CA3088E41 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/bitExtend.lua */,
+				D4D1B6682318449BB05C4501 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/deprecated.lua */,
+				8C5FA0AA61894007BA4EF160 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/functions.lua */,
+				C0F2075852B14E56BD5422AD /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/json.lua */,
+				E3062C8D95BA421C8E1D2CF2 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/luaj.lua */,
+				937FB09678B345CF82454FC2 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocos2d/luaoc.lua */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B12D0855B704D10BEF566CA /* Copy files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = res/fonts;
+			dstSubfolderSpec = 7;
+			files = (
+				9E9710FC527D4F1F965A399C /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/fonts/Marker Felt.ttf */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F14A4AB19E24D64883854C9 /* Copy files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = src/;
+			dstSubfolderSpec = 7;
+			files = (
+				971928DEF4C349D5997B5C19 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/src/hello.lua */,
+				ED7EDA92BE224D60B1E5E2EC /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/src/hello2.lua */,
+				139CA6B1DB284B86ABDF3EFE /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/src/mobdebug.lua */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		509E8D2B24A349A6AC7840E5 /* Copy files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = src/cocos/framework;
+			dstSubfolderSpec = 7;
+			files = (
+				5464EA92322143A9954E0DA2 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/device.lua */,
+				9855E2D6F60D4793A8648F08 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/display.lua */,
+				F0E73EA0673340DBA6553DE6 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/init.lua */,
+				9F5D85D995024CE19A88F0C6 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/package_support.lua */,
+				A3FFAF1AD1B74137A53BB12D /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/transition.lua */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55E2238C11ED4E7188CDD1A4 /* Copy files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = src/cocos/controller;
+			dstSubfolderSpec = 7;
+			files = (
+				6D9617C22CBF4456A1F6E8AE /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/controller/ControllerConstants.lua */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D0A32DCF12440F68C783F71 /* Copy files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = src/cocos/cocostudio;
+			dstSubfolderSpec = 7;
+			files = (
+				38E00187E143444EB4BEEA1D /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocostudio/CocoStudio.lua */,
+				F8A08E2974E241AF9360AEEC /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocostudio/DeprecatedCocoStudioClass.lua */,
+				D5D0D15625E3408C8B60A7D2 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocostudio/DeprecatedCocoStudioFunc.lua */,
+				C308E40E510E4D108C292B63 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocostudio/StudioConstants.lua */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F2BC5A14BAF48EC96D956AC /* Copy files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = res/;
+			dstSubfolderSpec = 7;
+			files = (
+				69C4DD14C430404698B74C10 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/.gitignore */,
+				6144F397873D4D439D5D54BC /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/background.caf */,
+				9077627ED63941A7B9A7B35E /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/background.mp3 */,
+				73A352F621324A19A29875E9 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/background.ogg */,
+				F040A131295449D9993F032B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/crop.png */,
+				75B371F9C9A74A3F8F4D8C04 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/dog.png */,
+				60A90440383842B58DC7BDB1 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/effect1.wav */,
+				C39F175E9B454F239B3AC850 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/farm.jpg */,
+				0029DBF90DA04449ADEA88B2 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/land.png */,
+				1EA4857BEE124CCC90FC54AF /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/menu1.png */,
+				D797FB92456C4AB8897F6B5A /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/res/menu2.png */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A6F49DFDE4443659C43427D /* Copy files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = src/cocos/framework/extends;
+			dstSubfolderSpec = 7;
+			files = (
+				E9CCCA42509648DB81A5A882 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/LayerEx.lua */,
+				42323D64A7E247D58B64D0DD /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/MenuEx.lua */,
+				59C7CDDC86F543B8B422CB65 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/NodeEx.lua */,
+				E104A01827BD4D8E87E13044 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/SpriteEx.lua */,
+				92137F9B3EB2411CB6018A68 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UICheckBox.lua */,
+				D33A995F6A3F41A5B55A8776 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIEditBox.lua */,
+				EFD7D86341EF4069BD60A7E7 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIListView.lua */,
+				E7DA99C055994EE5AFBB081E /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIPageView.lua */,
+				A2FF2530A8D34ECB8B133ECF /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIScrollView.lua */,
+				F9EDA1C460404749A85E8555 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UISlider.lua */,
+				4D702B27995F4B1C85A8C8AD /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UITextField.lua */,
+				7E5A2B7C5EAD4597B079340C /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/extends/UIWidget.lua */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76FC04707C9F4BC2A68A01FC /* Copy files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = src/cocos/cocosdenshion;
+			dstSubfolderSpec = 7;
+			files = (
+				53B521112EBE4043BC4EB47F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/cocosdenshion/AudioEngine.lua */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		879B6119C6E74263B231A3AD /* Copy files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = src/cocos/ui;
+			dstSubfolderSpec = 7;
+			files = (
+				1C46963979E842CB9A96B11F /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/ui/DeprecatedUIEnum.lua */,
+				6D244F4BB2F041E9A0B95FF8 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/ui/DeprecatedUIFunc.lua */,
+				0EBD4434EF91456992FFE789 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/ui/GuiConstants.lua */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F90E343C7FC4E1AA58CB715 /* Copy files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = src/cocos/network;
+			dstSubfolderSpec = 7;
+			files = (
+				C24B55B84809448BB15F9762 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/network/DeprecatedNetworkClass.lua */,
+				4094D6AF281C4EFDA430B681 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/network/DeprecatedNetworkEnum.lua */,
+				8AA8977E66B2470D979EE264 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/network/DeprecatedNetworkFunc.lua */,
+				F62AC749C02D4916BB96D828 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/network/NetworkConstants.lua */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97BB166F7D904224BEDE39AC /* Copy files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = src/cocos/extension;
+			dstSubfolderSpec = 7;
+			files = (
+				6642F07763554036BD1305C3 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/extension/DeprecatedExtensionClass.lua */,
+				EFC3DFCCE19E40AEA6D47FEB /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/extension/DeprecatedExtensionEnum.lua */,
+				884981B8B21748FBA8CC956D /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/extension/DeprecatedExtensionFunc.lua */,
+				4E3B3EEF448248AF98DEE174 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/extension/ExtensionConstants.lua */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A92BDE0937B344C2B34FD3CB /* Copy files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = src/cocos/framework/components;
+			dstSubfolderSpec = 7;
+			files = (
+				7461AFCDE691418390A97BD4 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/framework/components/event.lua */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF97170989B54C3B9F5A8E43 /* Copy files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = src/cocos/;
+			dstSubfolderSpec = 7;
+			files = (
+				B510EC7A73974227A0899E7B /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/init.lua */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FEB341D6E97841AA81597AF4 /* Copy files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = src/cocos/spine;
+			dstSubfolderSpec = 7;
+			files = (
+				B2F9229E94024B4F93E5E411 /* /Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/script/spine/SpineConstants.lua */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		47E141BC3C694CF2960AAA78 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3E7EC9A18F74277A35DC881 /* ZERO_CHECK */;
+			targetProxy = 531440437F9C4649B0C0088D /* PBXContainerItemProxy */;
+		};
+		A947F1880B744A0DB0E8459A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3E7EC9A18F74277A35DC881 /* ZERO_CHECK */;
+			targetProxy = D20E9F84EE4645ACA2F964FA /* PBXContainerItemProxy */;
+		};
+		CADE9339759743DFA78DF7C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 36A0377B83DC47EFAA8AE669 /* lua-empty-test */;
+			targetProxy = 740A5055E01E4E7BBDCCFD4F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		01C6717920A44DF7AA781299 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Release;
+		};
+		0C4CC508A08D49B880017C8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Debug;
+		};
+		20C0E5EAB7C4454E906BFA29 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		34C7F75538FA4110A92BA0BC /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/bin/lua-empty-test/MinSizeRel";
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = ("$(inherited)");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",__APPLE__,USE_FILE32API,LWS_WITH_LIBUV);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/Classes","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/auto","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/manual","/Users/mac/Documents/my_projects/cocos2d-x-4.0","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos","/Users/mac/Documents/my_projects/cocos2d-x-4.0/extensions","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/platform","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/editor-support","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/base","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/audio/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/platform/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/recast/..","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/tinyxml2/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/xxhash/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/xxtea/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/clipper/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/edtaa3func/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/ConvertUTF/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/poly2tri/..","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/md5/..","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/unzip/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/tolua/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/..");
+				INFOPLIST_FILE = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/Info.plist";
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = ("$(inherited)");
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG '-std=c++11' ";
+				OTHER_LDFLAGS = ("-pagezero_size 10000 -image_base 100000000 -Wl,-search_paths_first -Wl,-headerpad_max_install_names","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/MinSizeRel/libluacocos2d.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/MinSizeRel/libcocos2d.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/MinSizeRel/libexternal.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/Box2D/prebuilt/mac/libbox2d.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/chipmunk/prebuilt/mac/libchipmunk.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/freetype2/prebuilt/mac/libfreetype.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/MinSizeRel/libext_recast.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libLinearMath.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libBulletDynamics.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libBulletCollision.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libLinearMath.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libBulletMultiThreaded.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libMiniCL.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/jpeg/prebuilt/mac/libjpeg.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/webp/prebuilt/mac/libwebp.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/websockets/prebuilt/mac/libwebsockets.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/openssl/prebuilt/mac/libssl.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/openssl/prebuilt/mac/libcrypto.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/uv/prebuilt/mac/libuv_a.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/MinSizeRel/libext_tinyxml2.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/MinSizeRel/libext_xxhash.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/MinSizeRel/libext_xxtea.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/MinSizeRel/libext_clipper.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/MinSizeRel/libext_edtaa3func.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/MinSizeRel/libext_convertUTF.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/MinSizeRel/libext_poly2tri.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/MinSizeRel/libext_md5.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/curl/prebuilt/mac/libcurl.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/png/prebuilt/mac/libpng.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glfw3/prebuilt/mac/libglfw3.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/zlib/prebuilt/mac/libz.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/MinSizeRel/libext_unzip.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glsl-optimizer/prebuilt/mac/libglcpp-library.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glsl-optimizer/prebuilt/mac/libglsl_optimizer.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glsl-optimizer/prebuilt/mac/libmesa.a","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework Cocoa","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework OpenGL","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework ApplicationServices","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework IOKit","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework OpenAL","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework AudioToolbox","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework QuartzCore","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework Foundation","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework GameController","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework Metal","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework AppKit",/Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libiconv.tbd,"/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luajit/prebuilt/mac/libluajit.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/MinSizeRel/libext_tolua.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/MinSizeRel/libext_luasocket.a");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = "lua-empty-test";
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/Box2D/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/chipmunk/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/freetype2/include/mac/freetype2","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/include/bullet","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/jpeg/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/openssl/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/uv/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/webp/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/websockets/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/curl/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/png/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glfw3/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/zlib/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glsl-optimizer/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luajit/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		519965BB020149148E5FA4AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test/build";
+			};
+			name = Release;
+		};
+		63349A35B8E64D64B7E81785 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Release;
+		};
+		9ED54A576808470AAA5A2859 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test/build";
+			};
+			name = RelWithDebInfo;
+		};
+		A5B5573D781243C38821302C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test/build";
+			};
+			name = Debug;
+		};
+		ACFF1AB2F65A42189F6D655A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Debug;
+		};
+		BCB37DB690C9443393811230 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test/build";
+			};
+			name = MinSizeRel;
+		};
+		C87D71272371448691E47563 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		CDAE38409FEF430C82A264A0 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		E5638EE96FDF43F09F909928 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/bin/lua-empty-test/RelWithDebInfo";
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = ("$(inherited)");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",__APPLE__,USE_FILE32API,LWS_WITH_LIBUV);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/Classes","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/auto","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/manual","/Users/mac/Documents/my_projects/cocos2d-x-4.0","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos","/Users/mac/Documents/my_projects/cocos2d-x-4.0/extensions","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/platform","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/editor-support","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/base","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/audio/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/platform/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/recast/..","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/tinyxml2/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/xxhash/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/xxtea/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/clipper/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/edtaa3func/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/ConvertUTF/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/poly2tri/..","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/md5/..","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/unzip/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/tolua/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/..");
+				INFOPLIST_FILE = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/Info.plist";
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = ("$(inherited)");
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG '-std=c++11' ";
+				OTHER_LDFLAGS = ("-pagezero_size 10000 -image_base 100000000 -Wl,-search_paths_first -Wl,-headerpad_max_install_names","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/RelWithDebInfo/libluacocos2d.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/RelWithDebInfo/libcocos2d.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/RelWithDebInfo/libexternal.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/Box2D/prebuilt/mac/libbox2d.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/chipmunk/prebuilt/mac/libchipmunk.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/freetype2/prebuilt/mac/libfreetype.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/RelWithDebInfo/libext_recast.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libLinearMath.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libBulletDynamics.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libBulletCollision.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libLinearMath.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libBulletMultiThreaded.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libMiniCL.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/jpeg/prebuilt/mac/libjpeg.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/webp/prebuilt/mac/libwebp.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/websockets/prebuilt/mac/libwebsockets.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/openssl/prebuilt/mac/libssl.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/openssl/prebuilt/mac/libcrypto.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/uv/prebuilt/mac/libuv_a.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/RelWithDebInfo/libext_tinyxml2.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/RelWithDebInfo/libext_xxhash.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/RelWithDebInfo/libext_xxtea.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/RelWithDebInfo/libext_clipper.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/RelWithDebInfo/libext_edtaa3func.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/RelWithDebInfo/libext_convertUTF.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/RelWithDebInfo/libext_poly2tri.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/RelWithDebInfo/libext_md5.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/curl/prebuilt/mac/libcurl.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/png/prebuilt/mac/libpng.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glfw3/prebuilt/mac/libglfw3.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/zlib/prebuilt/mac/libz.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/RelWithDebInfo/libext_unzip.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glsl-optimizer/prebuilt/mac/libglcpp-library.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glsl-optimizer/prebuilt/mac/libglsl_optimizer.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glsl-optimizer/prebuilt/mac/libmesa.a","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework Cocoa","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework OpenGL","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework ApplicationServices","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework IOKit","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework OpenAL","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework AudioToolbox","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework QuartzCore","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework Foundation","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework GameController","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework Metal","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework AppKit",/Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libiconv.tbd,"/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luajit/prebuilt/mac/libluajit.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/RelWithDebInfo/libext_tolua.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/RelWithDebInfo/libext_luasocket.a");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = "lua-empty-test";
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/Box2D/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/chipmunk/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/freetype2/include/mac/freetype2","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/include/bullet","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/jpeg/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/openssl/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/uv/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/webp/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/websockets/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/curl/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/png/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glfw3/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/zlib/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glsl-optimizer/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luajit/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		EA93C5FFE3E440A3A46D4489 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/bin/lua-empty-test/Debug";
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = ("$(inherited)");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","'COCOS2D_DEBUG=1'",__APPLE__,USE_FILE32API,LWS_WITH_LIBUV);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/Classes","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/auto","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/manual","/Users/mac/Documents/my_projects/cocos2d-x-4.0","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos","/Users/mac/Documents/my_projects/cocos2d-x-4.0/extensions","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/platform","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/editor-support","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/base","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/audio/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/platform/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/recast/..","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/tinyxml2/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/xxhash/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/xxtea/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/clipper/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/edtaa3func/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/ConvertUTF/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/poly2tri/..","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/md5/..","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/unzip/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/tolua/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/..");
+				INFOPLIST_FILE = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/Info.plist";
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = ("$(inherited)");
+				OTHER_CPLUSPLUSFLAGS = "   '-std=c++11' ";
+				OTHER_LDFLAGS = ("-pagezero_size 10000 -image_base 100000000 -Wl,-search_paths_first -Wl,-headerpad_max_install_names","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Debug/libluacocos2d.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Debug/libcocos2d.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Debug/libexternal.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/Box2D/prebuilt/mac/libbox2d.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/chipmunk/prebuilt/mac/libchipmunk.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/freetype2/prebuilt/mac/libfreetype.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Debug/libext_recast.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libLinearMath.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libBulletDynamics.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libBulletCollision.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libLinearMath.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libBulletMultiThreaded.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libMiniCL.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/jpeg/prebuilt/mac/libjpeg.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/webp/prebuilt/mac/libwebp.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/websockets/prebuilt/mac/libwebsockets.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/openssl/prebuilt/mac/libssl.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/openssl/prebuilt/mac/libcrypto.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/uv/prebuilt/mac/libuv_a.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Debug/libext_tinyxml2.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Debug/libext_xxhash.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Debug/libext_xxtea.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Debug/libext_clipper.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Debug/libext_edtaa3func.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Debug/libext_convertUTF.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Debug/libext_poly2tri.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Debug/libext_md5.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/curl/prebuilt/mac/libcurl.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/png/prebuilt/mac/libpng.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glfw3/prebuilt/mac/libglfw3.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/zlib/prebuilt/mac/libz.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Debug/libext_unzip.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glsl-optimizer/prebuilt/mac/libglcpp-library.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glsl-optimizer/prebuilt/mac/libglsl_optimizer.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glsl-optimizer/prebuilt/mac/libmesa.a","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework Cocoa","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework OpenGL","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework ApplicationServices","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework IOKit","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework OpenAL","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework AudioToolbox","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework QuartzCore","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework Foundation","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework GameController","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework Metal","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework AppKit",/Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libiconv.tbd,"/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luajit/prebuilt/mac/libluajit.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Debug/libext_tolua.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Debug/libext_luasocket.a");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = "lua-empty-test";
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/Box2D/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/chipmunk/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/freetype2/include/mac/freetype2","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/include/bullet","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/jpeg/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/openssl/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/uv/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/webp/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/websockets/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/curl/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/png/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glfw3/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/zlib/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glsl-optimizer/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luajit/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Debug;
+		};
+		F547D88130474532ACA4915B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/bin/lua-empty-test/Release";
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = ("$(inherited)");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",__APPLE__,USE_FILE32API,LWS_WITH_LIBUV);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/Classes","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/auto","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/scripting/lua-bindings/manual","/Users/mac/Documents/my_projects/cocos2d-x-4.0","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos","/Users/mac/Documents/my_projects/cocos2d-x-4.0/extensions","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/platform","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/editor-support","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/base","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/audio/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/cocos/platform/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/recast/..","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/tinyxml2/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/xxhash/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/xxtea/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/clipper/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/edtaa3func/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/ConvertUTF/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/poly2tri/..","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/md5/..","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/unzip/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/tolua/.","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luasocket/..");
+				INFOPLIST_FILE = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/tests/lua-empty-test/project/proj.mac/Info.plist";
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = ("$(inherited)");
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG '-std=c++11' ";
+				OTHER_LDFLAGS = ("-pagezero_size 10000 -image_base 100000000 -Wl,-search_paths_first -Wl,-headerpad_max_install_names","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Release/libluacocos2d.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Release/libcocos2d.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Release/libexternal.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/Box2D/prebuilt/mac/libbox2d.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/chipmunk/prebuilt/mac/libchipmunk.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/freetype2/prebuilt/mac/libfreetype.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Release/libext_recast.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libLinearMath.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libBulletDynamics.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libBulletCollision.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libLinearMath.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libBulletMultiThreaded.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/prebuilt/mac/libMiniCL.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/jpeg/prebuilt/mac/libjpeg.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/webp/prebuilt/mac/libwebp.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/websockets/prebuilt/mac/libwebsockets.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/openssl/prebuilt/mac/libssl.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/openssl/prebuilt/mac/libcrypto.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/uv/prebuilt/mac/libuv_a.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Release/libext_tinyxml2.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Release/libext_xxhash.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Release/libext_xxtea.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Release/libext_clipper.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Release/libext_edtaa3func.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Release/libext_convertUTF.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Release/libext_poly2tri.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Release/libext_md5.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/curl/prebuilt/mac/libcurl.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/png/prebuilt/mac/libpng.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glfw3/prebuilt/mac/libglfw3.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/zlib/prebuilt/mac/libz.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Release/libext_unzip.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glsl-optimizer/prebuilt/mac/libglcpp-library.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glsl-optimizer/prebuilt/mac/libglsl_optimizer.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glsl-optimizer/prebuilt/mac/libmesa.a","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework Cocoa","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework OpenGL","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework ApplicationServices","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework IOKit","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework OpenAL","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework AudioToolbox","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework QuartzCore","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework Foundation","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework GameController","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework Metal","-F /Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks","-framework AppKit",/Users/mac/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libiconv.tbd,"/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luajit/prebuilt/mac/libluajit.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Release/libext_tolua.a","/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/lib/Release/libext_luasocket.a");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = "lua-empty-test";
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/Box2D/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/chipmunk/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/freetype2/include/mac/freetype2","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/bullet/include/bullet","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/jpeg/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/openssl/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/uv/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/webp/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/websockets/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/curl/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/png/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glfw3/include/mac","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/zlib/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/glsl-optimizer/include","/Users/mac/Documents/my_projects/cocos2d-x-4.0/external/lua/luajit/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Release;
+		};
+		FC5EF2906A104608B124F0B3 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/mac/Documents/my_projects/cocos2d-x-4.0/mac-build2/engine/tests/lua-empty-test";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0F0ABDAA8134450AA1D55D00 /* Build configuration list for PBXProject "lua-empty-test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5B5573D781243C38821302C /* Debug */,
+				519965BB020149148E5FA4AD /* Release */,
+				BCB37DB690C9443393811230 /* MinSizeRel */,
+				9ED54A576808470AAA5A2859 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AD53A79EEEF7484FBA1537FE /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C4CC508A08D49B880017C8B /* Debug */,
+				63349A35B8E64D64B7E81785 /* Release */,
+				20C0E5EAB7C4454E906BFA29 /* MinSizeRel */,
+				FC5EF2906A104608B124F0B3 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D64EF201592642D1B1382BF7 /* Build configuration list for PBXNativeTarget "lua-empty-test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA93C5FFE3E440A3A46D4489 /* Debug */,
+				F547D88130474532ACA4915B /* Release */,
+				34C7F75538FA4110A92BA0BC /* MinSizeRel */,
+				E5638EE96FDF43F09F909928 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D79F98A306554A2CB7F9710F /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACFF1AB2F65A42189F6D655A /* Debug */,
+				01C6717920A44DF7AA781299 /* Release */,
+				C87D71272371448691E47563 /* MinSizeRel */,
+				CDAE38409FEF430C82A264A0 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 792A09EB8C1B44B7A96B1FA3 /* Project object */;
+}

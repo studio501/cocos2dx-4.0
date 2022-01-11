@@ -54,12 +54,13 @@ static NSAttributedString* __attributedStringWithFontSize(NSMutableAttributedStr
 
 int Device::getDPI()
 {
-    NSScreen *screen = [NSScreen mainScreen];
-    NSDictionary *description = [screen deviceDescription];
-    NSSize displayPixelSize = [[description objectForKey:NSDeviceSize] sizeValue];
-    CGSize displayPhysicalSize = CGDisplayScreenSize([[description objectForKey:@"NSScreenNumber"] unsignedIntValue]);
-    
-    return ((displayPixelSize.width / displayPhysicalSize.width) * 25.4f);
+//    NSScreen *screen = [NSScreen mainScreen];
+//    NSDictionary *description = [screen deviceDescription];
+//    NSSize displayPixelSize = [[description objectForKey:NSDeviceSize] sizeValue];
+//    CGSize displayPhysicalSize = CGDisplayScreenSize([[description objectForKey:@"NSScreenNumber"] unsignedIntValue]);
+//
+//    return ((displayPixelSize.width / displayPhysicalSize.width) * 25.4f);
+    return 1;
 }
 
 void Device::setAccelerometerEnabled(bool isEnabled)
