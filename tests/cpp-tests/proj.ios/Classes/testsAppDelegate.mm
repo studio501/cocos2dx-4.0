@@ -39,6 +39,20 @@
 // cocos2d application instance
 static AppDelegate s_sharedApplication;
 
+// Set screen orientation
++(void) setOrientation:(NSNumber *) orientation {
+    NSNumber *orientationTarget;
+    NSNumber * landscape = [NSNumber numberWithInt:1];
+    NSNumber * portrait = [NSNumber numberWithInt:2];
+    if ([orientation isEqualToNumber:landscape]) {
+    orientationTarget = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
+    [[UIDevice currentDevice] setValue:orientationTarget forKey:@"orientation"];
+    } else if ([orientation isEqualToNumber:portrait]){
+    orientationTarget = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+    [[UIDevice currentDevice] setValue:orientationTarget forKey:@"orientation"];
+    }
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
@@ -94,8 +108,46 @@ static AppDelegate s_sharedApplication;
     cocos2d::Director::getInstance()->setOpenGLView(glview);
 
     app->run();
+    
+    
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 2.0), dispatch_get_main_queue(), ^(void){
+        // Your code
+        int a = 100;
+        auto new_size = glview->getDesignResolutionSize();
+        
+        cocos2d::Application::getInstance()->setRestrictRotation(false);
+        
+        [AppController setOrientation:[NSNumber numberWithInt:1]];
+        
+        glview->setDesignResolutionSize(480, 320, ResolutionPolicy::FIXED_HEIGHT);
+        
+        auto visitingCamera = cocos2d::Camera::getDefaultCamera();
+        visitingCamera->initDefault(true);
+        
+        auto new_size1 = glview->getDesignResolutionSize();
+        
+        auto director = cocos2d::Director::getInstance();
+        auto curScene = director->getRunningScene();
+        auto sp = cocos2d::Sprite::create("092.png");
+        curScene->addChild(sp);
+        sp->setPosition(200, 200);
+        float tf = curScene->getScaleX();
+//        curScene->setScaleX(0.5);
+        
+      });
 
     return YES;
+}
+
+-(NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    cocos2d::Application *app = cocos2d::Application::getInstance();
+    
+    if(app->getRestrictRotation())
+        return UIInterfaceOrientationMaskPortrait;
+    else
+        return UIInterfaceOrientationMaskLandscapeLeft;
 }
 
 

@@ -31,4 +31,5 @@
 
 }
 - (BOOL)prefersStatusBarHidden;
+- (void) restrictRotation:(BOOL) restriction;
 @end

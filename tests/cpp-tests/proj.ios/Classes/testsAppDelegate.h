@@ -33,5 +33,7 @@
     RootViewController    *viewController;
 }
 
+@property BOOL restrictRotation;
+
 @end
 

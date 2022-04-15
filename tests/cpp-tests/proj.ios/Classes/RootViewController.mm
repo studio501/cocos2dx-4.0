@@ -98,5 +98,11 @@
     [super dealloc];
 }
 
+- (void) restrictRotation:(BOOL) restriction
+{
+//    AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+//    appDelegate.restrictRotation = restriction;
+}
+
 
 @end
